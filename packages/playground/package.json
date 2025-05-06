@@ -11,6 +11,9 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
-    "vue-router": "^4.5.0"
+    "ui": "workspace:*"
+  },
+  "devDependencies": {
+    "unplugin-vue-router": "^0.12.0"
   }
 }
