@@ -10,9 +10,9 @@
   "module": "./dist/j-lib.js",
   "exports": {
     ".": {
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/j-lib.js",
-      "require": "./dist/j-lib.umd.cjs",
-      "types": "./dist/types/index.d.ts"
+      "require": "./dist/j-lib.umd.cjs"
     },
     "./style.css": "./dist/j-lib.css"
   },

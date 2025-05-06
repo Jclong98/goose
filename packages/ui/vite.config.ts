@@ -13,6 +13,7 @@ export default defineConfig({
     dts({
       outDir: "./dist/types",
       tsconfigPath: "./tsconfig.app.json",
+      exclude: ["src/App.vue", "src/main.ts"],
     }),
   ],
   resolve: {
