@@ -12,7 +12,7 @@ export default defineConfig({
     vueDevTools(),
     dts({
       outDir: "./dist/types",
-      tsconfigPath: "./tsconfig.app.json",
+
       exclude: ["src/App.vue", "src/main.ts"],
     }),
   ],
@@ -23,10 +23,11 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: fileURLToPath(new URL("./src/index.ts", import.meta.url)),
+      entry: {
+        "j-lib": fileURLToPath(new URL("./src/index.ts", import.meta.url)),
+        "j-lib/vite": fileURLToPath(new URL("./src/vite.ts", import.meta.url)),
+      },
       name: "JLib",
-      // the proper extensions will be added
-      fileName: "j-lib",
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
