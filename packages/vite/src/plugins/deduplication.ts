@@ -1,6 +1,6 @@
 import type { PluginOption } from "vite";
 
-export function duplicationDetectionPlugin(): PluginOption {
+export function GooseDuplicationDetectionPlugin(): PluginOption {
   return {
     name: "goose:plugins-duplication-detection",
     configResolved(config) {

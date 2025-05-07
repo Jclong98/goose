@@ -2,11 +2,11 @@ import type { PluginOption } from "vite";
 import AutoImportComponents from "unplugin-vue-components/vite";
 import type { Options as ComponentsOptions } from "unplugin-vue-components/types";
 
-import type { GooseVitePluginOptions } from "..";
+import type { VitePluginGooseOptions } from "..";
 import defu from "defu";
 
 export function GooseComponentImportPlugin(
-  options: GooseVitePluginOptions
+  options: VitePluginGooseOptions
 ): PluginOption {
   const pluginOptions = defu(options.components, {
     dts: "./src/components.d.ts",
