@@ -24,10 +24,9 @@ export default defineConfig({
   build: {
     lib: {
       entry: {
-        "j-lib/components": fileURLToPath(
+        "j-lib": fileURLToPath(
           new URL("./src/components/index.ts", import.meta.url)
         ),
-        "j-lib/vite": fileURLToPath(new URL("./src/vite.ts", import.meta.url)),
       },
       name: "JLib",
     },

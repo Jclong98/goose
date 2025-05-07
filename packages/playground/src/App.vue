@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import { JButton } from "j-lib/components";
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <header>JLib Playground</header>

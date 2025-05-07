@@ -11,7 +11,8 @@
     "type-check": "vue-tsc --build"
   },
   "dependencies": {
-    "j-lib": "workspace:*"
+    "j-lib": "workspace:*",
+    "j-lib-vite": "workspace:*"
   },
   "devDependencies": {
     "unplugin-vue-router": "^0.12.0"
