@@ -5,7 +5,7 @@ import type { Options as AutoImportOptions } from "unplugin-auto-import/types";
 import type { VitePluginGooseOptions } from "..";
 import defu from "defu";
 
-export function GooseAutoImportPlugin(
+export function AutoImportPlugin(
   options: VitePluginGooseOptions
 ): PluginOption {
   const pluginOptions = defu(options.autoImport, {

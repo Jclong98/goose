@@ -5,7 +5,7 @@ import type { Options as ComponentsOptions } from "unplugin-vue-components/types
 import type { VitePluginGooseOptions } from "..";
 import defu from "defu";
 
-export function GooseComponentImportPlugin(
+export function ComponentImportPlugin(
   options: VitePluginGooseOptions
 ): PluginOption {
   const pluginOptions = defu(options.components, {
