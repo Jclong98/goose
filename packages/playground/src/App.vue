@@ -11,6 +11,8 @@ const { product } = useMultiplier(num1, num2);
 
   <JButton>auto imported button</JButton>
 
+  <button>asdf</button>
+
   <br />
 
   <input type="number" v-model="num1" />

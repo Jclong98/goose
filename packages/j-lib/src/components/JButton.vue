@@ -1,22 +1,9 @@
 <script lang="ts" setup></script>
 
 <template>
-  <button class="j-button">
+  <button
+    class="bg-green-500 px-4 py-2 rounded text-white hover:bg-green-600 transition duration-200 ease-in-out cursor-pointer active:scale-95 active:bg-green-700 border-none"
+  >
     <slot></slot>
   </button>
 </template>
-
-<style lang="css" scoped>
-.j-button {
-  background-color: #4caf50; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-</style>
