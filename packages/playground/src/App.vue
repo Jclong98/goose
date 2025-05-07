@@ -3,7 +3,7 @@
 <template>
   <header>JLib Playground</header>
 
-  <JButton>asdf</JButton>
+  <JButton>auto imported button</JButton>
 </template>
 
 <style scoped></style>
