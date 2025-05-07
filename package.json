@@ -9,8 +9,8 @@
     "lib:build": "pnpm -C packages/j-lib build",
     "sandbox:dev": "pnpm -C packages/sandbox dev",
     "sandbox:build": "pnpm -C packages/sandbox build",
-    "vite-plugin:dev": "pnpm -C packages/j-lib-vite dev",
-    "vite-plugin:build": "pnpm -C packages/j-lib-vite build"
+    "vite-plugin:dev": "pnpm -C packages/vite-plugin dev",
+    "vite-plugin:build": "pnpm -C packages/vite-plugin build"
   },
   "keywords": [],
   "author": "",

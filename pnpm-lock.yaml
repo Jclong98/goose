@@ -52,7 +52,20 @@ importers:
         specifier: ^4.5.3
         version: 4.5.3(@types/node@22.15.14)(rollup@4.40.2)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.14)(jiti@2.4.2)(lightningcss@1.29.3)(yaml@2.7.1))
 
-  packages/j-lib-vite:
+  packages/sandbox:
+    dependencies:
+      j-lib:
+        specifier: workspace:*
+        version: link:../j-lib
+      j-lib-vite:
+        specifier: workspace:*
+        version: link:../vite-plugin
+    devDependencies:
+      unplugin-vue-router:
+        specifier: ^0.12.0
+        version: 0.12.0(vue-router@4.5.1(vue@3.5.13(typescript@5.8.3)))(vue@3.5.13(typescript@5.8.3))
+
+  packages/vite-plugin:
     dependencies:
       pathe:
         specifier: ^2.0.3
@@ -82,19 +95,6 @@ importers:
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
-
-  packages/sandbox:
-    dependencies:
-      j-lib:
-        specifier: workspace:*
-        version: link:../j-lib
-      j-lib-vite:
-        specifier: workspace:*
-        version: link:../j-lib-vite
-    devDependencies:
-      unplugin-vue-router:
-        specifier: ^0.12.0
-        version: 0.12.0(vue-router@4.5.1(vue@3.5.13(typescript@5.8.3)))(vue@3.5.13(typescript@5.8.3))
 
 packages:
 
