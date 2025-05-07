@@ -2,7 +2,7 @@ import "./assets/main.css";
 
 import { createApp } from "vue";
 import App from "./App.vue";
-import "ui/style.css";
+import "j-lib/style.css";
 
 const app = createApp(App);
 

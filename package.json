@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "pnpm dev",
-    "lib:dev": "pnpm -C packages/ui dev",
-    "lib:build": "pnpm -C packages/ui build",
+    "dev": "pnpm lib:dev",
+    "build": "pnpm lib:build",
+    "lib:dev": "pnpm -C packages/j-lib dev",
+    "lib:build": "pnpm -C packages/j-lib build",
     "playground:dev": "pnpm -C packages/playground dev",
     "playground:build": "pnpm -C packages/playground build"
   },
