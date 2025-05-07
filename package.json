@@ -7,8 +7,8 @@
     "build": "pnpm lib:build && pnpm vite-plugin:build",
     "lib:dev": "pnpm -C packages/j-lib dev",
     "lib:build": "pnpm -C packages/j-lib build",
-    "playground:dev": "pnpm -C packages/playground dev",
-    "playground:build": "pnpm -C packages/playground build",
+    "sandbox:dev": "pnpm -C packages/sandbox dev",
+    "sandbox:build": "pnpm -C packages/sandbox build",
     "vite-plugin:dev": "pnpm -C packages/j-lib-vite dev",
     "vite-plugin:build": "pnpm -C packages/j-lib-vite build"
   },
