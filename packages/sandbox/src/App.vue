@@ -7,17 +7,22 @@ const { product } = useMultiplier(num1, num2);
 </script>
 
 <template>
-  <header>Goose Playground</header>
+  <div class="flex flex-col gap-4">
+    <header>Goose Playground</header>
 
-  <JButton>auto imported button</JButton>
+    <div>
+      <GButton>auto imported button</GButton> <br />
 
-  <button>asdf</button>
+      <button>normal button (unstyled)</button>
+    </div>
 
-  <br />
+    <label>
+      <span class="block"> tailwind styled input </span>
+      <input class="border px-4 py-2 rounded" type="number" v-model="num1" />
+    </label>
 
-  <input type="number" v-model="num1" />
-
-  <pre>{{ { num1, num2, product } }}</pre>
+    <pre>{{ { num1, num2, product } }}</pre>
+  </div>
 </template>
 
 <style scoped></style>

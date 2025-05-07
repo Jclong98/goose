@@ -1,3 +1,3 @@
-import JButton from "./JButton.vue";
+import GButton from "./GButton.vue";
 
-export { JButton };
+export { GButton };

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import JButton from "./components/JButton.vue";
+import GButton from "./components/GButton.vue";
 
 function onClick() {
   alert("Button clicked!");
@@ -7,7 +7,7 @@ function onClick() {
 </script>
 
 <template>
-  <JButton @click="onClick">Click Me</JButton>
+  <GButton @click="onClick">Click Me</GButton>
 </template>
 
 <style scoped></style>

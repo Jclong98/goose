@@ -12,7 +12,7 @@ export function GooseComponentImportPlugin(
     dts: "./src/components.d.ts",
     resolvers: [
       (componentName) => {
-        if (componentName.startsWith("J")) {
+        if (componentName.startsWith("G")) {
           return {
             name: componentName,
             from: "@goose/core",

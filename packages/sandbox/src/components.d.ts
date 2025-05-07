@@ -8,6 +8,6 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    JButton: typeof import('@goose/core')['JButton']
+    GButton: typeof import('@goose/core')['GButton']
   }
 }
