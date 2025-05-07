@@ -4,6 +4,7 @@ import { jLibComponentImportPlugin } from "./plugins/components";
 import type { Options as AutoImportOptions } from "unplugin-auto-import/types";
 import type { Options as ComponentsOptions } from "unplugin-vue-components/types";
 import { jLibAutoImportPlugin } from "./plugins/auto-import";
+import tailwindcss from "@tailwindcss/vite";
 
 export interface JLibVitePluginOptions {
   /**
@@ -22,6 +23,7 @@ export default function jLibVitePlugin(
   return [
     jLibAutoImportPlugin(options),
     jLibComponentImportPlugin(options),
+    tailwindcss(),
     duplicationDetectionPlugin(),
   ];
 }

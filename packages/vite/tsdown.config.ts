@@ -6,4 +6,5 @@ export default defineConfig({
   clean: true,
   dts: true,
   platform: "neutral",
+  external: ["tailwindcss", "@tailwindcss/vite"],
 });
