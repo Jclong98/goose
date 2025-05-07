@@ -7,7 +7,7 @@ const { product } = useMultiplier(num1, num2);
 </script>
 
 <template>
-  <header>JLib Playground</header>
+  <header>Goose Playground</header>
 
   <JButton>auto imported button</JButton>
 
