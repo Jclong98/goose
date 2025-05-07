@@ -32,3 +32,5 @@ pnpm run sandbox:dev
       - [tailwindcss](https://tailwindcss.com/)
   - sandbox
     - a place to test out both the library and the vite plugin
+  - docs
+    - TODO
