@@ -73,6 +73,9 @@ importers:
       '@types/node':
         specifier: ^22.15.3
         version: 22.15.14
+      j-lib:
+        specifier: workspace:*
+        version: link:../j-lib
       tsdown:
         specifier: ^0.10.2
         version: 0.10.2(typescript@5.8.3)

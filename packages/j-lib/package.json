@@ -10,7 +10,7 @@
   "module": "./dist/j-lib.js",
   "exports": {
     ".": {
-      "types": "./dist/types/components/index.d.ts",
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/j-lib.js",
       "require": "./dist/j-lib.umd.cjs"
     },
