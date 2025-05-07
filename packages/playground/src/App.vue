@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { JButton } from "j-lib";
+import { JButton } from "j-lib/components";
 </script>
 
 <template>

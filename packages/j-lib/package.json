@@ -9,8 +9,8 @@
   "main": "./dist/j-lib.umd.cjs",
   "module": "./dist/j-lib.js",
   "exports": {
-    ".": {
-      "types": "./dist/types/index.d.ts",
+    "./components": {
+      "types": "./dist/types/components/index.d.ts",
       "import": "./dist/j-lib.js",
       "require": "./dist/j-lib.umd.cjs"
     },
