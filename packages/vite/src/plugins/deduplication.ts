@@ -2,7 +2,7 @@ import type { PluginOption } from "vite";
 
 export function GooseDuplicationDetectionPlugin(): PluginOption {
   return {
-    name: "goose:plugins-duplication-detection",
+    name: "goose:vite-plugin-duplication-detection",
     configResolved(config) {
       const plugins = config.plugins || [];
 
