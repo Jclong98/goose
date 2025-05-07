@@ -4,7 +4,6 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueDevTools from "vite-plugin-vue-devtools";
 import dts from "vite-plugin-dts";
-import jLib from "./src/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -16,7 +15,6 @@ export default defineConfig({
       tsconfigPath: "./tsconfig.app.json",
       exclude: ["src/App.vue", "src/main.ts"],
     }),
-    jLib(),
   ],
   resolve: {
     alias: {
