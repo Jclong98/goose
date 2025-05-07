@@ -1,6 +1,26 @@
 # Goose: a Vue library starter
 
-## Structure:
+## Getting started
+
+Install dependencies
+
+```sh
+pnpm i
+```
+
+Build core and vite plugin
+
+```sh
+pnpm run build
+```
+
+Test it out
+
+```sh
+pnpm run sandbox:dev
+```
+
+## Structure
 
 - packages
   - core
