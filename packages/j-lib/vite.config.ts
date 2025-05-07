@@ -23,9 +23,11 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: fileURLToPath(new URL("./src/index.ts", import.meta.url)),
+      entry: {
+        "j-lib": fileURLToPath(new URL("./src/index.ts", import.meta.url)),
+        "j-lib/vite": fileURLToPath(new URL("./src/vite.ts", import.meta.url)),
+      },
       name: "JLib",
-      fileName: "j-lib",
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
