@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { useMultiplier } from "@goose/core";
 
-const num1 = ref(2);
-const num2 = ref(4);
-const { product } = useMultiplier(num1, num2);
+const num = ref(2);
+const { product: timesFour } = useMultiplier(num, 4);
 </script>
 
 <template>
@@ -18,10 +17,10 @@ const { product } = useMultiplier(num1, num2);
 
     <label>
       <span class="block"> tailwind styled input </span>
-      <input class="border px-4 py-2 rounded" type="number" v-model="num1" />
+      <input class="border px-4 py-2 rounded" type="number" v-model="num" />
     </label>
 
-    <pre>{{ { num1, num2, product } }}</pre>
+    <pre>{{ { num, timesFour } }}</pre>
   </div>
 </template>
 
