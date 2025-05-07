@@ -6,18 +6,18 @@ export function duplicationDetectionPlugin(): PluginOption {
     configResolved(config) {
       const plugins = config.plugins || [];
 
-      if (plugins.filter((i) => i.name === "unplugin-auto-import").length > 1) {
-        throw new Error(
-          "[Goose] Multiple instances of `unplugin-auto-import` detected. goose includes `unplugin-auto-import` already, and you can configure it using `autoImport` option in goose module options."
-        );
+      function throwIfDuplicate(pluginName: string) {
+        if (plugins.filter((i) => i.name === pluginName).length > 1) {
+          throw new Error(
+            `[Goose] Multiple instances of \`${pluginName}\` detected. goose includes \`${pluginName}\` already, and you can configure it using \`autoImport\` option in goose module options.`
+          );
+        }
       }
-      if (
-        plugins.filter((i) => i.name === "unplugin-vue-components").length > 1
-      ) {
-        throw new Error(
-          "[Goose] Multiple instances of `unplugin-vue-components` detected. goose includes `unplugin-vue-components` already, and you can configure it using `components` option in goose module options."
-        );
-      }
+
+      throwIfDuplicate("unplugin-auto-import");
+      throwIfDuplicate("unplugin-vue-components");
+      throwIfDuplicate("@tailwindcss/vite:scan");
+      throwIfDuplicate("@tailwindcss/vite:generate:serve");
     },
   };
 }
