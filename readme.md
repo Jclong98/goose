@@ -1,4 +1,4 @@
-# Goose: a Vue component library starter
+# Goose: a Vue library starter
 
 ## Structure:
 
