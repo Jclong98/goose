@@ -1,6 +1,6 @@
-import type { Plugin } from "vite";
+import type { PluginOption } from "vite";
 
-export function duplicationDetectionPlugin(): Plugin {
+export function duplicationDetectionPlugin(): PluginOption {
   return {
     name: "j-lib:plugins-duplication-detection",
     configResolved(config) {

@@ -1,6 +1,6 @@
-import type { Plugin } from "vite";
+import type { PluginOption } from "vite";
 
-export function jLibComponents(): Plugin {
+export function jLibComponents(): PluginOption {
   return {
     name: "j-lib:components",
     resolveId(id, importer) {
