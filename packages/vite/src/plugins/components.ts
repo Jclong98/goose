@@ -15,7 +15,7 @@ export function jLibComponentImportPlugin(
         if (componentName.startsWith("J")) {
           return {
             name: componentName,
-            from: "j-lib",
+            from: "@goose/core",
           };
         }
       },

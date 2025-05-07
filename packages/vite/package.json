@@ -1,5 +1,5 @@
 {
-  "name": "j-lib-vite",
+  "name": "@goose/vite",
   "version": "1.0.0",
   "description": "",
   "files": [
@@ -30,7 +30,7 @@
   "devDependencies": {
     "@types/node": "^22.15.3",
     "defu": "^6.1.4",
-    "j-lib": "workspace:*",
+    "@goose/core": "workspace:*",
     "tsdown": "^0.10.2",
     "typescript": "^5.8.3"
   }

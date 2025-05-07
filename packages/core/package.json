@@ -1,20 +1,20 @@
 {
-  "name": "j-lib",
+  "name": "@goose/core",
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/j-lib.umd.cjs",
-  "module": "./dist/j-lib.js",
+  "main": "./dist/goose.umd.cjs",
+  "module": "./dist/goose.js",
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
-      "import": "./dist/j-lib.js",
-      "require": "./dist/j-lib.umd.cjs"
+      "import": "./dist/goose.js",
+      "require": "./dist/goose.umd.cjs"
     },
-    "./style.css": "./dist/j-lib.css"
+    "./style.css": "./dist/core.css"
   },
   "scripts": {
     "dev": "vite",

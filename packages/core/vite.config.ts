@@ -26,9 +26,9 @@ export default defineConfig({
   build: {
     lib: {
       entry: {
-        "j-lib": fileURLToPath(new URL("./src/index.ts", import.meta.url)),
+        goose: fileURLToPath(new URL("./src/index.ts", import.meta.url)),
       },
-      name: "JLib",
+      name: "Goose",
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled

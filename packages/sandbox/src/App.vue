@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useMultiplier } from "j-lib";
+import { useMultiplier } from "@goose/core";
 
 const num1 = ref(2);
 const num2 = ref(4);

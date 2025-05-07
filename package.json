@@ -1,16 +1,16 @@
 {
-  "name": "vue-library-vite-plugin",
+  "name": "goose",
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "pnpm lib:dev",
-    "build": "pnpm lib:build && pnpm vite-plugin:build",
-    "lib:dev": "pnpm -C packages/j-lib dev",
-    "lib:build": "pnpm -C packages/j-lib build",
+    "dev": "pnpm core:dev",
+    "build": "pnpm core:build && pnpm vite:build",
+    "core:dev": "pnpm -C packages/core dev",
+    "core:build": "pnpm -C packages/core build",
     "sandbox:dev": "pnpm -C packages/sandbox dev",
     "sandbox:build": "pnpm -C packages/sandbox build",
-    "vite-plugin:dev": "pnpm -C packages/vite-plugin dev",
-    "vite-plugin:build": "pnpm -C packages/vite-plugin build"
+    "vite:dev": "pnpm -C packages/vite dev",
+    "vite:build": "pnpm -C packages/vite build"
   },
   "keywords": [],
   "author": "",

@@ -46,7 +46,7 @@ importers:
         specifier: ^2.2.8
         version: 2.2.10(typescript@5.8.3)
 
-  packages/j-lib:
+  packages/core:
     devDependencies:
       vite-plugin-dts:
         specifier: ^4.5.3
@@ -54,18 +54,18 @@ importers:
 
   packages/sandbox:
     dependencies:
-      j-lib:
+      '@goose/core':
         specifier: workspace:*
-        version: link:../j-lib
-      j-lib-vite:
+        version: link:../core
+      '@goose/vite':
         specifier: workspace:*
-        version: link:../vite-plugin
+        version: link:../vite
     devDependencies:
       unplugin-vue-router:
         specifier: ^0.12.0
         version: 0.12.0(vue-router@4.5.1(vue@3.5.13(typescript@5.8.3)))(vue@3.5.13(typescript@5.8.3))
 
-  packages/vite-plugin:
+  packages/vite:
     dependencies:
       pathe:
         specifier: ^2.0.3
@@ -80,15 +80,15 @@ importers:
         specifier: ^28.5.0
         version: 28.5.0(@babel/parser@7.27.2)(vue@3.5.13(typescript@5.8.3))
     devDependencies:
+      '@goose/core':
+        specifier: workspace:*
+        version: link:../core
       '@types/node':
         specifier: ^22.15.3
         version: 22.15.14
       defu:
         specifier: ^6.1.4
         version: 6.1.4
-      j-lib:
-        specifier: workspace:*
-        version: link:../j-lib
       tsdown:
         specifier: ^0.10.2
         version: 0.10.2(typescript@5.8.3)
