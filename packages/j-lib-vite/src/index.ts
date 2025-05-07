@@ -1,7 +1,22 @@
 import type { PluginOption } from "vite";
 import { duplicationDetectionPlugin } from "./plugins/deduplication";
-import { jLibComponents } from "./plugins/components";
+import { jLibComponentImportPlugin } from "./plugins/components";
+import type { Options as ComponentsOptions } from "unplugin-vue-components/types";
 
-export default function jLibVitePlugin(): PluginOption[] {
-  return [jLibComponents(), duplicationDetectionPlugin()];
+export interface JLibVitePluginOptions {
+  components?: Partial<ComponentsOptions> | false;
+}
+
+export default function jLibVitePlugin(
+  options: JLibVitePluginOptions = {}
+): PluginOption[] {
+  const plugins: PluginOption[] = [];
+
+  if (options.components !== false) {
+    plugins.push(jLibComponentImportPlugin(options));
+  }
+
+  plugins.push(duplicationDetectionPlugin());
+
+  return plugins;
 }

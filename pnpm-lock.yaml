@@ -54,9 +54,6 @@ importers:
 
   packages/j-lib-vite:
     dependencies:
-      defu:
-        specifier: ^6.1.4
-        version: 6.1.4
       pathe:
         specifier: ^2.0.3
         version: 2.0.3
@@ -73,6 +70,9 @@ importers:
       '@types/node':
         specifier: ^22.15.3
         version: 22.15.14
+      defu:
+        specifier: ^6.1.4
+        version: 6.1.4
       j-lib:
         specifier: workspace:*
         version: link:../j-lib
