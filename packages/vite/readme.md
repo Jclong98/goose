@@ -13,24 +13,30 @@ A Vite plugin package designed to streamline development with Vue 3 and the [@go
 ### Minimal setup
 
 ```ts
+// vite.config.ts
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import goose from "@goose/vite";
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [vue(), goose()],
 });
 ```
 
+```css
+/* ./src/assets/main.css */
+/* or wherever your styles are located */
+@import "tailwindcss";
+```
+
 ### Custom setup
 
 ```ts
+// vite.config.ts
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import goose from "@goose/vite";
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
