@@ -21,8 +21,6 @@
   "license": "ISC",
   "packageManager": "pnpm@10.10.0",
   "peerDependencies": {
-    "unplugin-auto-import": "^19.2.0",
-    "unplugin-vue-components": "^28.5.0",
     "@goose/core": "workspace:*"
   },
   "devDependencies": {
@@ -31,6 +29,10 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "defu": "^6.1.4"
+    "defu": "^6.1.4",
+    "unplugin-auto-import": "^19.2.0",
+    "unplugin-vue-components": "^28.5.0",
+    "unplugin-vue-router": "^0.12.0",
+    "vue-router": "^4.5.1"
   }
 }

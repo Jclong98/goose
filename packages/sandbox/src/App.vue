@@ -1,27 +1,15 @@
-<script setup lang="ts">
-import { useMultiplier } from "@goose/core";
-
-const num = ref(2);
-const { product: timesFour } = useMultiplier(num, 4);
-</script>
-
 <template>
-  <div class="flex flex-col gap-4">
-    <header>Goose Playground</header>
+  <nav>
+    <span>Goose Playground</span>
 
-    <div>
-      <GButton>auto imported button</GButton> <br />
-
-      <button>normal button (unstyled)</button>
-    </div>
-
-    <label>
-      <span class="block"> tailwind styled input </span>
-      <input class="border px-4 py-2 rounded" type="number" v-model="num" />
-    </label>
-
-    <pre>{{ { num, timesFour } }}</pre>
-  </div>
+    <ul>
+      <li>
+        <router-link to="/">Home</router-link>
+      </li>
+      <li>
+        <router-link to="/about">About</router-link>
+      </li>
+    </ul>
+  </nav>
+  <router-view></router-view>
 </template>
-
-<style scoped></style>
