@@ -1,10 +1,11 @@
 import type { PluginOption } from "vite";
-import { GooseDuplicationDetectionPlugin } from "./plugins/deduplication";
-import { ComponentImportPlugin } from "./plugins/components";
 import type { Options as AutoImportOptions } from "unplugin-auto-import/types";
 import type { Options as ComponentsOptions } from "unplugin-vue-components/types";
+
 import { AutoImportPlugin } from "./plugins/auto-import";
-import tailwindcss from "@tailwindcss/vite";
+import { ComponentImportPlugin } from "./plugins/components";
+import { VitestSettingsPlugin } from "./plugins/vitest-settings";
+import { DuplicationDetectionPlugin } from "./plugins/deduplication";
 
 export interface VitePluginGooseOptions {
   /**
@@ -23,7 +24,7 @@ export default function VitePluginGoose(
   return [
     AutoImportPlugin(options),
     ComponentImportPlugin(options),
-    tailwindcss(),
-    GooseDuplicationDetectionPlugin(),
+    VitestSettingsPlugin(),
+    DuplicationDetectionPlugin(),
   ];
 }
