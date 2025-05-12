@@ -7,19 +7,19 @@ const { product: timesFour } = useMultiplier(num, 4);
 
 <template>
   <div>
+    <h1 class="text-2xl font-bold">Home</h1>
+
     <div>
-      <GButton>auto imported button</GButton> <br />
+      <GButton>auto imported goose button</GButton> <br />
 
       <button>normal button (unstyled)</button>
     </div>
 
     <label>
-      <span class="block"> Multiplier input </span>
-      <input type="number" v-model="num" />
+      <span class="block"> tailwind styled input </span>
+      <input class="border px-4 py-2 rounded" type="number" v-model="num" />
     </label>
 
     <pre>{{ { num, timesFour } }}</pre>
   </div>
 </template>
-
-<style scoped></style>
