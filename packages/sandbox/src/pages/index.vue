@@ -16,7 +16,9 @@ const { product: timesFour } = useMultiplier(num, 4);
     <label>
       <span class="block">
         tailwind styled input using colors from
-        <code class="bg-gray-500 text-white px-1 py-0.5 rounded">
+        <code
+          class="bg-blue-50 border border-blue-400 px-3 rounded-full inline-flex"
+        >
           @goose/core/tw-theme.css
         </code>
       </span>
