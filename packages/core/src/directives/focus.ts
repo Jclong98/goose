@@ -1,6 +1,6 @@
 import type { Directive } from "vue";
 
-export const vFocus: Directive<HTMLElement, boolean> = {
+export const Focus: Directive<HTMLElement, boolean> = {
   mounted(el) {
     el.focus();
   },

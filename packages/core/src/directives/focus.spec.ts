@@ -1,7 +1,7 @@
 import { mount } from "@vue/test-utils";
 import { defineComponent } from "vue";
 
-import { vFocus } from "./focus";
+import { Focus } from "./focus";
 
 describe("vFocus", () => {
   it("should focus the element on which the directive is used", async () => {
@@ -15,7 +15,7 @@ describe("vFocus", () => {
     const wrapper = mount(TestComponent, {
       global: {
         directives: {
-          focus: vFocus, // Register the directive. The key 'focus' matches 'v-focus'
+          focus: Focus, // Register the directive. The key 'focus' matches 'v-focus'
         },
       },
       attachTo: document.body, // Attach the component to the document's body

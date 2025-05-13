@@ -58,7 +58,6 @@ declare global {
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useId: typeof import('vue')['useId']
-  const useLink: typeof import('vue-router')['useLink']
   const useModel: typeof import('vue')['useModel']
   const useMultiplier: typeof import('@goose/core')['useMultiplier']
   const useRoute: typeof import('vue-router')['useRoute']
@@ -84,6 +83,7 @@ declare module 'vue' {
   interface GlobalComponents {}
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
+    readonly Focus: UnwrapRef<typeof import('@goose/core')['Focus']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
@@ -140,7 +140,6 @@ declare module 'vue' {
     readonly useRouter: UnwrapRef<typeof import('vue-router')['useRouter']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>
     readonly useTemplateRef: UnwrapRef<typeof import('vue')['useTemplateRef']>
-    readonly vFocus: UnwrapRef<typeof import('@goose/core')['vFocus']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('vue')['watchEffect']>
     readonly watchPostEffect: UnwrapRef<typeof import('vue')['watchPostEffect']>
@@ -151,9 +150,9 @@ declare module 'vue' {
 declare module 'vue' {
   interface GlobalComponents {}
   interface ComponentCustomProperties {
-    vFocus: typeof import('@goose/core')['vFocus']
+    vFocus: typeof import('@goose/core')['Focus']
   }
   interface GlobalDirectives {
-    vFocus: typeof import('@goose/core')['vFocus']
+    vFocus: typeof import('@goose/core')['Focus']
   }
 }

@@ -17,7 +17,7 @@ export function AutoImportPlugin(
       {
         from: "@goose/core",
         imports: [
-          { name: "vFocus", meta: { vueDirective: true } },
+          { name: "Focus", meta: { vueDirective: true } },
           "useMultiplier",
         ],
       },
