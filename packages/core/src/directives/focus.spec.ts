@@ -1,6 +1,7 @@
-import { defineComponent } from "vue";
-import { vFocus } from "./focus";
 import { mount } from "@vue/test-utils";
+import { defineComponent } from "vue";
+
+import { vFocus } from "./focus";
 
 describe("vFocus", () => {
   it("should focus the element on which the directive is used", async () => {

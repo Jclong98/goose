@@ -1,8 +1,8 @@
 import { fileURLToPath, URL } from "node:url";
 
+import goose from "@goose/vite";
 import { defineConfig } from "vite";
 import vueDevTools from "vite-plugin-vue-devtools";
-import goose from "@goose/vite";
 
 // https://vite.dev/config/
 export default defineConfig({

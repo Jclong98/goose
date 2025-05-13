@@ -1,9 +1,7 @@
-import vue from "@vitejs/plugin-vue";
-
 import type { Options as VueOptions } from "@vitejs/plugin-vue";
-
-import type { PluginOption } from "vite";
+import vue from "@vitejs/plugin-vue";
 import defu from "defu";
+import type { PluginOption } from "vite";
 
 import type { VitePluginGooseOptions } from "..";
 

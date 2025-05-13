@@ -1,9 +1,9 @@
-import type { PluginOption } from "vite";
-import AutoImportComponents from "unplugin-vue-components/vite";
+import defu from "defu";
 import type { Options as ComponentsOptions } from "unplugin-vue-components/types";
+import AutoImportComponents from "unplugin-vue-components/vite";
+import type { PluginOption } from "vite";
 
 import type { VitePluginGooseOptions } from "..";
-import defu from "defu";
 
 export function ComponentImportPlugin(
   options: VitePluginGooseOptions

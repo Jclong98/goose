@@ -1,8 +1,8 @@
-import type { PluginOption } from "vite";
 import defu from "defu";
-import AutoImport from "unplugin-auto-import/vite";
 import type { Options as AutoImportOptions } from "unplugin-auto-import/types";
+import AutoImport from "unplugin-auto-import/vite";
 import { VueRouterAutoImports } from "unplugin-vue-router";
+import type { PluginOption } from "vite";
 
 import type { VitePluginGooseOptions } from "..";
 

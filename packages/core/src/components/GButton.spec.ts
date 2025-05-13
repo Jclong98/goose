@@ -1,4 +1,5 @@
 import { mount } from "@vue/test-utils";
+
 import GButton from "./GButton.vue";
 
 describe("GButton", () => {
