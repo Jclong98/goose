@@ -6,6 +6,10 @@ export function DuplicationDetectionPlugin(): PluginOption {
     configResolved(config) {
       const plugins = config.plugins || [];
 
+      // this will print all plugin names when vite starts
+      // const pluginNames = plugins.map((i) => i.name);
+      // console.log(pluginNames);
+
       function throwIfDuplicate(pluginName: string) {
         if (plugins.filter((i) => i.name === pluginName).length > 1) {
           throw new Error(
@@ -14,8 +18,18 @@ export function DuplicationDetectionPlugin(): PluginOption {
         }
       }
 
-      throwIfDuplicate("unplugin-auto-import");
-      throwIfDuplicate("unplugin-vue-components");
+      const pluginNames = [
+        "unplugin-auto-import",
+        "unplugin-vue-components",
+        "@tailwindcss/vite:scan",
+        "@tailwindcss/vite:generate:serve",
+        "vite:vue",
+        "unplugin-vue-router",
+      ];
+
+      for (const name of pluginNames) {
+        throwIfDuplicate(name);
+      }
     },
   };
 }

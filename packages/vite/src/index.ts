@@ -3,7 +3,7 @@ import type { Options as AutoImportOptions } from "unplugin-auto-import/types";
 import type { Options as ComponentsOptions } from "unplugin-vue-components/types";
 import type { Options as VueRouterOptions } from "unplugin-vue-router";
 import type { Options as VueOptions } from "@vitejs/plugin-vue";
-import tailwindcss from '@tailwindcss/vite';
+import tailwindcss from "@tailwindcss/vite";
 
 import { AutoImportPlugin } from "./plugins/auto-import";
 import { ComponentImportPlugin } from "./plugins/components";
