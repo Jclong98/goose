@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useMultiplier } from "@goose/core";
-
 const num = ref(2);
 const { product: timesFour } = useMultiplier(num, 4);
 </script>
@@ -26,6 +24,7 @@ const { product: timesFour } = useMultiplier(num, 4);
         class="border px-4 py-2 rounded bg-goose/20 border-goose active:border-goose/50 focus:outline-none focus:ring-2 focus:ring-goose/50"
         type="number"
         v-model="num"
+        v-focus
       />
     </label>
 
