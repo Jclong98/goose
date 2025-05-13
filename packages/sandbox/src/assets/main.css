@@ -1,2 +1,9 @@
 /* even with goose, you still need to import tailwindcss if you want to use it */
-@import "tailwindcss";
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/preflight.css" layer(base);
+
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "@goose/core/tw-theme.css" layer(theme);

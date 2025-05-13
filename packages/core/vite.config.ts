@@ -25,9 +25,13 @@ export default defineConfig({
     },
   },
   build: {
+    cssCodeSplit: true,
     lib: {
       entry: {
         goose: fileURLToPath(new URL("./src/index.ts", import.meta.url)),
+        "tw-theme": fileURLToPath(
+          new URL("./src/assets/tw-theme.css", import.meta.url)
+        ),
       },
       name: "Goose",
     },

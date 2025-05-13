@@ -14,7 +14,8 @@
       "import": "./dist/goose.js",
       "require": "./dist/goose.umd.cjs"
     },
-    "./style.css": "./dist/core.css"
+    "./style.css": "./dist/goose.css",
+    "./tw-theme.css": "./dist/tw-theme.css"
   },
   "scripts": {
     "dev": "vite",
