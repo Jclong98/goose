@@ -10,7 +10,10 @@ const { product: timesFour } = useMultiplier(num, 4);
     <div>
       <GButton>auto imported goose button</GButton> <br />
 
-      <button>normal button (unstyled)</button>
+      <button>
+        normal button
+        <span>(unstyled)</span>
+      </button>
     </div>
 
     <label>

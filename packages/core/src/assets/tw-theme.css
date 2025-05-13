@@ -1,3 +1,6 @@
+@import "./fonts/index";
+
 @theme {
   --color-goose: #fe9b02;
+  --font-rubik: "Rubik", sans-serif;
 }
