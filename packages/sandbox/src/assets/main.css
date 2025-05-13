@@ -1,4 +1,7 @@
-/* even with goose, you still need to import tailwindcss if you want to use it */
+/* 
+ * even though goose auto registers the tailwind vite plugin, we still 
+ * need to import tailwindcss or the utilities if we want to use it 
+ */
 @layer theme, base, components, utilities;
 
 @import "tailwindcss/preflight.css" layer(base);
