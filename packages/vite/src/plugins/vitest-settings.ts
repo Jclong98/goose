@@ -8,6 +8,7 @@ export function VitestSettingsPlugin(): PluginOption {
       return {
         test: {
           globals: true,
+          environment: "jsdom",
         },
       };
     },

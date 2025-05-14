@@ -36,6 +36,9 @@ importers:
       '@vue/tsconfig':
         specifier: ^0.7.0
         version: 0.7.0(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3))
+      defu:
+        specifier: ^6.1.4
+        version: 6.1.4
       eslint:
         specifier: ^9.26.0
         version: 9.26.0(jiti@2.4.2)
@@ -106,9 +109,6 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.2.3
         version: 5.2.3(vite@6.3.5(@types/node@22.15.14)(jiti@2.4.2)(lightningcss@1.29.3)(yaml@2.7.1))(vue@3.5.13(typescript@5.8.3))
-      defu:
-        specifier: ^6.1.4
-        version: 6.1.4
       unplugin-auto-import:
         specifier: ^19.2.0
         version: 19.2.0
