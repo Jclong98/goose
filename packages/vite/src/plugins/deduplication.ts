@@ -7,8 +7,8 @@ export function DuplicationDetectionPlugin(): PluginOption {
       const plugins = config.plugins || [];
 
       // this will print all plugin names when vite starts
-      // const pluginNames = plugins.map((i) => i.name);
-      // console.log(pluginNames);
+      // we can use it to find ids if we add more plugins
+      // console.log(plugins.map((p) => p.name));
 
       function throwIfDuplicate(pluginName: string) {
         if (plugins.filter((i) => i.name === pluginName).length > 1) {

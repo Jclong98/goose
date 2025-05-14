@@ -11,6 +11,7 @@ import { DuplicationDetectionPlugin } from "./plugins/deduplication";
 import { VitestSettingsPlugin } from "./plugins/vitest-settings";
 import { VuePlugin } from "./plugins/vue";
 import { VueRouterPlugin } from "./plugins/vue-router";
+
 export interface VitePluginGooseOptions {
   /**
    * Override options for `unplugin-auto-import`
