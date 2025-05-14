@@ -1,3 +1,5 @@
+import * as composables from "@goose/core/composables";
+import * as directives from "@goose/core/directives";
 import defu from "defu";
 import type { Options as AutoImportOptions } from "unplugin-auto-import/types";
 import AutoImport from "unplugin-auto-import/vite";
@@ -17,8 +19,11 @@ export function AutoImportPlugin(
       {
         from: "@goose/core",
         imports: [
-          { name: "Focus", meta: { vueDirective: true } },
-          "useMultiplier",
+          ...Object.keys(composables),
+          ...Object.keys(directives).map((name) => ({
+            name,
+            meta: { vueDirective: true },
+          })),
         ],
       },
     ],
