@@ -15,7 +15,7 @@ export default defineConfig({
     dts({
       outDir: "./dist/types",
       tsconfigPath: "./tsconfig.app.json",
-      exclude: ["src/App.vue", "src/main.ts"],
+      exclude: ["src/App.vue", "src/main.ts", "**/*.spec.ts"],
     }),
     tailwindcss(),
   ],
@@ -31,6 +31,15 @@ export default defineConfig({
         goose: fileURLToPath(new URL("./src/index.ts", import.meta.url)),
         "tw-theme": fileURLToPath(
           new URL("./src/assets/tw-theme.css", import.meta.url)
+        ),
+        components: fileURLToPath(
+          new URL("./src/components/index.ts", import.meta.url)
+        ),
+        composables: fileURLToPath(
+          new URL("./src/composables/index.ts", import.meta.url)
+        ),
+        directives: fileURLToPath(
+          new URL("./src/directives/index.ts", import.meta.url)
         ),
       },
       name: "Goose",

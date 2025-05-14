@@ -14,6 +14,21 @@
       "import": "./dist/goose.js",
       "require": "./dist/goose.umd.cjs"
     },
+    "./components": {
+      "types": "./dist/types/components/index.d.ts",
+      "import": "./dist/components.js",
+      "require": "./dist/components.umd.cjs"
+    },
+    "./composables": {
+      "types": "./dist/types/composables/index.d.ts",
+      "import": "./dist/composables.js",
+      "require": "./dist/composables.umd.cjs"
+    },
+    "./directives": {
+      "types": "./dist/types/directives/index.d.ts",
+      "import": "./dist/directives.js",
+      "require": "./dist/directives.umd.cjs"
+    },
     "./style.css": "./dist/goose.css",
     "./tw-theme.css": "./dist/tw-theme.css"
   },
