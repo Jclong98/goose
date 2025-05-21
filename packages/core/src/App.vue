@@ -7,7 +7,9 @@ function onClick() {
 </script>
 
 <template>
-  <GButton @click="onClick">Click Me</GButton>
+  <GButton @click="onClick">
+    Click Me
+  </GButton>
 </template>
 
 <style scoped></style>

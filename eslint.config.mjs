@@ -12,33 +12,31 @@ const gitIgnorePath = fileURLToPath(new URL("./.gitignore", import.meta.url));
 
 export default defineConfig([
   includeIgnoreFile(gitIgnorePath),
+
+  // Main config for JS/TS/Vue files
   {
     files: ["**/*.{js,mjs,cjs,ts,vue}"],
-    plugins: { js },
+    plugins: { js, "simple-import-sort": simpleImportSort },
     extends: ["js/recommended"],
-  },
-  {
-    files: ["**/*.{js,mjs,cjs,ts,vue}"],
     languageOptions: {
       globals: { ...globals.browser, ...globals.node },
     },
     rules: {
       "no-undef": "off",
+      "simple-import-sort/imports": "warn",
     },
   },
+
+  // TypeScript recommended rules
   tseslint.configs.recommended,
-  pluginVue.configs["flat/essential"],
+
+  // Vue specific rules
+  pluginVue.configs["flat/recommended"],
   {
     files: ["**/*.vue"],
     languageOptions: { parserOptions: { parser: tseslint.parser } },
     rules: {
       "vue/multi-word-component-names": "off",
     },
-  },
-  {
-    plugins: {
-      "simple-import-sort": simpleImportSort,
-    },
-    rules: { "simple-import-sort/imports": "warn" },
   },
 ]);

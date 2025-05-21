@@ -5,10 +5,12 @@ const { product: timesFour } = useMultiplier(num, 4);
 
 <template>
   <div>
-    <h1 class="text-2xl font-bold">Home</h1>
+    <h1 class="text-2xl font-bold">
+      Home
+    </h1>
 
     <div>
-      <GButton>auto imported goose button</GButton> <br />
+      <GButton>auto imported goose button</GButton> <br>
 
       <button>
         normal button
@@ -26,11 +28,11 @@ const { product: timesFour } = useMultiplier(num, 4);
         </code>
       </span>
       <input
-        class="border px-4 py-2 rounded bg-goose/20 border-goose active:border-goose/50 focus:outline-none focus:ring-2 focus:ring-goose/50"
-        type="number"
         v-model="num"
         v-focus
-      />
+        class="border px-4 py-2 rounded bg-goose/20 border-goose active:border-goose/50 focus:outline-none focus:ring-2 focus:ring-goose/50"
+        type="number"
+      >
     </label>
 
     <pre>{{ { num, timesFour } }}</pre>
