@@ -26,13 +26,7 @@ const selectedValue = ref("option1");
           { label: 'Option 2', value: 'option2' },
           { label: 'Option 3', value: 'option3' },
         ]"
-      >
-        <template #label="{ item }">
-          <span :class="{ italic: item.value === selectedValue }">{{
-            item.label
-          }}</span>
-        </template>
-      </GSegmentedControl>
+      />
     </div>
 
     <h2 class="text-xl font-semibold">Tailwindcss theming</h2>
