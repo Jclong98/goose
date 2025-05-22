@@ -1,3 +1,2 @@
-import GButton from "./GButton.vue";
-
-export { GButton };
+export * from "./GButton";
+export * from "./GSegmentedControl";

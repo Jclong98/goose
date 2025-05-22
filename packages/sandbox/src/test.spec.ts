@@ -19,9 +19,7 @@ describe("globals?", () => {
       template: `<GButton>click me</GButton>`,
     });
 
-    expect(wrapper.html()).toMatchInlineSnapshot(
-      `"<button class="bg-green-500 px-4 py-1 rounded text-white hover:bg-green-600 transition duration-200 ease-in-out cursor-pointer active:scale-95 active:bg-green-700 border-none">click me</button>"`
-    );
+    expect(wrapper.html()).toMatchInlineSnapshot(`"<button id="123" class="bg-goose px-4 py-1 rounded text-white hover:brightness-95 transition duration-200 ease-in-out cursor-pointer active:scale-95 active:brightness-75 border-none">click me</button>"`);
   });
 
   it("should be able to auto load vue directives from goose", () => {

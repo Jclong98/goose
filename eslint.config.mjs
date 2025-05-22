@@ -31,7 +31,7 @@ export default defineConfig([
   tseslint.configs.recommended,
 
   // Vue specific rules
-  pluginVue.configs["flat/recommended"],
+  pluginVue.configs["flat/essential"],
   {
     files: ["**/*.vue"],
     languageOptions: { parserOptions: { parser: tseslint.parser } },

@@ -4,18 +4,10 @@
       <span class="text-xl font-semibold">Goose Sandbox</span>
       <ul class="flex gap-4">
         <li>
-          <router-link
-            active-class="underline"
-            to="/"
-          >
-            Home
-          </router-link>
+          <router-link active-class="underline" to="/"> Home </router-link>
         </li>
         <li>
-          <router-link
-            active-class="underline"
-            to="/about"
-          >
+          <router-link active-class="underline" to="/about">
             About
           </router-link>
         </li>
