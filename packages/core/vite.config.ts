@@ -8,6 +8,9 @@ import dts from "vite-plugin-dts";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 import vueDevTools from "vite-plugin-vue-devtools";
 
+const resolvePath = (path: string) =>
+  fileURLToPath(new URL(path, import.meta.url));
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -30,22 +33,16 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      "@": resolvePath("./src"),
     },
   },
   build: {
     lib: {
       entry: {
-        goose: fileURLToPath(new URL("./src/index.ts", import.meta.url)),
-        components: fileURLToPath(
-          new URL("./src/components/index.ts", import.meta.url)
-        ),
-        composables: fileURLToPath(
-          new URL("./src/composables/index.ts", import.meta.url)
-        ),
-        directives: fileURLToPath(
-          new URL("./src/directives/index.ts", import.meta.url)
-        ),
+        goose: resolvePath("./src/index.ts"),
+        components: resolvePath("./src/components/index.ts"),
+        composables: resolvePath("./src/composables/index.ts"),
+        directives: resolvePath("./src/directives/index.ts"),
       },
       name: "Goose",
     },
