@@ -1,35 +1,12 @@
 <script setup lang="ts">
 import { useDraggable } from "@vueuse/core";
-import { ref, useTemplateRef } from "vue";
-
-import { GButton, GPopover, GSegmentedControl } from "@/components";
-
-function onClick() {
-  alert("Button clicked!");
-}
-
-const selectedValue = ref("option1");
+import { useTemplateRef } from "vue";
 
 const container = useTemplateRef("container");
 const { style } = useDraggable(container);
 </script>
 
 <template>
-  <GButton @click="onClick"> Click Me </GButton>
-
-  <GSegmentedControl
-    v-model="selectedValue"
-    label="Select an option"
-    visible-label
-    :items="[
-      { label: 'Option 1', value: 'option1' },
-      { label: 'Option 2', value: 'option2' },
-      { label: 'Option 3', value: 'option3' },
-    ]"
-  />
-
-  <pre>{{ { selectedValue } }}</pre>
-
   <div class="container" ref="container" :style="style" style="position: fixed">
     <GPopover position="topLeft" :is-open="true">
       <template #activator="{ props, isOpen }">

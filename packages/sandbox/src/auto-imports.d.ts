@@ -8,6 +8,7 @@ export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
   const Focus: typeof import('@goose/core')['Focus']
+  const Tooltip: typeof import('@goose/core')['Tooltip']
   const computed: typeof import('vue')['computed']
   const createApp: typeof import('vue')['createApp']
   const customRef: typeof import('vue')['customRef']
@@ -83,6 +84,7 @@ declare module 'vue' {
   interface ComponentCustomProperties {
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
     readonly Focus: UnwrapRef<typeof import('@goose/core')['Focus']>
+    readonly Tooltip: UnwrapRef<typeof import('@goose/core')['Tooltip']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly createApp: UnwrapRef<typeof import('vue')['createApp']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
@@ -150,8 +152,10 @@ declare module 'vue' {
   interface GlobalComponents {}
   interface ComponentCustomProperties {
     vFocus: typeof import('@goose/core')['Focus']
+    vTooltip: typeof import('@goose/core')['Tooltip']
   }
   interface GlobalDirectives {
     vFocus: typeof import('@goose/core')['Focus']
+    vTooltip: typeof import('@goose/core')['Tooltip']
   }
 }

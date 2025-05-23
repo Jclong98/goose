@@ -9,6 +9,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     GButton: typeof import('@goose/core')['GButton']
+    GPopover: typeof import('@goose/core')['GPopover']
     GSegmentedControl: typeof import('@goose/core')['GSegmentedControl']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
