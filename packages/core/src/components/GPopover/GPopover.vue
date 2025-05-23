@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { computed, onMounted, useId, useTemplateRef, watch } from "vue";
 
-import type { Position } from "./types";
+import type { PopoverPosition } from "./types";
 
 const props = defineProps<{
-  position: Position;
+  position: PopoverPosition;
 }>();
 
 const isOpen = defineModel("open", { default: false });
@@ -13,18 +13,14 @@ const id = useId();
 const anchorName = computed(() => `--anchor-${id}`);
 const popover = useTemplateRef("popover");
 
-function open() {
-  popover.value?.showPopover();
-}
+const open = () => popover.value?.showPopover();
+const close = () => popover.value?.hidePopover();
+const toggle = () => {
+  isOpen.value = !isOpen.value;
+};
 
-function close() {
-  popover.value?.hidePopover();
-}
-
-function toggle(v?: boolean) {
-  isOpen.value = v ?? !isOpen.value;
-}
-
+// watch is inside onMounted because you can't
+// open a popover that isn't mounted
 onMounted(() => {
   watch(isOpen, (nv) => (nv ? open() : close()), { immediate: true });
 });

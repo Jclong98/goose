@@ -8,4 +8,4 @@ export const POPOVER_POSITIONS = [
   "left",
   "right",
 ] as const;
-export type Position = (typeof POPOVER_POSITIONS)[number];
+export type PopoverPosition = (typeof POPOVER_POSITIONS)[number];
