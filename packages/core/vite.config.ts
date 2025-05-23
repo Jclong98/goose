@@ -5,6 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 import vue from "@vitejs/plugin-vue";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 import vueDevTools from "vite-plugin-vue-devtools";
 
 // https://vite.dev/config/
@@ -18,6 +19,14 @@ export default defineConfig({
       exclude: ["src/App.vue", "src/main.ts", "**/*.spec.ts"],
     }),
     tailwindcss(),
+    viteStaticCopy({
+      targets: [
+        {
+          src: "./src/assets/tw-theme.css",
+          dest: ".",
+        },
+      ],
+    }),
   ],
   resolve: {
     alias: {
@@ -25,13 +34,9 @@ export default defineConfig({
     },
   },
   build: {
-    cssCodeSplit: true,
     lib: {
       entry: {
         goose: fileURLToPath(new URL("./src/index.ts", import.meta.url)),
-        "tw-theme": fileURLToPath(
-          new URL("./src/assets/tw-theme.css", import.meta.url)
-        ),
         components: fileURLToPath(
           new URL("./src/components/index.ts", import.meta.url)
         ),

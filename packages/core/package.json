@@ -29,7 +29,7 @@
       "import": "./dist/directives.js",
       "require": "./dist/directives.umd.cjs"
     },
-    "./style.css": "./dist/goose.css",
+    "./style.css": "./dist/core.css",
     "./tw-theme.css": "./dist/tw-theme.css"
   },
   "scripts": {
@@ -40,6 +40,7 @@
     "type-check": "vue-tsc --build"
   },
   "devDependencies": {
-    "vite-plugin-dts": "^4.5.3"
+    "vite-plugin-dts": "^4.5.3",
+    "vite-plugin-static-copy": "^3.0.0"
   }
 }

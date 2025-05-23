@@ -11,6 +11,11 @@
             About
           </router-link>
         </li>
+        <li>
+          <router-link active-class="underline" to="/components/popover">
+            Popover
+          </router-link>
+        </li>
       </ul>
     </nav>
     <main class="p-4">
