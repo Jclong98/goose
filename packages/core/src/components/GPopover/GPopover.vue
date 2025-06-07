@@ -18,6 +18,9 @@ const close = () => popover.value?.hidePopover();
 const toggle = () => {
   isOpen.value = !isOpen.value;
 };
+const onToggle = (event: ToggleEvent) => {
+  isOpen.value = event.newState === "open";
+};
 
 // watch is inside onMounted because you can't
 // open a popover that isn't mounted
@@ -54,7 +57,7 @@ onMounted(() => {
       // @ts-expect-error position-anchor not yet implemented
       'position-anchor': anchorName,
     }"
-    @toggle="isOpen = $event.newState == 'open'"
+    @toggle="onToggle"
   >
     <slot :close="close"></slot>
   </div>
