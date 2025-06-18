@@ -81,7 +81,7 @@ const GTreeItem: FunctionalComponent<
       : null,
 
     // after slot
-    slots.after?.({ item: props.item, level: props.level }),
+    slots.after({ item: props.item, level: props.level }),
   ]);
 };
 </script>
