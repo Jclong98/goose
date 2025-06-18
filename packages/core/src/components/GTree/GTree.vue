@@ -34,19 +34,28 @@ const GTreeItem: FunctionalComponent<
         style: { paddingLeft },
       },
       [
+        // expand button
         props.item.children
           ? h(
               "button",
               {
                 class: "cursor-pointer",
-                onClick: (e: MouseEvent) => {
+                onClick: (e) => {
                   e.stopPropagation();
                   props.item.expanded = !props.item.expanded;
+                  if (props.item.expanded) {
+                    emit("expand:item", props.item);
+                  }
                 },
               },
-              [h("span", props.item.expanded ? "▼" : "►")]
+              h("span", props.item.expanded ? "▼" : "►")
             )
           : null,
+
+        // loading spinner
+        props.item.loading ? h("span", { class: "animate-spin" }, "⏳") : null,
+
+        // label
         slots.label({ item: props.item, level: props.level }),
       ]
     ),
@@ -55,16 +64,15 @@ const GTreeItem: FunctionalComponent<
     props.item.children && props.item.expanded
       ? h(
           "ul",
-          props.item.children?.map((child) =>
+          props.item.children.map((child) =>
             h(
               GTreeItem,
               { item: child, level: props.level + 1 },
               {
-                label: ({ item, level }) =>
-                  slots.label?.({ item, level }) ?? child.label,
+                label: ({ item, level }) => slots.label({ item, level }),
               }
             )
-          ) ?? []
+          )
         )
       : null,
   ]);

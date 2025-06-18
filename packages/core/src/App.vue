@@ -37,9 +37,31 @@ const items = ref<TreeItem<string>[]>([
   },
 ]);
 
+/**
+ * selecting/unselecting an item based on click
+ */
 function onClickItem<T>(item: TreeItem<T>) {
   console.log("Item clicked:", item);
   item.selected = !item.selected;
+}
+
+/**
+ * simulating an api call on expanding an item
+ */
+function onItemExpanded<T>(item: TreeItem<T>) {
+  console.log("Item expanded:", item);
+
+  item.loading = true;
+  // mock api call
+  setTimeout(() => {
+    if (item.children) {
+      item.children.push({
+        label: `Item ${item.children.length + 1} (added on expand)`,
+        children: [],
+      });
+    }
+    item.loading = false;
+  }, 1000);
 }
 </script>
 
@@ -49,7 +71,11 @@ function onClickItem<T>(item: TreeItem<T>) {
 
     <hr />
 
-    <GTree v-model:items="items" @click:item="onClickItem($event)">
+    <GTree
+      v-model:items="items"
+      @click:item="onClickItem($event)"
+      @expand:item="onItemExpanded($event)"
+    >
       <template #label="{ item, level }">
         <div>{{ item.label }}</div>
         <div class="opacity-40">level: {{ level }}</div>

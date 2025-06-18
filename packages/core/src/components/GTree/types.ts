@@ -5,4 +5,5 @@ export type TreeItem<T> = {
   children?: TreeItem<T>[];
   expanded?: boolean;
   selected?: boolean;
+  loading?: boolean;
 };
