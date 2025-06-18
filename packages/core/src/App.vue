@@ -48,20 +48,20 @@ function onClickItem<T>(item: TreeItem<T>) {
 /**
  * simulating an api call on expanding an item
  */
-function onItemExpanded<T>(item: TreeItem<T>) {
-  console.log("Item expanded:", item);
-
+async function mockApiCall<T>(item: TreeItem<T>) {
   item.loading = true;
+
   // mock api call
-  setTimeout(() => {
-    if (item.children) {
-      item.children.push({
-        label: `Item ${item.children.length + 1} (added on expand)`,
-        children: [],
-      });
-    }
-    item.loading = false;
-  }, 1000);
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  if (item.children) {
+    item.children.push({
+      label: `Item ${item.children.length + 1} (added on expand)`,
+      children: [],
+    });
+  }
+
+  item.loading = false;
 }
 </script>
 
@@ -74,12 +74,24 @@ function onItemExpanded<T>(item: TreeItem<T>) {
     <GTree
       v-model:items="items"
       @click:item="onClickItem($event)"
-      @expand:item="onItemExpanded($event)"
+      @expand:item="mockApiCall($event)"
     >
       <template #label="{ item, level }">
+        <div class="text-gray-400">{{ level }}</div>
         <div>{{ item.label }}</div>
-        <div class="opacity-40">level: {{ level }}</div>
-        <div v-if="item.data" class="opacity-70">data: {{ item.data }}</div>
+        <div v-if="item.data" class="text-red-400">{{ item.data }}</div>
+      </template>
+
+      <template #after="{ item, level }">
+        <button
+          v-if="item.children && item.expanded"
+          class="text-blue-400 disabled:text-gray-500 disabled:bg-gray-200"
+          :disabled="item.loading"
+          :style="{ marginLeft: `calc(${level} * 1rem + 1rem)` }"
+          @click="mockApiCall(item)"
+        >
+          Load more
+        </button>
       </template>
     </GTree>
   </div>

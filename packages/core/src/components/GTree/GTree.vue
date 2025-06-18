@@ -14,7 +14,10 @@ const emit = defineEmits<{
 const GTreeItem: FunctionalComponent<
   { item: TreeItem<T>; level: number },
   EmitsOptions,
-  { label(props: { item: TreeItem<T>; level: number }): VNode }
+  {
+    label(props: { item: TreeItem<T>; level: number }): VNode;
+    after(props: { item: TreeItem<T>; level: number }): VNode;
+  }
 > = (props, { slots }) => {
   const paddingLeft = `${props.level}rem`;
 
@@ -70,11 +73,15 @@ const GTreeItem: FunctionalComponent<
               { item: child, level: props.level + 1 },
               {
                 label: ({ item, level }) => slots.label({ item, level }),
+                after: ({ item, level }) => slots.after({ item, level }),
               }
             )
           )
         )
       : null,
+
+    // after slot
+    slots.after?.({ item: props.item, level: props.level }),
   ]);
 };
 </script>
@@ -83,9 +90,11 @@ const GTreeItem: FunctionalComponent<
   <ul>
     <GTreeItem v-for="item in items" :key="item" :item :level="0">
       <template #label="{ item, level }">
-        <slot name="label" :item="item" :level="level">
-          {{ item.label }}
-        </slot>
+        <slot name="label" :item :level>{{ item.label }}</slot>
+      </template>
+
+      <template #after="{ item, level }">
+        <slot name="after" :item :level></slot>
       </template>
     </GTreeItem>
   </ul>
