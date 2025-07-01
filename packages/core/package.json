@@ -40,7 +40,6 @@
     "type-check": "vue-tsc --build"
   },
   "devDependencies": {
-    "vite-plugin-dts": "^4.5.3",
-    "vite-plugin-static-copy": "^3.0.0"
+    "vite-plugin-dts": "^4.5.3"
   }
 }

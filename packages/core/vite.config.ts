@@ -5,7 +5,6 @@ import tailwindcss from "@tailwindcss/vite";
 import vue from "@vitejs/plugin-vue";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
-import { viteStaticCopy } from "vite-plugin-static-copy";
 import vueDevTools from "vite-plugin-vue-devtools";
 
 const resolvePath = (path: string) =>
@@ -22,18 +21,11 @@ export default defineConfig({
       exclude: ["src/App.vue", "src/main.ts", "**/*.spec.ts"],
     }),
     tailwindcss(),
-    viteStaticCopy({
-      targets: [
-        {
-          src: "./src/assets/tw-theme.css",
-          dest: ".",
-        },
-      ],
-    }),
   ],
   resolve: {
     alias: {
       "@": resolvePath("./src"),
+      public: resolvePath("./public"),
     },
   },
   build: {
