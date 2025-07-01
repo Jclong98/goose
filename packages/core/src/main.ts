@@ -1,5 +1,5 @@
 import "@/assets/main.css";
-import "@/assets/tw-theme.css";
+import "public/tw-theme.css";
 
 import { createApp } from "vue";
 
