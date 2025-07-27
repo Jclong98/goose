@@ -1,8 +1,8 @@
 import { mount } from "@vue/test-utils";
 
-import { useIdAttr } from "./useIdAttr";
+import { useUniqueId } from "./useUniqueId";
 
-describe("useIdAttr", () => {
+describe("useUniqueId", () => {
   it("should give a new unique id when called", () => {
     const wrapper = mount({
       template: `
@@ -10,8 +10,8 @@ describe("useIdAttr", () => {
         <div data-testid="id2" :id="id2"></div>
       `,
       setup() {
-        const id1 = useIdAttr();
-        const id2 = useIdAttr();
+        const id1 = useUniqueId();
+        const id2 = useUniqueId();
         return { id1, id2 };
       },
     });
@@ -27,7 +27,7 @@ describe("useIdAttr", () => {
       {
         template: `<div :id="id"></div>`,
         setup() {
-          const id = useIdAttr();
+          const id = useUniqueId();
           return { id };
         },
       },

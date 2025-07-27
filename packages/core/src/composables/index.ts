@@ -1,2 +1,2 @@
 export * from "./useMultiplier";
-export * from "./useIdAttr";
+export * from "./useUniqueId";
