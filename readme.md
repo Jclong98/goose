@@ -1,39 +1,32 @@
-# Goose: a Vue library starter
+# Goose Monorepo
 
-## Getting started
+Vue 3 component library starter with an accompanying Vite plugin and a sandbox app.
 
-Install dependencies
-
-```sh
-pnpm i
-```
-
-Build core and vite plugin
+## Quick start
 
 ```sh
-pnpm run build
+pnpm install
+pnpm dev
 ```
 
-Test it out
+## Commands
 
 ```sh
-pnpm run sandbox:dev
+# full quality gate (lint, type-check, test, build)
+pnpm check
+
+# run tests across workspace projects
+pnpm test
+
+# build distributable packages
+pnpm build
+
+# run sandbox app
+pnpm sandbox:dev
 ```
 
-## Structure
+## Workspace packages
 
-- packages
-  - core
-    - this is the actual components/composables package
-  - vite
-    - this is a [tsdown](https://tsdown.dev/) bundled Vite plugin. This includes several built-in Vite plugins so that you don't have to configure them yourself:
-      - [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components): Automatically imports Vue components.
-      - [unplugin-auto-import](https://github.com/unplugin/unplugin-auto-import): Automatically imports Vue and Vue Router utilities.
-      - [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue): Official Vue plugin for Vite.
-      - [tailwindcss](https://tailwindcss.com/): Built-in support for TailwindCSS.
-      - Duplication detection: Ensures no duplicate instances of critical plugins.
-      - Vitest settings: Pre-configured settings for Vitest.
-  - sandbox
-    - a place to test out both the library and the Vite plugin
-  - docs
-    - TODO
+- `packages/core`: Vue components, composables, directives, and styles.
+- `packages/vite`: Opinionated Vite plugin that configures Vue, Vue Router, auto-imports, component auto-registration, Tailwind CSS, and Vitest defaults.
+- `packages/sandbox`: Local app for validating package behavior end-to-end.

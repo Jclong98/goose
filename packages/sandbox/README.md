@@ -1,33 +1,17 @@
-# playground
+# @goose/sandbox
 
-This template should help get you started developing with Vue 3 in Vite.
+Sandbox app for manually validating `@goose/core` and `@goose/vite` together.
 
-## Recommended IDE Setup
+## What it is for
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Verify component behavior quickly during local development.
+- Validate Vite plugin integration (auto-imports, router integration, test defaults).
+- Reproduce issues before making package-level changes.
 
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+## Development
 
 ```sh
-pnpm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-pnpm dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-pnpm build
+pnpm -C packages/sandbox dev
+pnpm -C packages/sandbox test
+pnpm -C packages/sandbox build
 ```

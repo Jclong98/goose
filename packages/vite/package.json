@@ -20,15 +20,11 @@
     "build": "tsdown"
   },
   "dependencies": {
-    "@vitejs/plugin-vue": "^5.2.3",
     "unplugin-auto-import": "^19.2.0",
-    "unplugin-vue-components": "^28.5.0",
-    "vue-router": "^5.0.3"
+    "unplugin-vue-components": "^28.5.0"
   },
   "devDependencies": {
-    "@types/node": "^22.15.3",
-    "tsdown": "^0.10.2",
-    "typescript": "^5.8.3"
+    "tsdown": "^0.10.2"
   },
   "peerDependencies": {
     "@goose/core": "workspace:*"

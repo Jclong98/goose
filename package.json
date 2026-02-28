@@ -9,6 +9,11 @@
   "scripts": {
     "dev": "pnpm sandbox:dev",
     "build": "pnpm core:build && pnpm vite:build",
+    "type-check": "pnpm -r --if-present type-check",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "check": "pnpm lint && pnpm type-check && pnpm test && pnpm build",
     "core:dev": "pnpm -C packages/core dev",
     "core:build": "pnpm -C packages/core build",
     "sandbox:dev": "pnpm -C packages/sandbox dev",
@@ -45,6 +50,7 @@
     "vite": "^7.3.1",
     "vite-plugin-vue-devtools": "^8.0.6",
     "vitest": "^4.0.18",
+    "vue-router": "^5.0.3",
     "vue-tsc": "^3.2.5"
   },
   "packageManager": "pnpm@10.10.0"

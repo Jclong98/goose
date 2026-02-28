@@ -1,33 +1,32 @@
-# ui
+# @goose/core
 
-This template should help get you started developing with Vue 3 in Vite.
+Core Vue package for Goose UI primitives, composables, directives, and shared styles.
 
-## Recommended IDE Setup
+## Exports
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Root exports: components, composables, directives, and base styles.
+- Subpath exports:
+  - `@goose/core/components`
+  - `@goose/core/composables`
+  - `@goose/core/directives`
+  - `@goose/core/style.css`
+  - `@goose/core/tw-theme.css`
 
-## Type Support for `.vue` Imports in TS
+## Available APIs
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- Components: `GButton`, `GPopover`, `GSegmentedControl`
+- Composables: `useMultiplier`, `useUniqueId`
+- Directives: `v-focus`
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-pnpm install
-```
-
-### Compile and Hot-Reload for Development
+## Development
 
 ```sh
-pnpm dev
+pnpm -C packages/core dev
+pnpm -C packages/core test
+pnpm -C packages/core build
 ```
 
-### Type-Check, Compile and Minify for Production
+## Notes
 
-```sh
-pnpm build
-```
+- This package is currently marked `private` in this repository.
+- Types are emitted to `dist/types` during build.

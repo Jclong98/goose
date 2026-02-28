@@ -1,12 +1,16 @@
 # @goose/vite
 
-A Vite plugin package designed to streamline development with Vue 3 and the [@goose/core](../core/README.md) library in this monorepo. This package includes pre-configured plugins for auto-importing components and utilities, as well as TailwindCSS integration.
+Opinionated Vite plugin for Goose projects. It bundles common Vue tooling so apps can use a single plugin with sane defaults.
 
 ## Features
 
-- **Auto-import utilities**: Automatically import Vue and Vue Router utilities using [unplugin-auto-import](https://github.com/unplugin/unplugin-auto-import).
-- **Component auto-import**: Automatically import Vue components with [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components).
-- **TailwindCSS integration**: Built-in support for TailwindCSS via [@tailwindcss/vite](https://tailwindcss.com/).
+- Configures [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue)
+- Configures [vue-router/vite](https://router.vuejs.org/)
+- Auto-imports Vue and Vue Router APIs via [unplugin-auto-import](https://github.com/unplugin/unplugin-auto-import)
+- Auto-registers components via [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components)
+- Enables Tailwind CSS through [@tailwindcss/vite](https://tailwindcss.com/)
+- Applies Vitest defaults (`globals: true`, `environment: "jsdom"`)
+- Detects duplicate plugin registration for bundled plugins
 
 ## Usage
 
@@ -15,11 +19,10 @@ A Vite plugin package designed to streamline development with Vue 3 and the [@go
 ```ts
 // vite.config.ts
 import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
 import goose from "@goose/vite";
 
 export default defineConfig({
-  plugins: [vue(), goose()],
+  plugins: [goose()],
 });
 ```
 
@@ -39,7 +42,6 @@ import goose from "@goose/vite";
 
 export default defineConfig({
   plugins: [
-    vue(),
     goose({
       autoImport: {
         // Customize `unplugin-auto-import` options here
@@ -56,9 +58,18 @@ export default defineConfig({
 
 ### Scripts
 
-- `pnpm dev`: Run the development build with [tsdown](https://tsdown.dev/) in watch mode.
-- `pnpm build`: Build the package using tsdown.
+- `pnpm -C packages/vite dev`: Run [tsdown](https://tsdown.dev/) in watch mode.
+- `pnpm -C packages/vite build`: Build package output with tsdown.
 
 ### Build Configuration
 
 The package is built using [tsdown](https://tsdown.dev/). The entry point is defined in `tsdown.config.ts`.
+
+## Options
+
+`goose(options)` accepts partial overrides for the bundled plugins:
+
+- `autoImport`
+- `components`
+- `vueRouter`
+- `vue`
