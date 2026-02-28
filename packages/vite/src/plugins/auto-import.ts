@@ -7,14 +7,12 @@ import type { PluginOption } from "vite";
 
 import type { VitePluginGooseOptions } from "..";
 
-export function AutoImportPlugin(
-  options: VitePluginGooseOptions
-): PluginOption {
+export function AutoImportPlugin(options: VitePluginGooseOptions): PluginOption {
   const pluginOptions = defu(options.autoImport, {
     dts: "./src/auto-imports.d.ts",
     imports: [
       "vue",
-      'vue-router',
+      "vue-router",
       {
         from: "@goose/core",
         imports: [

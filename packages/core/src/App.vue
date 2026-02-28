@@ -42,9 +42,9 @@ const { style } = useDraggable(container);
 
       <template #default="{ close }">
         <div class="border bg-white border-goose/50 w-64 p-4 rounded-lg">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere vero
-          amet alias nam? Qui sequi incidunt, corrupti rem vel, amet, omnis
-          reiciendis ipsum alias quis nobis ducimus enim nostrum dolorem?
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere vero amet alias nam? Qui
+          sequi incidunt, corrupti rem vel, amet, omnis reiciendis ipsum alias quis nobis ducimus
+          enim nostrum dolorem?
         </div>
         <GButton @click="close" class="mt-2">Close</GButton>
       </template>

@@ -2,10 +2,10 @@
   "name": "@goose/core",
   "version": "0.0.0",
   "private": true,
-  "type": "module",
   "files": [
     "dist"
   ],
+  "type": "module",
   "main": "./dist/goose.umd.cjs",
   "module": "./dist/goose.js",
   "exports": {

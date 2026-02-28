@@ -19,7 +19,9 @@ describe("globals?", () => {
       template: `<GButton>click me</GButton>`,
     });
 
-    expect(wrapper.html()).toMatchInlineSnapshot(`"<button id="123" class="bg-goose px-4 py-1 rounded text-white hover:brightness-95 transition duration-200 ease-in-out cursor-pointer active:scale-95 active:brightness-75 border-none">click me</button>"`);
+    expect(wrapper.html()).toMatchInlineSnapshot(
+      `"<button id="123" class="bg-goose px-4 py-1 rounded text-white hover:brightness-95 transition duration-200 ease-in-out cursor-pointer active:scale-95 active:brightness-75 border-none">click me</button>"`,
+    );
   });
 
   it("should be able to auto load vue directives from goose", () => {
@@ -35,9 +37,7 @@ describe("globals?", () => {
     });
 
     // 3. Find the element with the directive
-    const inputElement = wrapper.find(
-      '[data-testid="focusable-input"]'
-    ).element;
+    const inputElement = wrapper.find('[data-testid="focusable-input"]').element;
 
     expect(document.activeElement).toBe(inputElement);
 

@@ -4,8 +4,7 @@ import goose from "@goose/vite";
 import { defineConfig } from "vite";
 import vueDevTools from "vite-plugin-vue-devtools";
 
-const resolvePath = (path: string) =>
-  fileURLToPath(new URL(path, import.meta.url));
+const resolvePath = (path: string) => fileURLToPath(new URL(path, import.meta.url));
 
 // https://vite.dev/config/
 export default defineConfig({

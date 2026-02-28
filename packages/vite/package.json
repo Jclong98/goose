@@ -2,6 +2,9 @@
   "name": "@goose/vite",
   "version": "1.0.0",
   "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
   "files": [
     "dist"
   ],
@@ -16,22 +19,19 @@
     "dev": "tsdown --watch",
     "build": "tsdown"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.10.0",
-  "peerDependencies": {
-    "@goose/core": "workspace:*"
+  "dependencies": {
+    "@vitejs/plugin-vue": "^5.2.3",
+    "unplugin-auto-import": "^19.2.0",
+    "unplugin-vue-components": "^28.5.0",
+    "vue-router": "^5.0.3"
   },
   "devDependencies": {
     "@types/node": "^22.15.3",
     "tsdown": "^0.10.2",
     "typescript": "^5.8.3"
   },
-  "dependencies": {
-    "@vitejs/plugin-vue": "^5.2.3",
-    "unplugin-auto-import": "^19.2.0",
-    "unplugin-vue-components": "^28.5.0",
-    "vue-router": "^5.0.3"
-  }
+  "peerDependencies": {
+    "@goose/core": "workspace:*"
+  },
+  "packageManager": "pnpm@10.10.0"
 }

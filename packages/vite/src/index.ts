@@ -31,9 +31,7 @@ export interface VitePluginGooseOptions {
   vue?: Partial<VueOptions>;
 }
 
-export default function VitePluginGoose(
-  options: VitePluginGooseOptions = {}
-): PluginOption[] {
+export default function VitePluginGoose(options: VitePluginGooseOptions = {}): PluginOption[] {
   return [
     AutoImportPlugin(options),
     ComponentImportPlugin(options),

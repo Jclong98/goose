@@ -22,9 +22,7 @@ describe("vFocus", () => {
     });
 
     // 3. Find the element with the directive
-    const inputElement = wrapper.find(
-      '[data-testid="focusable-input"]'
-    ).element;
+    const inputElement = wrapper.find('[data-testid="focusable-input"]').element;
 
     expect(document.activeElement).toBe(inputElement);
 

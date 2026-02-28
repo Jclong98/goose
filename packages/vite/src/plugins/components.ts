@@ -5,9 +5,7 @@ import type { PluginOption } from "vite";
 
 import type { VitePluginGooseOptions } from "..";
 
-export function ComponentImportPlugin(
-  options: VitePluginGooseOptions
-): PluginOption {
+export function ComponentImportPlugin(options: VitePluginGooseOptions): PluginOption {
   const pluginOptions = defu(options.components, {
     dts: "./src/components.d.ts",
     resolvers: [

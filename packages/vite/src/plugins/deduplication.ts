@@ -13,7 +13,7 @@ export function DuplicationDetectionPlugin(): PluginOption {
       function throwIfDuplicate(pluginName: string) {
         if (plugins.filter((i) => i.name === pluginName).length > 1) {
           throw new Error(
-            `[Goose] Multiple instances of \`${pluginName}\` detected. goose includes \`${pluginName}\` already. If it has config, you can configure it in the goose() plugin options.`
+            `[Goose] Multiple instances of \`${pluginName}\` detected. goose includes \`${pluginName}\` already. If it has config, you can configure it in the goose() plugin options.`,
           );
         }
       }

@@ -7,14 +7,10 @@
           <router-link active-class="underline" to="/"> Home </router-link>
         </li>
         <li>
-          <router-link active-class="underline" to="/about">
-            About
-          </router-link>
+          <router-link active-class="underline" to="/about"> About </router-link>
         </li>
         <li>
-          <router-link active-class="underline" to="/components/popover">
-            Popover
-          </router-link>
+          <router-link active-class="underline" to="/components/popover"> Popover </router-link>
         </li>
       </ul>
     </nav>

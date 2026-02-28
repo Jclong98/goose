@@ -33,7 +33,7 @@ describe("useUniqueId", () => {
       },
       {
         attrs: { id: "custom-id" },
-      }
+      },
     );
 
     expect(wrapper.attributes("id")).toBe("custom-id");

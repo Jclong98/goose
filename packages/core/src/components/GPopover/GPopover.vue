@@ -75,7 +75,10 @@ onMounted(() => {
 
   /* position styling */
   position: fixed;
-  position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
+  position-try-fallbacks:
+    flip-block,
+    flip-inline,
+    flip-block flip-inline;
 
   &.--topCenter {
     justify-self: anchor-center;

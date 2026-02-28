@@ -2,20 +2,16 @@
 
 <template>
   <div>
-    <h1 class="text-2xl font-bold">
-      About
-    </h1>
+    <h1 class="text-2xl font-bold">About</h1>
     <p>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates
-      tenetur, alias numquam officia, molestias voluptatibus autem nam vitae ex
-      possimus corporis quia provident sapiente magnam cupiditate tempore aut,
-      exercitationem deserunt!
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates tenetur, alias numquam
+      officia, molestias voluptatibus autem nam vitae ex possimus corporis quia provident sapiente
+      magnam cupiditate tempore aut, exercitationem deserunt!
     </p>
     <p>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates
-      tenetur, alias numquam officia, molestias voluptatibus autem nam vitae ex
-      possimus corporis quia provident sapiente magnam cupiditate tempore aut,
-      exercitationem deserunt!
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates tenetur, alias numquam
+      officia, molestias voluptatibus autem nam vitae ex possimus corporis quia provident sapiente
+      magnam cupiditate tempore aut, exercitationem deserunt!
     </p>
   </div>
 </template>

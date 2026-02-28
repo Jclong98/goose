@@ -1,11 +1,6 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": [
-    "eslint",
-    "typescript",
-    "vue",
-    "import"
-  ],
+  "plugins": ["eslint", "typescript", "vue", "import"],
   "categories": {},
   "rules": {},
   "settings": {},
