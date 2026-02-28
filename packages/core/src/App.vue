@@ -41,7 +41,7 @@ const { style } = useDraggable(container);
       </template>
 
       <template #default="{ close }">
-        <div class="border bg-white border-goose/50 w-64 p-4 rounded-lg">
+        <div class="border-goose/50 w-64 rounded-lg border bg-white p-4">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere vero amet alias nam? Qui
           sequi incidunt, corrupti rem vel, amet, omnis reiciendis ipsum alias quis nobis ducimus
           enim nostrum dolorem?

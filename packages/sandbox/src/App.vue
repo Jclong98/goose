@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-prose mx-auto min-h-screen">
+  <div class="mx-auto min-h-screen max-w-prose">
     <nav class="flex justify-between p-4">
       <span class="text-xl font-semibold">Goose Sandbox</span>
       <ul class="flex gap-4">

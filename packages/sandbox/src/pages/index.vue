@@ -33,7 +33,7 @@ const selectedValue = ref("option1");
     <label>
       <span class="block">
         tailwind styled input using colors from
-        <code class="bg-blue-50 border border-blue-400 px-3 rounded-full inline-flex">
+        <code class="inline-flex rounded-full border border-blue-400 bg-blue-50 px-3">
           @goose/core/tw-theme.css
         </code>
       </span>
@@ -41,7 +41,7 @@ const selectedValue = ref("option1");
       <input
         v-model="num"
         v-focus
-        class="border px-4 py-2 rounded bg-goose/20 border-goose active:border-goose/50 focus:outline-none focus:ring-2 focus:ring-goose/50"
+        class="bg-goose/20 border-goose active:border-goose/50 focus:ring-goose/50 rounded border px-4 py-2 focus:ring-2 focus:outline-none"
         type="number"
       />
     </label>
