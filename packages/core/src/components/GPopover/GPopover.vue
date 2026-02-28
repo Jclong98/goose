@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, onMounted, useId, useTemplateRef, watch } from "vue";
+import { computed, onMounted, useTemplateRef, useId, watch } from "vue";
 
 import type { PopoverPosition } from "./types";
 
