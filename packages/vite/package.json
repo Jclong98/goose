@@ -9,9 +9,6 @@
     "dist"
   ],
   "type": "module",
-  "publishConfig": {
-    "access": "public"
-  },
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -22,6 +19,9 @@
     },
     "./package.json": "./package.json"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "tsdown --watch",
     "build": "tsdown"
@@ -29,9 +29,9 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.2.1",
     "@vitejs/plugin-vue": "^6.0.4",
-    "vue-router": "^5.0.3",
     "unplugin-auto-import": "^19.2.0",
-    "unplugin-vue-components": "^28.5.0"
+    "unplugin-vue-components": "^28.5.0",
+    "vue-router": "^5.0.3"
   },
   "devDependencies": {
     "@goose/core": "workspace:*",

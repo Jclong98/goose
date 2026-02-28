@@ -7,9 +7,6 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
   "type": "module",
   "main": "./dist/goose.umd.cjs",
   "module": "./dist/goose.js",
@@ -36,6 +33,9 @@
     },
     "./style.css": "./dist/core.css",
     "./tw-theme.css": "./dist/tw-theme.css"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "dev": "vite",
