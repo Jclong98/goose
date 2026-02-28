@@ -54,7 +54,6 @@ onMounted(() => {
     class="g-popover"
     :class="[`--${props.position}`]"
     :style="{
-      // @ts-expect-error position-anchor not yet implemented
       'position-anchor': anchorName,
     }"
     @toggle="onToggle"
