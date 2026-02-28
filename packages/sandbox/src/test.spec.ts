@@ -1,7 +1,6 @@
 import * as components from "@goose/core/components";
 import * as directives from "@goose/core/directives";
-import { mount } from "@vue/test-utils";
-import { config as vueTestUtilsConfig } from "@vue/test-utils";
+import { mount, config as vueTestUtilsConfig } from "@vue/test-utils";
 import defu from "defu";
 
 vueTestUtilsConfig.global = defu(vueTestUtilsConfig.global, {
@@ -19,9 +18,7 @@ describe("globals?", () => {
       template: `<GButton>click me</GButton>`,
     });
 
-    expect(wrapper.html()).toMatchInlineSnapshot(
-      `"<button id="123" class="bg-goose px-4 py-1 rounded text-white hover:brightness-95 transition duration-200 ease-in-out cursor-pointer active:scale-95 active:brightness-75 border-none">click me</button>"`,
-    );
+    expect(wrapper.html()).toMatchInlineSnapshot(`"<button class="bg-goose cursor-pointer rounded border-none px-4 py-1 text-white transition duration-200 ease-in-out hover:brightness-95 active:scale-95 active:brightness-75">click me</button>"`);
   });
 
   it("should be able to auto load vue directives from goose", () => {
