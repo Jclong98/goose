@@ -24,7 +24,6 @@ export function DuplicationDetectionPlugin(): PluginOption {
         "@tailwindcss/vite:scan",
         "@tailwindcss/vite:generate:serve",
         "vite:vue",
-        "unplugin-vue-router",
       ];
 
       for (const name of pluginNames) {

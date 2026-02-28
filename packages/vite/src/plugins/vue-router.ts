@@ -1,6 +1,5 @@
 import defu from "defu";
-import type { Options as VueRouterOptions } from "unplugin-vue-router";
-import VueRouter from "unplugin-vue-router/vite";
+import VueRouter from "vue-router/vite";
 import type { PluginOption } from "vite";
 
 import type { VitePluginGooseOptions } from "..";
@@ -12,7 +11,7 @@ export function VueRouterPlugin(options: VitePluginGooseOptions): PluginOption {
       // anything in a folder that starts with __
       "**/__*/**/*",
     ],
-  } satisfies VueRouterOptions);
+  } satisfies Parameters<typeof VueRouter>[0]);
 
   return VueRouter(pluginOptions);
 }

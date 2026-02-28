@@ -2,7 +2,7 @@ import tailwindcss from "@tailwindcss/vite";
 import type { Options as VueOptions } from "@vitejs/plugin-vue";
 import type { Options as AutoImportOptions } from "unplugin-auto-import/types";
 import type { Options as ComponentsOptions } from "unplugin-vue-components/types";
-import type { Options as VueRouterOptions } from "unplugin-vue-router";
+import VueRouter from "vue-router/vite";
 import type { PluginOption } from "vite";
 
 import { AutoImportPlugin } from "./plugins/auto-import";
@@ -22,9 +22,9 @@ export interface VitePluginGooseOptions {
    */
   components?: Partial<ComponentsOptions>;
   /**
-   * Override options for `unplugin-vue-router`
+   * Override options for `vue-router/vite`
    */
-  vueRouter?: Partial<VueRouterOptions>;
+  vueRouter?: Partial<Parameters<typeof VueRouter>[0]>;
   /**
    * Override options for `@vitejs/plugin-vue`
    */

@@ -29,7 +29,6 @@ pnpm run sandbox:dev
     - this is a [tsdown](https://tsdown.dev/) bundled Vite plugin. This includes several built-in Vite plugins so that you don't have to configure them yourself:
       - [unplugin-vue-components](https://github.com/unplugin/unplugin-vue-components): Automatically imports Vue components.
       - [unplugin-auto-import](https://github.com/unplugin/unplugin-auto-import): Automatically imports Vue and Vue Router utilities.
-      - [unplugin-vue-router](https://github.com/posva/unplugin-vue-router): Provides enhanced Vue Router integration.
       - [@vitejs/plugin-vue](https://github.com/vitejs/vite-plugin-vue): Official Vue plugin for Vite.
       - [tailwindcss](https://tailwindcss.com/): Built-in support for TailwindCSS.
       - Duplication detection: Ensures no duplicate instances of critical plugins.

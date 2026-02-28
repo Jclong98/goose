@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": [
+    "eslint",
+    "typescript",
+    "vue",
+    "import"
+  ],
+  "categories": {},
+  "rules": {},
+  "settings": {},
+  "env": { "builtin": true },
+  "globals": {},
+  "ignorePatterns": []
+}
