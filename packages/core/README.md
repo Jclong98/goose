@@ -28,5 +28,4 @@ pnpm -C packages/core build
 
 ## Notes
 
-- This package is currently marked `private` in this repository.
 - Types are emitted to `dist/types` during build.

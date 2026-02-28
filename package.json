@@ -13,6 +13,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "changeset publish",
     "check": "pnpm lint && pnpm type-check && pnpm test && pnpm build",
     "core:dev": "pnpm -C packages/core dev",
     "core:build": "pnpm -C packages/core build",
@@ -31,6 +34,7 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.1",
+    "@changesets/cli": "^2.29.7",
     "@tsconfig/node22": "^22.0.5",
     "@types/node": "^25.3.2",
     "@vitejs/plugin-vue": "^6.0.4",
