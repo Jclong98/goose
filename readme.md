@@ -25,6 +25,32 @@ pnpm build
 pnpm sandbox:dev
 ```
 
+## Changesets
+
+Use Changesets to track package version bumps and release notes for `packages/core` and `packages/vite`.
+
+```sh
+# create a new changeset file in .changeset/
+pnpm changeset
+
+# apply pending changesets (updates package versions + changelogs)
+pnpm version-packages
+
+# publish versioned packages
+pnpm release
+```
+
+Typical flow:
+
+1. Run `pnpm changeset` in your feature branch and commit the generated `.changeset/*.md` file.
+2. After merge to `main`, run `pnpm version-packages` and commit the version/changelog updates.
+3. Run `pnpm release` to publish.
+
+Notes:
+
+- `@goose/sandbox` is ignored by Changesets config and will not be versioned/published.
+- `pnpm release` expects publish credentials (for example, npm auth) to already be configured.
+
 ## Workspace packages
 
 - `packages/core`: Vue components, composables, directives, and styles.
