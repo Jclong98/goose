@@ -63,6 +63,7 @@ const side = ref<(typeof sideSelectOptions)[number]>("right");
   grid-template-columns: 200px 1fr 200px;
   grid-template-rows: auto 1fr auto;
   min-height: 100dvh;
+  anchor-name: --layout;
 
   & > nav {
     grid-area: header;
