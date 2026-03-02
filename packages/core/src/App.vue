@@ -1,55 +1,88 @@
 <script setup lang="ts">
-import { useDraggable } from "@vueuse/core";
-import { ref, useTemplateRef } from "vue";
+import { GButton, GDrawer } from "@/components";
+import { ref } from "vue";
 
-import { GButton, GPopover, GSegmentedControl } from "@/components";
-
-function onClick() {
-  alert("Button clicked!");
-}
-
-const selectedValue = ref("option1");
-
-const container = useTemplateRef("container");
-const { style } = useDraggable(container);
+const sideSelectOptions = ["left", "right"] as const;
+const side = ref<(typeof sideSelectOptions)[number]>("right");
 </script>
 
 <template>
-  <GButton @click="onClick"> Click Me </GButton>
+  <div class="layout">
+    <nav class="bg-blue-500 p-4 text-white">
+      <h1>Goose</h1>
+    </nav>
 
-  <GSegmentedControl
-    v-model="selectedValue"
-    label="Select an option"
-    visible-label
-    :items="[
-      { label: 'Option 1', value: 'option1' },
-      { label: 'Option 2', value: 'option2' },
-      { label: 'Option 3', value: 'option3' },
-    ]"
-  />
+    <aside class="bg-gray-200 p-4">left</aside>
 
-  <pre>{{ { selectedValue } }}</pre>
+    <main class="p-4">
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate deleniti deserunt
+        asperiores provident. Sed ab delectus consequuntur quam! Quod doloribus, illo labore iure
+        facilis numquam fuga recusandae sunt. Ipsum, similique.
+      </p>
 
-  <div class="container" ref="container" :style="style" style="position: fixed">
-    <GPopover position="topLeft" :is-open="true">
-      <template #activator="{ props, isOpen }">
-        <GButton v-bind="props">
-          <span v-if="!isOpen">Open</span>
-          <span v-else>Close</span>
-          popover
-        </GButton>
-      </template>
+      <GButton popovertarget="my-panel">Open drawer</GButton>
 
-      <template #default="{ close }">
-        <div class="border-goose/50 w-64 rounded-lg border bg-white p-4">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere vero amet alias nam? Qui
-          sequi incidunt, corrupti rem vel, amet, omnis reiciendis ipsum alias quis nobis ducimus
-          enim nostrum dolorem?
-        </div>
-        <GButton @click="close" class="mt-2">Close</GButton>
-      </template>
-    </GPopover>
+      <GDrawer id="my-panel" anchor="--main" :side="side" class="max-w-96 p-4">
+        <h2 class="text-2xl font-semibold">This is a drawer</h2>
+
+        <select name="side" id="side" v-model="side" class="rounded border p-2">
+          <option v-for="option in sideSelectOptions" :key="option" :value="option">
+            {{ option }}
+          </option>
+        </select>
+
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate deleniti deserunt
+          asperiores provident. Sed ab delectus consequuntur quam! Quod doloribus, illo labore iure
+          facilis numquam fuga recusandae sunt. Ipsum, similique.
+        </p>
+
+        <div class="flex-1"></div>
+
+        <footer class="flex">
+          <div class="flex-1"></div>
+          <GButton popovertarget="my-panel" popovertargetaction="hide"> Close </GButton>
+        </footer>
+      </GDrawer>
+    </main>
+
+    <div class="right bg-gray-200">right side</div>
+
+    <footer class="bg-gray-300 p-4">footer</footer>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.layout {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "aside main right"
+    "footer footer footer";
+  grid-template-columns: 200px 1fr 200px;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100dvh;
+
+  & > nav {
+    grid-area: header;
+  }
+
+  & > aside {
+    grid-area: aside;
+  }
+
+  & > main {
+    grid-area: main;
+    anchor-name: --main;
+  }
+
+  & > .right {
+    grid-area: right;
+  }
+
+  & > footer {
+    grid-area: footer;
+  }
+}
+</style>

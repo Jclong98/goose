@@ -11,5 +11,8 @@
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.sortImports": "explicit"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
   }
 }
