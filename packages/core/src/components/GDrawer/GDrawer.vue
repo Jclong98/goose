@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { useUniqueId } from "@/composables";
 import { computed } from "vue";
 
 const props = withDefaults(
@@ -16,13 +15,11 @@ const props = withDefaults(
   },
 );
 
-const id = useUniqueId();
-
 const sideClass = computed(() => `--${props.side}`);
 </script>
 
 <template>
-  <div :id="id" :class="['g-side-panel', sideClass]" popover role="dialog" aria-modal="true">
+  <div :class="['g-side-panel', sideClass]" popover role="dialog" aria-modal="true">
     <slot></slot>
   </div>
 </template>
