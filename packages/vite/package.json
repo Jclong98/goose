@@ -1,6 +1,6 @@
 {
   "name": "@jclong98/vite-plugin-goose",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Opinionated Vite plugin for Goose projects",
   "keywords": [],
   "license": "ISC",
