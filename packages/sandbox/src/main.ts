@@ -1,5 +1,5 @@
+import "@jclong98/goose/style.css";
 import "./assets/main.css";
-import "@goose/core/style.css";
 
 import { createApp } from "vue";
 

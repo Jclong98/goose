@@ -34,7 +34,7 @@ const selectedValue = ref("option1");
       <span class="block">
         tailwind styled input using colors from
         <code class="inline-flex rounded-full border border-blue-400 bg-blue-50 px-3">
-          @goose/core/tw-theme.css
+          @jclong98/goose/tw-theme.css
         </code>
       </span>
 

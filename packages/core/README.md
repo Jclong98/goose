@@ -1,4 +1,4 @@
-# @goose/core
+# @jclong98/goose
 
 Core Vue package for Goose UI primitives, composables, directives, and shared styles.
 
@@ -6,11 +6,11 @@ Core Vue package for Goose UI primitives, composables, directives, and shared st
 
 - Root exports: components, composables, directives, and base styles.
 - Subpath exports:
-  - `@goose/core/components`
-  - `@goose/core/composables`
-  - `@goose/core/directives`
-  - `@goose/core/style.css`
-  - `@goose/core/tw-theme.css`
+  - `@jclong98/goose/components`
+  - `@jclong98/goose/composables`
+  - `@jclong98/goose/directives`
+  - `@jclong98/goose/style.css`
+  - `@jclong98/goose/tw-theme.css`
 
 ## Available APIs
 

@@ -1,4 +1,4 @@
-# @goose/vite
+# @jclong98/vite-plugin-goose
 
 Opinionated Vite plugin for Goose projects. It bundles common Vue tooling so apps can use a single plugin with sane defaults.
 
@@ -19,7 +19,7 @@ Opinionated Vite plugin for Goose projects. It bundles common Vue tooling so app
 ```ts
 // vite.config.ts
 import { defineConfig } from "vite";
-import goose from "@goose/vite";
+import goose from "@jclong98/vite-plugin-goose";
 
 export default defineConfig({
   plugins: [goose()],
@@ -38,7 +38,7 @@ export default defineConfig({
 // vite.config.ts
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import goose from "@goose/vite";
+import goose from "@jclong98/vite-plugin-goose";
 
 export default defineConfig({
   plugins: [

@@ -9,4 +9,4 @@
 @import "tailwindcss/utilities.css" layer(utilities);
 
 @import "tailwindcss/theme.css" layer(theme);
-@import "@goose/core/tw-theme.css" layer(theme);
+@import "@jclong98/goose/tw-theme.css" layer(theme);

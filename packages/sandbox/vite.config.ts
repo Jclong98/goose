@@ -1,6 +1,6 @@
 import { fileURLToPath, URL } from "node:url";
 
-import goose from "@goose/vite";
+import goose from "@jclong98/vite-plugin-goose";
 import { defineConfig } from "vite";
 import vueDevTools from "vite-plugin-vue-devtools";
 

@@ -1,5 +1,5 @@
 {
-  "name": "@goose/sandbox",
+  "name": "@jclong98/goose-sandbox",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -14,8 +14,8 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@goose/core": "workspace:*",
-    "@goose/vite": "workspace:*"
+    "@jclong98/goose": "workspace:*",
+    "@jclong98/vite-plugin-goose": "workspace:*"
   },
   "devDependencies": {
     "vue-router": "^5.0.3"

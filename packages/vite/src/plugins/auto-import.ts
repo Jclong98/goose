@@ -1,5 +1,5 @@
-import * as composables from "@goose/core/composables";
-import * as directives from "@goose/core/directives";
+import * as composables from "@jclong98/goose/composables";
+import * as directives from "@jclong98/goose/directives";
 import defu from "defu";
 import type { Options as AutoImportOptions } from "unplugin-auto-import/types";
 import AutoImport from "unplugin-auto-import/vite";
@@ -14,7 +14,7 @@ export function AutoImportPlugin(options: VitePluginGooseOptions): PluginOption 
       "vue",
       "vue-router",
       {
-        from: "@goose/core",
+        from: "@jclong98/goose",
         imports: [
           ...Object.keys(composables),
           ...Object.keys(directives).map((name) => ({

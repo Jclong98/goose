@@ -48,7 +48,7 @@ Typical flow:
 
 Notes:
 
-- `@goose/sandbox` is ignored by Changesets config and will not be versioned/published.
+- `@jclong98/goose-sandbox` is ignored by Changesets config and will not be versioned/published.
 - For metadata-only changes (for example baseline version resets), run `pnpm changeset add --empty` so `pnpm changeset status` does not fail.
 - `pnpm release` expects publish credentials (for example, npm auth) to already be configured.
 

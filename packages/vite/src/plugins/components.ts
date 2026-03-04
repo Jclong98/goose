@@ -13,7 +13,7 @@ export function ComponentImportPlugin(options: VitePluginGooseOptions): PluginOp
         if (componentName.startsWith("G")) {
           return {
             name: componentName,
-            from: "@goose/core",
+            from: "@jclong98/goose",
           };
         }
       },

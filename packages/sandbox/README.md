@@ -1,6 +1,6 @@
-# @goose/sandbox
+# @jclong98/goose-sandbox
 
-Sandbox app for manually validating `@goose/core` and `@goose/vite` together.
+Sandbox app for manually validating `@jclong98/goose` and `@jclong98/vite-plugin-goose` together.
 
 ## What it is for
 

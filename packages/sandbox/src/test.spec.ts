@@ -1,5 +1,5 @@
-import * as components from "@goose/core/components";
-import * as directives from "@goose/core/directives";
+import * as components from "@jclong98/goose/components";
+import * as directives from "@jclong98/goose/directives";
 import { mount, config as vueTestUtilsConfig } from "@vue/test-utils";
 import defu from "defu";
 

@@ -1,5 +1,5 @@
 {
-  "name": "@goose/vite",
+  "name": "@jclong98/vite-plugin-goose",
   "version": "0.0.1",
   "description": "Opinionated Vite plugin for Goose projects",
   "keywords": [],
@@ -34,12 +34,12 @@
     "vue-router": "^5.0.3"
   },
   "devDependencies": {
-    "@goose/core": "workspace:*",
+    "@jclong98/goose": "workspace:*",
     "@types/node": "^25.3.2",
     "tsdown": "^0.10.2"
   },
   "peerDependencies": {
-    "@goose/core": ">=0.0.0",
+    "@jclong98/goose": ">=0.0.0",
     "vite": "^7.0.0",
     "vue": "^3.5.0"
   },

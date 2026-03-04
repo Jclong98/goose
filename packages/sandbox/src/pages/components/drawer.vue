@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { GButton, GDrawer } from "@goose/core";
+import { GButton, GDrawer } from "@jclong98/goose";
 import { ref } from "vue";
 
 const sideSelectOptions = ["left", "right"] as const;
