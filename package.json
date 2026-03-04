@@ -14,7 +14,7 @@
     "test:coverage": "vitest run --coverage",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "changeset publish",
+    "release": "pnpm build && changeset publish",
     "check": "pnpm lint && pnpm type-check && pnpm test && pnpm build",
     "core:dev": "pnpm -C packages/core dev",
     "core:build": "pnpm -C packages/core build",
