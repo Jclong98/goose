@@ -1,9 +1,49 @@
 <script setup lang="ts">
-import { GButton, GDrawer } from "@/components";
 import { ref } from "vue";
+import GTable from "./components/GTable/GTable.vue";
+import type { TableColumn } from "./components/GTable/types";
 
-const sideSelectOptions = ["left", "right"] as const;
-const side = ref<(typeof sideSelectOptions)[number]>("right");
+const columns = ref<TableColumn[]>([
+  {
+    key: "name",
+    title: "Name",
+    pin: "left",
+  },
+  {
+    key: "age",
+    title: "Age",
+  },
+  {
+    key: "address",
+    title: "Address",
+  },
+  {
+    key: "i",
+    title: "Index",
+    width: "100px",
+  },
+  ...Array.from({ length: 20 }, (_, i) => ({
+    key: `extra${i}`,
+    title: `Extra ${i}`,
+  })),
+  {
+    key: "extra20",
+    title: "Extra 20",
+    pin: "right",
+  },
+]);
+
+const items = ref(
+  Array.from({ length: 100 }, (_, i) => ({
+    name: `John Doe ${i + 1}`,
+    age: Math.floor(Math.random() * 60) + 20,
+    address: `${i} Main St, City`,
+    i: i,
+    ...Array.from({ length: 21 }, (_, j) => ({
+      [`extra${j}`]: `Extra ${j} Value ${i + 1}`,
+    })).reduce((acc, curr) => ({ ...acc, ...curr }), {}),
+  })),
+);
 </script>
 
 <template>
@@ -12,44 +52,22 @@ const side = ref<(typeof sideSelectOptions)[number]>("right");
       <h1>Goose</h1>
     </nav>
 
-    <aside class="bg-gray-200 p-4">left</aside>
+    <aside class="left bg-gray-200 p-4">left</aside>
 
-    <main class="p-4">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate deleniti deserunt
-        asperiores provident. Sed ab delectus consequuntur quam! Quod doloribus, illo labore iure
-        facilis numquam fuga recusandae sunt. Ipsum, similique.
-      </p>
-
-      <GButton popovertarget="my-panel">Open drawer</GButton>
-
-      <GDrawer id="my-panel" anchor="--main" :side="side" class="max-w-96 p-4">
-        <h2 class="text-2xl font-semibold">This is a drawer</h2>
-
-        <select name="side" id="side" v-model="side" class="rounded border p-2">
-          <option v-for="option in sideSelectOptions" :key="option" :value="option">
-            {{ option }}
-          </option>
-        </select>
-
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate deleniti deserunt
-          asperiores provident. Sed ab delectus consequuntur quam! Quod doloribus, illo labore iure
-          facilis numquam fuga recusandae sunt. Ipsum, similique.
+    <main class="overflow-hidden p-4">
+      <div class="flex h-full flex-col">
+        <h2 class="text-2xl font-semibold">Title</h2>
+        <p class="mb-8">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto explicabo maiores et
+          voluptates, sequi unde tenetur voluptate assumenda laudantium sint corrupti ut ea
+          necessitatibus numquam molestiae doloribus! Commodi, enim illo!
         </p>
 
-        <div class="flex-1"></div>
-
-        <footer class="flex">
-          <div class="flex-1"></div>
-          <GButton popovertarget="my-panel" popovertargetaction="hide"> Close </GButton>
-        </footer>
-      </GDrawer>
+        <GTable :columns="columns" :items="items">
+          <template #cell-i="{ item }"> {{ item.i }} + 1 = {{ item.i + 1 }} </template>
+        </GTable>
+      </div>
     </main>
-
-    <div class="right bg-gray-200">right side</div>
-
-    <footer class="bg-gray-300 p-4">footer</footer>
   </div>
 </template>
 
@@ -57,33 +75,22 @@ const side = ref<(typeof sideSelectOptions)[number]>("right");
 .layout {
   display: grid;
   grid-template-areas:
-    "header header header"
-    "aside main right"
-    "footer footer footer";
-  grid-template-columns: 200px 1fr 200px;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100dvh;
-  anchor-name: --layout;
+    "header header"
+    "left main";
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: auto 1fr;
+  height: 100dvh;
 
   & > nav {
     grid-area: header;
   }
 
-  & > aside {
-    grid-area: aside;
+  & > .left {
+    grid-area: left;
   }
 
   & > main {
     grid-area: main;
-    anchor-name: --main;
-  }
-
-  & > .right {
-    grid-area: right;
-  }
-
-  & > footer {
-    grid-area: footer;
   }
 }
 </style>
