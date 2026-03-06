@@ -62,7 +62,7 @@ table {
   grid-template-columns: v-bind(gridTemplateColumns);
   overflow: auto;
   isolation: isolate;
-  container: table / scroll-state;
+  container: table-container / scroll-state;
 }
 
 thead,
@@ -107,20 +107,20 @@ td {
   }
 }
 
-@container table scroll-state(scrollable: top) {
+@container table-container scroll-state(scrollable: top) {
   thead {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 }
 
-@container table scroll-state(scrollable: right) {
+@container table-container scroll-state(scrollable: right) {
   .--pin-right::after {
     left: -8px;
     background: linear-gradient(to left, rgba(0, 0, 0, 0.1), transparent);
   }
 }
 
-@container table scroll-state(scrollable: left) {
+@container table-container scroll-state(scrollable: left) {
   .--pin-left::after {
     right: -8px;
     background: linear-gradient(to right, rgba(0, 0, 0, 0.1), transparent);
