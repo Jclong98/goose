@@ -2,8 +2,10 @@
 import { computed } from "vue";
 import type { TableColumn } from "./types";
 
+type RowKey = Extract<keyof TRow, string>;
+
 const props = defineProps<{
-  columns: TableColumn[];
+  columns: TableColumn<RowKey>[];
   items: TRow[];
 }>();
 
@@ -11,13 +13,23 @@ const gridTemplateColumns = computed(() =>
   props.columns.map((column) => column.width || "auto").join(" "),
 );
 
-function getPinClasses(column: TableColumn) {
+function getPinClasses(column: TableColumn<RowKey>) {
   return {
     "--pin": column.pin,
     "--pin-left": column.pin === "left",
     "--pin-right": column.pin === "right",
   };
 }
+
+type HeaderSlots = {
+  [K in TableColumn<RowKey> as `header:${K["key"]}`]?: (props: { column: K }) => void;
+};
+
+type CellSlots = {
+  [K in TableColumn<RowKey> as `cell:${K["key"]}`]?: (props: { item: TRow }) => void;
+};
+
+defineSlots<HeaderSlots & CellSlots>();
 </script>
 
 <template>
@@ -25,7 +37,7 @@ function getPinClasses(column: TableColumn) {
     <thead>
       <tr>
         <th v-for="column in props.columns" :key="column.key" :class="getPinClasses(column)">
-          <slot :name="`header-${column.key}`" :column="column">
+          <slot :name="`header:${column.key}`" :column="column">
             {{ column.title }}
           </slot>
         </th>
@@ -35,7 +47,7 @@ function getPinClasses(column: TableColumn) {
     <tbody>
       <tr v-for="(item, index) in props.items" :key="index">
         <td v-for="column in props.columns" :key="column.key" :class="getPinClasses(column)">
-          <slot :name="`cell-${column.key}`" :item="item">
+          <slot :name="`cell:${column.key}`" :item="item">
             {{ item[column.key] }}
           </slot>
         </td>
@@ -106,7 +118,7 @@ td {
 
 @container table-container scroll-state(scrollable: top) {
   thead {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 }
 

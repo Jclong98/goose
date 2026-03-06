@@ -3,7 +3,14 @@ import { ref } from "vue";
 import GTable from "./components/GTable/GTable.vue";
 import type { TableColumn } from "./components/GTable/types";
 
-const columns = ref<TableColumn[]>([
+type Row = {
+  name: string;
+  age: number;
+  address: string;
+  i: number;
+} & Record<`extra${number}`, string>;
+
+const columns = ref<TableColumn<keyof Row>[]>([
   {
     key: "name",
     title: "Name",
@@ -23,7 +30,7 @@ const columns = ref<TableColumn[]>([
     width: "100px",
   },
   ...Array.from({ length: 20 }, (_, i) => ({
-    key: `extra${i}`,
+    key: `extra${i}` as `extra${number}`,
     title: `Extra ${i}`,
   })),
   {
@@ -33,16 +40,16 @@ const columns = ref<TableColumn[]>([
   },
 ]);
 
-const items = ref(
+const items = ref<Row[]>(
   Array.from({ length: 100 }, (_, i) => ({
     name: `John Doe ${i + 1}`,
     age: Math.floor(Math.random() * 60) + 20,
     address: `${i} Main St, City`,
     i: i,
-    ...Array.from({ length: 21 }, (_, j) => ({
-      [`extra${j}`]: `Extra ${j} Value ${i + 1}`,
-    })).reduce((acc, curr) => ({ ...acc, ...curr }), {}),
-  })),
+    ...Object.fromEntries(
+      Array.from({ length: 21 }, (_, j) => [`extra${j}`, `Extra ${j} Value ${i + 1}`]),
+    ),
+  })) as Row[],
 );
 </script>
 
@@ -64,7 +71,9 @@ const items = ref(
         </p>
 
         <GTable :columns="columns" :items="items">
-          <template #cell-i="{ item }"> {{ item.i }} + 1 = {{ item.i + 1 }} </template>
+          <template #cell:i="{ item }"> {{ item.i }} + 1 = {{ item.i + 1 }} </template>
+
+          <template #header:i> MATH </template>
         </GTable>
       </div>
     </main>
