@@ -62,7 +62,7 @@ table {
   grid-template-columns: v-bind(gridTemplateColumns);
   overflow: auto;
   isolation: isolate;
-  container: table-container / scroll-state;
+  container: table / scroll-state;
 }
 
 thead,
@@ -71,14 +71,6 @@ tr {
   display: grid;
   grid-template-columns: subgrid;
   grid-column: 1 / -1;
-
-  &:nth-child(odd) {
-    background-color: #f0f0f0;
-  }
-
-  &:nth-child(even) {
-    background-color: #fff;
-  }
 }
 
 thead {
@@ -89,14 +81,13 @@ thead {
 
 th,
 td {
-  background-color: inherit;
+  background-color: white;
   display: flex;
   padding: 8px;
   white-space: nowrap;
 
   &.--pin {
     position: sticky;
-    background-color: inherit;
 
     &::after {
       content: "";
@@ -116,20 +107,20 @@ td {
   }
 }
 
-@container table-container scroll-state(scrollable: top) {
+@container table scroll-state(scrollable: top) {
   thead {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 }
 
-@container table-container scroll-state(scrollable: right) {
+@container table scroll-state(scrollable: right) {
   .--pin-right::after {
     left: -8px;
     background: linear-gradient(to left, rgba(0, 0, 0, 0.1), transparent);
   }
 }
 
-@container table-container scroll-state(scrollable: left) {
+@container table scroll-state(scrollable: left) {
   .--pin-left::after {
     right: -8px;
     background: linear-gradient(to right, rgba(0, 0, 0, 0.1), transparent);

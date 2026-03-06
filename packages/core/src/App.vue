@@ -27,7 +27,6 @@ const columns = ref<TableColumn<keyof Row>[]>([
   {
     key: "i",
     title: "Index",
-    width: "100px",
   },
   ...Array.from({ length: 20 }, (_, i) => ({
     key: `extra${i}` as `extra${number}`,
