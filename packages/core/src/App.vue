@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, useTemplateRef } from "vue";
+import GButton from "./components/GButton/GButton.vue";
 import GTable from "./components/GTable/GTable.vue";
 import type { TableColumn } from "./components/GTable/types";
+import { useHighlight } from "./composables/useHighlight";
 
 type Row = {
   name: string;
@@ -50,6 +52,13 @@ const items = ref<Row[]>(
     ),
   })) as Row[],
 );
+
+const search = ref("4");
+const table = useTemplateRef<HTMLElement>("table");
+const main = useTemplateRef<HTMLElement>("main");
+const { highlight, matchCount } = useHighlight(main, search, {
+  exclude: [".ignore"],
+});
 </script>
 
 <template>
@@ -58,9 +67,18 @@ const items = ref<Row[]>(
       <h1>Goose</h1>
     </nav>
 
-    <aside class="left bg-gray-200 p-4">left</aside>
+    <aside class="left bg-gray-200 p-4">
+      <label>
+        Search
+        <input type="text" v-model="search" class="w-full rounded border bg-white px-4 py-1" />
+      </label>
 
-    <main class="overflow-hidden p-4">
+      <pre>{{ { matchCount } }}</pre>
+
+      <GButton class="mt-4" @click="highlight()">Highlight</GButton>
+    </aside>
+
+    <main class="overflow-hidden p-4" ref="main">
       <div class="flex h-full flex-col">
         <h2 class="text-2xl font-semibold">Title</h2>
         <p class="mb-8">
@@ -69,17 +87,21 @@ const items = ref<Row[]>(
           necessitatibus numquam molestiae doloribus! Commodi, enim illo!
         </p>
 
-        <GTable :columns="columns" :items="items">
+        <GTable :columns="columns" :items="items" ref="table">
           <template #cell:i="{ item }"> {{ item.i }} + 1 = {{ item.i + 1 }} </template>
 
           <template #header:i> MATH </template>
+
+          <template #cell:address="{ item }">
+            <span class="ignore">{{ item.address }}</span>
+          </template>
         </GTable>
       </div>
     </main>
   </div>
 </template>
 
-<style scoped>
+<style>
 .layout {
   display: grid;
   grid-template-areas:
@@ -100,5 +122,10 @@ const items = ref<Row[]>(
   & > main {
     grid-area: main;
   }
+}
+
+::highlight(search-results) {
+  background-color: #ff0066;
+  color: white;
 }
 </style>
