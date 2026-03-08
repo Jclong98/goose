@@ -1,3 +1,4 @@
+import { mount } from "@vue/test-utils";
 import { effectScope, nextTick, ref } from "vue";
 
 import { useHighlight } from "./useHighlight";
@@ -132,6 +133,23 @@ describe("useHighlight", () => {
     expect(result.matchCount.value).toBe(3);
 
     stop();
+  });
+
+  it("accepts component refs by resolving $el", async () => {
+    createHighlightEnvironment();
+    const wrapper = mount({
+      template: "<div>abc abc</div>",
+    });
+
+    const componentRef = ref(wrapper.vm);
+    const search = ref("abc");
+    const { result, stop } = withScope(() => useHighlight(componentRef, search));
+
+    await nextTick();
+    expect(result.matchCount.value).toBe(2);
+
+    stop();
+    wrapper.unmount();
   });
 
   it("clears highlights on clearHighlight and scope disposal", async () => {

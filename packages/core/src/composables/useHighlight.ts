@@ -1,4 +1,5 @@
-import { tryOnScopeDispose } from "@vueuse/core";
+import type { MaybeElement } from "@vueuse/core";
+import { tryOnScopeDispose, unrefElement } from "@vueuse/core";
 import type { MaybeRefOrGetter } from "vue";
 import { readonly, ref, toValue, watch } from "vue";
 
@@ -100,11 +101,11 @@ function findRanges(query: string, map: NodePosition[], text: string): Range[] {
  * A composable that highlights all occurrences of a search string
  * within a target element using the CSS Custom Highlight API.
  *
- * @param target target element
+ * @param target target element or component ref exposing `$el`
  * @param search string to search and highlight
  */
 export function useHighlight(
-  target: MaybeRefOrGetter<HTMLElement | null>,
+  target: MaybeRefOrGetter<MaybeElement>,
   search: MaybeRefOrGetter<string>,
   options?: {
     exclude?: MaybeRefOrGetter<string[]>;
@@ -122,6 +123,9 @@ export function useHighlight(
   const isSupported = ref(hasHighlightSupport());
   const matchCount = ref(0);
 
+  /**
+   * Removes the current CSS highlight entry and resets `matchCount` to `0`.
+   */
   const clearHighlight = () => {
     if (isSupported.value) {
       CSS.highlights.delete(cssHighlightKey);
@@ -129,13 +133,19 @@ export function useHighlight(
     matchCount.value = 0;
   };
 
+  /**
+   * Highlights all case-insensitive matches of the provided query (or current
+   * `search` value when omitted) within the target element.
+   *
+   * @param queryInput Optional query override used instead of `search`.
+   */
   const highlight = (queryInput?: MaybeRefOrGetter<string>) => {
     if (!isSupported.value) {
       matchCount.value = 0;
       return;
     }
 
-    const el = toValue(target);
+    const el = unrefElement(toValue(target));
     if (!el) {
       clearHighlight();
       return;
@@ -167,8 +177,10 @@ export function useHighlight(
     const stop = watch(
       () => {
         const searchValue = toValue(search);
+        // Flatten selectors into a stable primitive so the watcher reacts to
+        // in-place array content/order changes without requiring deep watch.
         const excludeSelectors = normalizeSelectors(toValue(exclude)).join("\u0000");
-        const targetElement = toValue(target);
+        const targetElement = unrefElement(toValue(target));
         return { excludeSelectors, searchValue, targetElement };
       },
       ({ searchValue }) => highlight(searchValue),

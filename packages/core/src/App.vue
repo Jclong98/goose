@@ -55,8 +55,7 @@ const items = ref<Row[]>(
 
 const search = ref("4");
 const table = useTemplateRef<HTMLElement>("table");
-const main = useTemplateRef<HTMLElement>("main");
-const { highlight, matchCount } = useHighlight(main, search, {
+const { matchCount } = useHighlight(table, search, {
   exclude: [".ignore"],
 });
 </script>
@@ -74,8 +73,6 @@ const { highlight, matchCount } = useHighlight(main, search, {
       </label>
 
       <pre>{{ { matchCount } }}</pre>
-
-      <GButton class="mt-4" @click="highlight()">Highlight</GButton>
     </aside>
 
     <main class="overflow-hidden p-4" ref="main">
