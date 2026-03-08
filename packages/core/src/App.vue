@@ -92,6 +92,11 @@ const { matchCount } = useHighlight(table, search, {
           <template #cell:address="{ item }">
             <span class="ignore">{{ item.address }}</span>
           </template>
+
+          <template #cell:name="{ item }">
+            <span>{{ item.name }}</span>
+            <b>'s name</b>
+          </template>
         </GTable>
       </div>
     </main>

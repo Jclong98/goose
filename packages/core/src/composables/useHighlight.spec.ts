@@ -184,7 +184,7 @@ describe("useHighlight", () => {
     const { result, stop } = withScope(() => useHighlight(target, search));
 
     await nextTick();
-    expect(result.isSupported.value).toBe(false);
+    expect(result.isSupported).toBe(false);
     expect(result.matchCount.value).toBe(0);
 
     result.highlight();

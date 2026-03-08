@@ -1,7 +1,7 @@
-import type { MaybeElement } from "@vueuse/core";
+import type { MaybeComputedElementRef, MaybeElement } from "@vueuse/core";
 import { tryOnScopeDispose, unrefElement } from "@vueuse/core";
 import type { MaybeRefOrGetter } from "vue";
-import { readonly, ref, toValue, watch } from "vue";
+import { ref, toValue, watch } from "vue";
 
 type NodePosition = { node: Node; offset: number };
 
@@ -105,7 +105,7 @@ function findRanges(query: string, map: NodePosition[], text: string): Range[] {
  * @param search string to search and highlight
  */
 export function useHighlight(
-  target: MaybeRefOrGetter<MaybeElement>,
+  target: MaybeComputedElementRef,
   search: MaybeRefOrGetter<string>,
   options?: {
     exclude?: MaybeRefOrGetter<string[]>;
@@ -120,14 +120,14 @@ export function useHighlight(
     manual = false,
     immediate = true,
   } = options ?? {};
-  const isSupported = ref(hasHighlightSupport());
+  const isSupported = hasHighlightSupport();
   const matchCount = ref(0);
 
   /**
    * Removes the current CSS highlight entry and resets `matchCount` to `0`.
    */
   const clearHighlight = () => {
-    if (isSupported.value) {
+    if (isSupported) {
       CSS.highlights.delete(cssHighlightKey);
     }
     matchCount.value = 0;
@@ -140,12 +140,12 @@ export function useHighlight(
    * @param queryInput Optional query override used instead of `search`.
    */
   const highlight = (queryInput?: MaybeRefOrGetter<string>) => {
-    if (!isSupported.value) {
+    if (!isSupported) {
       matchCount.value = 0;
       return;
     }
 
-    const el = unrefElement(toValue(target));
+    const el = unrefElement(target);
     if (!el) {
       clearHighlight();
       return;
@@ -180,7 +180,7 @@ export function useHighlight(
         // Flatten selectors into a stable primitive so the watcher reacts to
         // in-place array content/order changes without requiring deep watch.
         const excludeSelectors = normalizeSelectors(toValue(exclude)).join("\u0000");
-        const targetElement = unrefElement(toValue(target));
+        const targetElement = unrefElement(target);
         return { excludeSelectors, searchValue, targetElement };
       },
       ({ searchValue }) => highlight(searchValue),
@@ -195,7 +195,7 @@ export function useHighlight(
   return {
     clearHighlight,
     highlight,
-    isSupported: readonly(isSupported),
+    isSupported,
     matchCount,
   };
 }
