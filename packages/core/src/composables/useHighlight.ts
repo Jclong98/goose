@@ -5,19 +5,29 @@ import { ref, toValue, watch } from "vue";
 
 type NodePosition = { node: Node; offset: number };
 
+export class UnsupportedHighlightApiError extends Error {
+  constructor() {
+    super("CSS Custom Highlight API is not supported in this environment");
+    this.name = "UnsupportedHighlightApiError";
+  }
+}
+
 function normalizeSelectors(selectors: readonly string[] | null | undefined): string[] {
   return (selectors ?? [])
     .map((selector) => selector.trim())
     .filter((selector) => selector.length > 0);
 }
 
-function hasHighlightSupport(): boolean {
-  return (
+function checkHasHighlightSupport() {
+  const hasSupport =
     typeof CSS !== "undefined" &&
     "highlights" in CSS &&
     typeof CSS.highlights !== "undefined" &&
-    typeof Highlight !== "undefined"
-  );
+    typeof Highlight !== "undefined";
+
+  if (!hasSupport) {
+    throw new UnsupportedHighlightApiError();
+  }
 }
 
 /** Collects all text nodes under `root` in document order. */
@@ -103,6 +113,7 @@ function findRanges(query: string, map: NodePosition[], text: string): Range[] {
  *
  * @param target target element or component ref exposing `$el`
  * @param search string to search and highlight
+ * @throws {UnsupportedHighlightApiError} When the CSS Custom Highlight API is unavailable.
  */
 export function useHighlight(
   target: MaybeComputedElementRef,
@@ -120,16 +131,16 @@ export function useHighlight(
     manual = false,
     immediate = true,
   } = options ?? {};
-  const isSupported = hasHighlightSupport();
+
+  checkHasHighlightSupport();
+
   const matchCount = ref(0);
 
   /**
    * Removes the current CSS highlight entry and resets `matchCount` to `0`.
    */
   const clearHighlight = () => {
-    if (isSupported) {
-      CSS.highlights.delete(cssHighlightKey);
-    }
+    CSS.highlights.delete(cssHighlightKey);
     matchCount.value = 0;
   };
 
@@ -140,11 +151,6 @@ export function useHighlight(
    * @param queryInput Optional query override used instead of `search`.
    */
   const highlight = (queryInput?: MaybeRefOrGetter<string>) => {
-    if (!isSupported) {
-      matchCount.value = 0;
-      return;
-    }
-
     const el = unrefElement(target);
     if (!el) {
       clearHighlight();
@@ -195,7 +201,6 @@ export function useHighlight(
   return {
     clearHighlight,
     highlight,
-    isSupported,
     matchCount,
   };
 }

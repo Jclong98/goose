@@ -22,11 +22,11 @@ function getPinClasses(column: TableColumn<RowKey>) {
 }
 
 type HeaderSlots = {
-  [K in TableColumn<RowKey> as `header:${K["key"]}`]?: (props: { column: K }) => void;
+  [K in TableColumn<RowKey> as `${K["key"]}-header`]?: (props: { column: K }) => void;
 };
 
 type CellSlots = {
-  [K in TableColumn<RowKey> as `cell:${K["key"]}`]?: (props: { item: TRow }) => void;
+  [K in TableColumn<RowKey> as `${K["key"]}-cell`]?: (props: { item: TRow }) => void;
 };
 
 defineSlots<HeaderSlots & CellSlots>();
@@ -37,7 +37,7 @@ defineSlots<HeaderSlots & CellSlots>();
     <thead>
       <tr>
         <th v-for="column in props.columns" :key="column.key" :class="getPinClasses(column)">
-          <slot :name="`header:${column.key}`" :column="column">
+          <slot :name="`${column.key}-header`" :column="column">
             {{ column.title }}
           </slot>
         </th>
@@ -47,7 +47,7 @@ defineSlots<HeaderSlots & CellSlots>();
     <tbody>
       <tr v-for="(item, index) in props.items" :key="index">
         <td v-for="column in props.columns" :key="column.key" :class="getPinClasses(column)">
-          <slot :name="`cell:${column.key}`" :item="item">
+          <slot :name="`${column.key}-cell`" :item="item">
             {{ item[column.key] }}
           </slot>
         </td>

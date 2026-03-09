@@ -85,15 +85,15 @@ const { matchCount } = useHighlight(table, search, {
         </p>
 
         <GTable :columns="columns" :items="items" ref="table">
-          <template #cell:i="{ item }"> {{ item.i }} + 1 = {{ item.i + 1 }} </template>
+          <template #i-cell="{ item }"> {{ item.i }} + 1 = {{ item.i + 1 }} </template>
 
-          <template #header:i> MATH </template>
+          <template #i-header> MATH </template>
 
-          <template #cell:address="{ item }">
+          <template #address-cell="{ item }">
             <span class="ignore">{{ item.address }}</span>
           </template>
 
-          <template #cell:name="{ item }">
+          <template #name-cell="{ item }">
             <span>{{ item.name }}</span>
             <b>'s name</b>
           </template>

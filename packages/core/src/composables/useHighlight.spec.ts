@@ -1,7 +1,7 @@
 import { mount } from "@vue/test-utils";
 import { effectScope, nextTick, ref } from "vue";
 
-import { useHighlight } from "./useHighlight";
+import { UnsupportedHighlightApiError, useHighlight } from "./useHighlight";
 
 class MockHighlight {
   public readonly ranges: Range[];
@@ -172,7 +172,7 @@ describe("useHighlight", () => {
     expect(del).toHaveBeenCalled();
   });
 
-  it("reports unsupported environment when Highlight API is unavailable", async () => {
+  it("throws when Highlight API is unavailable", () => {
     vi.stubGlobal("CSS", undefined);
     vi.stubGlobal("Highlight", undefined);
 
@@ -181,15 +181,8 @@ describe("useHighlight", () => {
     const target = ref<HTMLElement | null>(element);
 
     const search = ref("hello");
-    const { result, stop } = withScope(() => useHighlight(target, search));
-
-    await nextTick();
-    expect(result.isSupported).toBe(false);
-    expect(result.matchCount.value).toBe(0);
-
-    result.highlight();
-    expect(result.matchCount.value).toBe(0);
-
-    stop();
+    expect(() => withScope(() => useHighlight(target, search))).toThrow(
+      UnsupportedHighlightApiError,
+    );
   });
 });
