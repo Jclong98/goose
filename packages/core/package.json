@@ -1,6 +1,6 @@
 {
   "name": "@jclong98/goose",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "description": "Core Vue components, composables, directives, and styles for Goose",
   "license": "ISC",

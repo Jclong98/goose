@@ -1,5 +1,12 @@
 # @jclong98/vite-plugin-goose
 
+## 0.0.3
+
+### Patch Changes
+
+- Updated dependencies
+  - @jclong98/goose@0.0.3
+
 ## 0.0.2
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @jclong98/goose
 
+## 0.0.3
+
+### Patch Changes
+
+- - GTable
+  - useHighlight
+
 ## 0.0.2
 
 ### Patch Changes
