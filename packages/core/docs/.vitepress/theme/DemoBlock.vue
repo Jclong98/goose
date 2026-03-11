@@ -5,8 +5,8 @@ const showCode = ref(false);
 </script>
 
 <template>
-    <div class="demo-block rounded-lg overflow-hidden border border-(--vp-c-divider)">
-        <div class="demo-block-preview p-2 flex flex-wrap gap-2 items-start">
+    <div class="rounded-lg overflow-hidden border border-(--vp-c-divider)">
+        <div class="p-2 flex flex-col gap-2">
             <slot />
         </div>
         <hr class="border-(--vp-c-divider)">
@@ -27,7 +27,7 @@ const showCode = ref(false);
             </button>
         </div>
         <hr v-if="showCode" class="border-(--vp-c-divider)">
-        <div v-if="showCode" class="p-2">
+        <div v-if="showCode" class="px-4 py-2">
             <slot name="source" />
         </div>
     </div>

@@ -1,6 +1,6 @@
 <script setup>
 import BasicTableExample from './BasicTableExample.vue'
-import CustomCellTableExample from './CustomCellTableExample.vue'
+import Slots from './Slots.vue'
 import StickyScrolling from './StickyScrolling.vue'
 </script>
 
@@ -14,9 +14,9 @@ A generic, strongly-typed data table component using CSS subgrid layout. Support
 
 <BasicTableExample class="vp-raw" />
 
-### Custom status cell
+### Slots
 
-<CustomCellTableExample class="vp-raw" />
+<Slots class="vp-raw" />
 
 ### Sticky scrolling
 
