@@ -2,6 +2,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { fileURLToPath } from "node:url";
 import Components from "unplugin-vue-components/vite";
 import { defineConfig } from "vitepress";
+import { demoBlockPlugin } from "./demo-block-plugin";
 
 const srcDir = fileURLToPath(new URL("../../src", import.meta.url));
 const docsDir = fileURLToPath(new URL("..", import.meta.url));
@@ -21,6 +22,7 @@ export default defineConfig({
       },
     },
     plugins: [
+      demoBlockPlugin(),
       tailwindcss(),
       Components({
         dirs: [componentsDir],

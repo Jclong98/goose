@@ -7,14 +7,3 @@
 body {
   anchor-name: --body;
 }
-
-.demo {
-  padding: 2rem;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  margin-block: 1.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  align-items: flex-start;
-}
