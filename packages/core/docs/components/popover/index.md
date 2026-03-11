@@ -11,10 +11,12 @@ A flexible popover component built on the native [Popover API](https://developer
 
 ### Bottom-center popover
 
+<!-- example -->
 <BottomPopoverExample />
 
 ### Right-positioned popover
 
+<!-- example -->
 <RightPopoverExample />
 
 ## API

@@ -4,7 +4,9 @@ import { ref } from "vue";
 
 const container = ref<HTMLElement | null>(null);
 const query = ref("the");
-const { matchCount } = useHighlight(container, query);
+const { matchCount } = useHighlight(container, query, {
+  cssHighlightKey: 'basic-example-highlight',
+});
 </script>
 
 <template>
@@ -15,13 +17,14 @@ const { matchCount } = useHighlight(container, query);
     </label>
     <p style="margin: 0; color: var(--vp-c-text-2)">Matches: <strong>{{ matchCount }}</strong></p>
     <div ref="container" style="line-height: 1.6">
-      The quick brown fox jumps over the lazy dog. The quick brown fox is a common pangram.
+      The quick brown fox jumps over the lazy dog. Sphinx of black quartz, judge my vow. Pack my box with five dozen
+      liquor jugs.
     </div>
   </div>
 </template>
 
-<style>
-::highlight(search-results) {
+<style scoped>
+::highlight(basic-example-highlight) {
   background: var(--color-goose);
   color: black;
 }

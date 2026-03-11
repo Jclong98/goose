@@ -15,40 +15,13 @@ This composable requires the CSS Custom Highlight API. It throws `UnsupportedHig
 
 ### Reactive search highlight
 
+<!-- example -->
 <BasicHighlightExample />
 
 ### Manual highlight trigger
 
+<!-- example -->
 <ManualHighlightExample />
-
-## Usage
-
-```vue
-<script setup lang="ts">
-import { ref } from "vue";
-import { useHighlight } from "@goose-ui/core";
-
-const container = ref<HTMLElement | null>(null);
-const query = ref("");
-
-const { matchCount } = useHighlight(container, query);
-</script>
-
-<template>
-  <input v-model="query" placeholder="Search..." />
-  <div ref="container">
-    <p>The quick brown fox jumps over the lazy dog.</p>
-  </div>
-  <p>{{ matchCount }} match(es)</p>
-</template>
-
-<style>
-::highlight(search-results) {
-  background-color: yellow;
-  color: black;
-}
-</style>
-```
 
 ## Signature
 

@@ -5,7 +5,7 @@ import { ref } from "vue";
 const container = ref<HTMLElement | null>(null);
 const query = ref("fox");
 
-const { highlight, clearHighlight } = useHighlight(container, query, { manual: true });
+const { highlight, clearHighlight } = useHighlight(container, query, { manual: true, cssHighlightKey: 'manual-highlight' });
 </script>
 
 <template>
@@ -20,3 +20,10 @@ const { highlight, clearHighlight } = useHighlight(container, query, { manual: t
     </div>
   </div>
 </template>
+
+<style scoped>
+::highlight(manual-highlight) {
+  background: var(--color-goose);
+  color: black;
+}
+</style>
