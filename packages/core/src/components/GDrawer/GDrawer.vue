@@ -29,6 +29,7 @@ const sideClass = computed(() => `--${props.side}`);
   border: none;
   margin: 0;
   inset: auto;
+  max-height: 100dvh;
 
   position-anchor: v-bind("props.anchor");
 

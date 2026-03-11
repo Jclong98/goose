@@ -1,0 +1,16 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@core/*": ["../src/*"],
+      "@docs/*": ["./*"],
+      "public/*": ["../public/*"]
+    },
+    "types": ["vitepress/client"]
+  },
+  "include": ["./**/*.ts", "./**/*.vue", "./.vitepress/**/*.ts"],
+  "vueCompilerOptions": {
+    "vitePressExtensions": [".md"]
+  }
+}

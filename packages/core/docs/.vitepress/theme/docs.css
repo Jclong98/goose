@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@import "@core/assets/main.css";
+/* Tailwind in VitePress only scans docs files by default; this adds the library component files
+   to the scan graph so utility classes used inside src/components are generated for docs too. */
+@source "../../../src/components/**/*.vue";
+
+body {
+  anchor-name: --body;
+}
+
+.demo {
+  padding: 2rem;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  margin-block: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
