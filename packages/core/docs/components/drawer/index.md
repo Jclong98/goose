@@ -8,17 +8,9 @@ A side panel drawer using the native [Popover API](https://developer.mozilla.org
 
 ## Demo
 
+<!-- example -->
 <DrawerExample />
 
-## Props
+## API
 
-| Prop     | Type                | Default   | Description                                                                                                        |
-| -------- | ------------------- | --------- | ------------------------------------------------------------------------------------------------------------------ |
-| `anchor` | `string`            | —         | **Required.** CSS anchor name (e.g. `"--main"`) that must match the `anchor-name` property of the trigger element. |
-| `side`   | `"left" \| "right"` | `"right"` | Which side of the anchor element the drawer appears on.                                                            |
-
-## Slots
-
-| Slot      | Description                               |
-| --------- | ----------------------------------------- |
-| `default` | Content rendered inside the drawer panel. |
+<!-- component-meta: GDrawer -->

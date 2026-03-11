@@ -1,17 +1,15 @@
 <script setup lang="ts">
 import { ref } from "vue";
-
 const showCode = ref(false);
 </script>
 
 <template>
     <div class="example-wrapper rounded-lg overflow-hidden border border-(--vp-c-divider)">
-        <div class="p-2 flex flex-col gap-2">
+        <div class="p-2 flex flex-col gap-2 vp-raw">
             <slot />
         </div>
-        <hr class="border-(--vp-c-divider)">
-        <div class="example-wrapper-actions flex">
-            <button class="example-wrapper-toggle" @click="showCode = !showCode">
+        <div class="example-wrapper-actions flex border-t  border-(--vp-c-divider)" :class="{ 'border-b': showCode }">
+            <button class="example-wrapper-toggle border-t" @click="showCode = !showCode">
                 <svg v-if="!showCode" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     aria-hidden="true">
@@ -26,8 +24,7 @@ const showCode = ref(false);
                 {{ showCode ? "Hide source" : "View source" }}
             </button>
         </div>
-        <hr v-if="showCode" class="border-(--vp-c-divider)">
-        <div v-if="showCode" class="px-4 py-2">
+        <div v-if="showCode" class="code-block">
             <slot name="source" />
         </div>
     </div>
@@ -53,6 +50,13 @@ const showCode = ref(false);
     &:hover {
         color: var(--vp-c-brand-1);
         background-color: var(--vp-c-bg-soft);
+    }
+}
+
+/* the only thing that should ever be in here is code so !important should be okay */
+.code-block {
+    &>* {
+        margin: 0 !important;
     }
 }
 </style>

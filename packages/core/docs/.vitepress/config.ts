@@ -2,12 +2,14 @@ import tailwindcss from "@tailwindcss/vite";
 import { fileURLToPath } from "node:url";
 import Components from "unplugin-vue-components/vite";
 import { defineConfig } from "vitepress";
-import { demoBlockPlugin } from "./demo-block-plugin";
+import { componentMetaPlugin } from "./plugins/component-meta-plugin";
+import { exampleWrapperPlugin } from "./plugins/demo-block-plugin";
 
 const srcDir = fileURLToPath(new URL("../../src", import.meta.url));
 const docsDir = fileURLToPath(new URL("..", import.meta.url));
 const publicDir = fileURLToPath(new URL("../../public", import.meta.url));
 const componentsDir = fileURLToPath(new URL("../../src/components", import.meta.url));
+const tsConfigPath = fileURLToPath(new URL("../../tsconfig.json", import.meta.url));
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -22,7 +24,8 @@ export default defineConfig({
       },
     },
     plugins: [
-      demoBlockPlugin(),
+      exampleWrapperPlugin(),
+      componentMetaPlugin(tsConfigPath, srcDir),
       tailwindcss(),
       Components({
         dirs: [componentsDir],

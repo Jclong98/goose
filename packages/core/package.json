@@ -52,8 +52,10 @@
   },
   "devDependencies": {
     "postcss": "^8.5.8",
+    "tinyglobby": "^0.2.15",
     "unplugin-vue-components": "^28.5.0",
     "vite-plugin-dts": "^4.5.3",
-    "vitepress": "2.0.0-alpha.16"
+    "vitepress": "2.0.0-alpha.16",
+    "vue-component-meta": "^3.2.5"
   }
 }
