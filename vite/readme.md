@@ -53,23 +53,3 @@ export default defineConfig({
   ],
 });
 ```
-
-## Development
-
-### Scripts
-
-- `pnpm -C packages/vite dev`: Run [tsdown](https://tsdown.dev/) in watch mode.
-- `pnpm -C packages/vite build`: Build package output with tsdown.
-
-### Build Configuration
-
-The package is built using [tsdown](https://tsdown.dev/). The entry point is defined in `tsdown.config.ts`.
-
-## Options
-
-`goose(options)` accepts partial overrides for the bundled plugins:
-
-- `autoImport`
-- `components`
-- `vueRouter`
-- `vue`
