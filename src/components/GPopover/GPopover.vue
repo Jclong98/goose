@@ -1,23 +1,25 @@
 <script lang="ts" setup>
-import { computed, onMounted, useTemplateRef, useId, watch } from "vue";
+import { computed, onMounted, useId, useTemplateRef, watch } from "vue";
 
 import type { PopoverPosition } from "./types";
 
-const props = defineProps<{
-  position: PopoverPosition;
-}>();
+const props = withDefaults(
+  defineProps<{
+    position?: PopoverPosition;
+    anchor?: string;
+  }>(),
+  {
+    position: "bottomCenter",
+  }
+);
 
 const isOpen = defineModel("open", { default: false });
 
-const id = useId();
-const anchorName = computed(() => `--anchor-${id}`);
 const popover = useTemplateRef("popover");
 
 const open = () => popover.value?.showPopover();
 const close = () => popover.value?.hidePopover();
-const toggle = () => {
-  isOpen.value = !isOpen.value;
-};
+
 const onToggle = (event: ToggleEvent) => {
   isOpen.value = event.newState === "open";
 };
@@ -30,34 +32,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <slot
-    name="activator"
-    :toggle
-    :isOpen
-    :id
-    :anchorName
-    :props="{
-      'aria-describedby': id,
-      'aria-expanded': isOpen,
-      'aria-haspopup': true,
-      'aria-controls': id,
-      onClick: () => toggle(),
-      style: { anchorName },
-    }"
-  ></slot>
-
-  <div
-    :id
-    v-bind="$attrs"
-    ref="popover"
-    popover
-    class="g-popover"
-    :class="[`--${props.position}`]"
-    :style="{
-      'position-anchor': anchorName,
-    }"
-    @toggle="onToggle"
-  >
+  <div ref="popover" popover class="g-popover" :class="[`--${props.position}`]" :style="{
+    'position-anchor': props.anchor,
+  }" @toggle="onToggle">
     <slot :close="close"></slot>
   </div>
 </template>

@@ -12,6 +12,7 @@ declare module 'vue' {
     GDrawer: typeof import('./../src/components/GDrawer/GDrawer.vue')['default']
     GPopover: typeof import('./../src/components/GPopover/GPopover.vue')['default']
     GSegmentedControl: typeof import('./../src/components/GSegmentedControl/GSegmentedControl.vue')['default']
+    GSelect: typeof import('./../src/components/GSelect/GSelect.vue')['default']
     GTable: typeof import('./../src/components/GTable/GTable.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

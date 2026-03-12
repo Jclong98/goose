@@ -1,6 +1,6 @@
 <script setup>
-import BottomPopoverExample from './BottomPopoverExample.vue'
-import RightPopoverExample from './RightPopoverExample.vue'
+import BasicUsage from './BasicUsage.vue'
+import PositionedPopover from './PositionedPopover.vue'
 </script>
 
 # GPopover
@@ -9,15 +9,15 @@ A flexible popover component built on the native [Popover API](https://developer
 
 ## Demo
 
-### Bottom-center popover
+### BasicUsage
 
 <!-- example -->
-<BottomPopoverExample />
+<BasicUsage />
 
-### Right-positioned popover
+### Positioned popover
 
 <!-- example -->
-<RightPopoverExample />
+<PositionedPopover />
 
 ## API
 

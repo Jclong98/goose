@@ -49,6 +49,7 @@ export default defineConfig({
           { text: "GPopover", link: "/components/popover/index" },
           { text: "GSegmentedControl", link: "/components/segmented-control/index" },
           { text: "GTable", link: "/components/table/index" },
+          { text: "GSelect", link: "/components/select/index" },
         ],
       },
       {
