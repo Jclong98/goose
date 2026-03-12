@@ -37,27 +37,27 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "Home", link: "/" },
-      { text: "Components", link: "/components/button" },
-      { text: "Composables", link: "/composables/use-highlight" },
+      { text: "Components", link: "/components/button/index" },
+      { text: "Composables", link: "/composables/use-highlight/index" },
     ],
 
     sidebar: [
       {
         text: "Components",
         items: [
-          { text: "GButton", link: "/components/button" },
-          { text: "GDrawer", link: "/components/drawer" },
-          { text: "GPopover", link: "/components/popover" },
-          { text: "GSegmentedControl", link: "/components/segmented-control" },
-          { text: "GTable", link: "/components/table" },
+          { text: "GButton", link: "/components/button/index" },
+          { text: "GDrawer", link: "/components/drawer/index" },
+          { text: "GPopover", link: "/components/popover/index" },
+          { text: "GSegmentedControl", link: "/components/segmented-control/index" },
+          { text: "GTable", link: "/components/table/index" },
         ],
       },
       {
         text: "Composables",
         items: [
-          { text: "useHighlight", link: "/composables/use-highlight" },
-          { text: "useMultiplier", link: "/composables/use-multiplier" },
-          { text: "useUniqueId", link: "/composables/use-unique-id" },
+          { text: "useHighlight", link: "/composables/use-highlight/index" },
+          { text: "useMultiplier", link: "/composables/use-multiplier/index" },
+          { text: "useUniqueId", link: "/composables/use-unique-id/index" },
         ],
       },
     ],
