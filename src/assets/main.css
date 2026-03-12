@@ -3,8 +3,9 @@
 @import "tailwindcss/preflight.css" layer(base);
 @import "tailwindcss/utilities.css" layer(utilities);
 @import "tailwindcss/theme.css" layer(theme);
-@import "public/tw-theme.css" layer(theme);
+
 @import "./fonts.css";
+@import "./tw-theme.css";
 
 body {
   font-family: "Rubik", sans-serif;
