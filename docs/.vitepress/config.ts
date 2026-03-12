@@ -36,7 +36,6 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: "Home", link: "/" },
       { text: "Components", link: "/components/button/index" },
       { text: "Composables", link: "/composables/use-highlight/index" },
     ],
