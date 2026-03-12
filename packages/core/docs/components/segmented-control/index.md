@@ -11,10 +11,12 @@ A segmented control (button group) for selecting one or multiple values from a s
 
 ### Single-select example
 
+<!-- example -->
 <SingleSelectExample />
 
 ### Multi-select example
 
+<!-- example -->
 <MultiSelectExample />
 
 ## API

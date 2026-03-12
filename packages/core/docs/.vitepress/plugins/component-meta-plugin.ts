@@ -75,17 +75,17 @@ export function componentMetaPlugin(tsconfigPath: string, srcDir: string): Plugi
         const slotsTable = table(
           "Slots",
           ["Name", "Type", "Description"],
-          meta.slots.map((s) => [s.name, s.type, s.description ?? ""]),
+          meta.slots.map((s) => [`\`${s.name}\``, s.type, s.description ?? ""]),
         );
         const eventsTable = table(
           "Events",
           ["Name", "Type", "Description"],
-          meta.events.map((e) => [e.name, e.type, e.description ?? ""]),
+          meta.events.map((e) => [`\`${e.name}\``, e.type, e.description ?? ""]),
         );
         const exposedTable = table(
           "Exposed",
           ["Name", "Type", "Description"],
-          meta.exposed.map((x) => [x.name, x.type, x.description ?? ""]),
+          meta.exposed.map((x) => [`\`${x.name}\``, x.type, x.description ?? ""]),
         );
 
         const docBlock = [propsTable, slotsTable, eventsTable, exposedTable]
