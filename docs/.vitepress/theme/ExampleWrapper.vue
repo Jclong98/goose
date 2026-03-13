@@ -5,7 +5,7 @@ const showCode = ref(false);
 
 <template>
   <div class="example-wrapper overflow-hidden rounded-lg border border-(--vp-c-divider)">
-    <div class="vp-raw flex flex-col gap-2 p-2">
+    <div class="vp-raw p-2">
       <slot />
     </div>
     <div

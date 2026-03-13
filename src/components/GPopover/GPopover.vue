@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { onMounted, useTemplateRef, watch } from "vue";
+import { computed, onMounted, useTemplateRef, watch } from "vue";
 
+import { useUniqueId } from "@/composables";
 import type { PositionArea } from "./types";
 
 const props = withDefaults(
@@ -18,6 +19,7 @@ const props = withDefaults(
   }>(),
   {
     positionArea: "bottom",
+    anchor: undefined,
   },
 );
 
@@ -37,6 +39,30 @@ const onToggle = (event: ToggleEvent) => {
 onMounted(() => {
   watch(isOpen, (nv) => (nv ? open() : close()), { immediate: true });
 });
+
+const id = useUniqueId();
+const anchorName = computed(() => `--${id.value}-anchor`);
+const activatorBinding = computed(() => ({
+  style: {
+    "anchor-name": anchorName.value,
+  },
+  popovertarget: id.value,
+}));
+
+defineExpose({
+  open,
+  close,
+  id,
+  anchorName,
+
+  /**
+   * use v-bind="activatorBinding" on the popover's activator to
+   * automatically set the correct attributes for the popover to work.
+   * This is especially useful if you have multiple popovers and want
+   * to avoid manually managing unique IDs and anchor names.
+   */
+  activatorBinding,
+});
 </script>
 
 <template>
@@ -44,13 +70,14 @@ onMounted(() => {
     ref="popover"
     popover
     class="g-popover"
+    :id="id"
     :style="{
-      positionAnchor: props.anchor,
+      positionAnchor: props.anchor ?? anchorName,
       positionArea: props.positionArea,
     }"
     @toggle="onToggle"
   >
-    <slot :close="close"></slot>
+    <slot :close="close" :id="id"></slot>
   </div>
 </template>
 

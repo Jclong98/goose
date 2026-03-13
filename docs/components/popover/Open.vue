@@ -1,14 +1,13 @@
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref, useTemplateRef } from "vue";
 
 const isOpen = ref(true);
+const popover = useTemplateRef("popover");
 </script>
 
 <template>
   <div class="flex gap-2">
-    <GButton style="anchor-name: --open-button" popovertarget="open-popover">
-      Open popover
-    </GButton>
+    <GButton v-bind="popover?.activatorBinding"> Open popover </GButton>
 
     <label>
       <input type="checkbox" v-model="isOpen" class="mr-1" />
@@ -16,7 +15,7 @@ const isOpen = ref(true);
     </label>
   </div>
 
-  <GPopover id="open-popover" anchor="--open-button" class="card mt-1" v-model:open="isOpen" modal>
+  <GPopover ref="popover" class="card mt-1" v-model:open="isOpen" modal>
     <p>This popover should open by default.</p>
   </GPopover>
 </template>

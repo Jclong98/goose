@@ -1,12 +1,13 @@
 <script setup lang="ts">
+import { useTemplateRef } from "vue";
 import { GButton, GPopover } from "./components";
 
-import { Popover as vPopover, PopoverActivator as vPopoverActivator } from "./directives";
+const popover = useTemplateRef("popover");
 </script>
 
 <template>
-  <GButton v-popover-activator="'basic-popover'"> Open popover </GButton>
-  <GPopover v-popover="'basic-popover'" position-area="bottom span-right">
+  <GButton v-bind="popover?.activatorBinding"> Open popover </GButton>
+  <GPopover ref="popover" position-area="bottom span-right">
     <div class="mt-2 rounded border border-gray-500 p-4">
       <p>A more streamlined way to connect popovers to their activators</p>
     </div>

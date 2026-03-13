@@ -3,6 +3,7 @@ import BasicUsage from './BasicUsage.vue'
 import PositionedPopover from './PositionedPopover.vue'
 import Offsets from './Offsets.vue'
 import Open from './Open.vue'
+import ManualRegistration from './ManualRegistration.vue'
 </script>
 
 # GPopover
@@ -15,6 +16,13 @@ A flexible popover component built on the native [Popover API](https://developer
 
 <!-- example -->
 <BasicUsage />
+
+### Manual Registration
+
+If you don't want to bind the style directly from the exposed `activatorBinding`, you can register the position anchor and popover target manually.
+
+<!-- example -->
+<ManualRegistration />
 
 ### Position Area
 

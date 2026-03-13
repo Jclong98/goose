@@ -1,11 +1,13 @@
-<template>
-  <div>
-    <GButton style="anchor-name: --basic-button" popovertarget="basic-popover">
-      Open popover
-    </GButton>
-  </div>
+<script lang="ts" setup>
+import { useTemplateRef } from "vue";
 
-  <GPopover id="basic-popover" anchor="--basic-button" class="card mt-1">
+const popover = useTemplateRef("popover");
+</script>
+
+<template>
+  <GButton v-bind="popover?.activatorBinding"> Open popover </GButton>
+
+  <GPopover ref="popover" position-area="bottom span-right" class="card mt-1">
     <p>Popovers have position-area="bottom" by default.</p>
   </GPopover>
 </template>

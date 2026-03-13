@@ -21,7 +21,10 @@ export default defineConfig({
     tailwindcss(),
   ],
   resolve: {
-    tsconfigPaths: true,
+    alias: {
+      "@": resolvePath("./src"),
+      public: resolvePath("./public"),
+    },
   },
   build: {
     lib: {

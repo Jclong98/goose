@@ -5,7 +5,5 @@ const count = ref(0);
 </script>
 
 <template>
-  <div>
-    <GButton @click="count += 1">Clicked {{ count }} times</GButton>
-  </div>
+  <GButton @click="count += 1">Clicked {{ count }} times</GButton>
 </template>
