@@ -1,12 +1,17 @@
 <script lang="ts" setup generic="T">
 import type { GSegmentedControlItem } from "./types";
 
-const props = defineProps<{
-  label: string;
-  visibleLabel?: boolean;
-  items: GSegmentedControlItem<T>[];
-  inputType?: "radio" | "checkbox";
-}>();
+const props = withDefaults(
+  defineProps<{
+    label: string;
+    visibleLabel?: boolean;
+    items: GSegmentedControlItem<T>[];
+    inputType?: "radio" | "checkbox";
+  }>(),
+  {
+    inputType: "radio",
+  },
+);
 
 const modelValue = defineModel<T | T[]>();
 </script>
@@ -21,15 +26,15 @@ const modelValue = defineModel<T | T[]>();
       {{ props.label }}
     </legend>
 
-    <div class="flex max-w-fit gap-0.5 rounded-full bg-gray-100 p-0.5">
+    <div class="flex gap-0.5 rounded-full bg-gray-100 p-0.5">
       <label
         v-for="item in props.items"
         :key="`${item.value}`"
-        class="has-checked:ring-goose has-checked:bg-goose/30 cursor-pointer px-4 py-1 ring-2 ring-gray-300 first-of-type:rounded-l-full last-of-type:rounded-r-full has-checked:z-1"
+        class="has-checked:ring-goose has-checked:bg-goose/30 flex-1 cursor-pointer px-4 py-1 text-center ring-2 ring-gray-300 first-of-type:rounded-l-full last-of-type:rounded-r-full has-checked:z-1"
       >
         <input
           v-model="modelValue"
-          :type="props.inputType ?? 'radio'"
+          :type="props.inputType"
           :value="item.value"
           :name="props.label"
           class="peer sr-only"
