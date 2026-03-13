@@ -38,6 +38,7 @@ export function exampleWrapperPlugin(): Plugin {
             new RegExp(`<!-- example -->\\s*<${name}((?:\\s[^>]*)?)\\s*/>`, "g"),
             (_, attrs) =>
               [
+                `<ClientOnly>`,
                 `<ExampleWrapper>`,
                 `<${name}${attrs ? " " + attrs.trim() : ""} />`,
                 `<template #source>`,
@@ -47,6 +48,7 @@ export function exampleWrapperPlugin(): Plugin {
                 "```",
                 `</template>`,
                 `</ExampleWrapper>`,
+                `</ClientOnly>`,
               ].join("\n"),
           );
         }

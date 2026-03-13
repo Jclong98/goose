@@ -15,21 +15,13 @@ This composable requires the CSS Custom Highlight API. It throws `UnsupportedHig
 
 ### Reactive search highlight
 
-<ClientOnly>
-
-  <!-- example -->
-  <BasicHighlightExample />
-
-</ClientOnly>
+<!-- example -->
+<BasicHighlightExample />
 
 ### Manual highlight trigger
 
-<ClientOnly>
-  
-  <!-- example -->
-  <ManualHighlightExample />
-  
-</ClientOnly>
+<!-- example -->
+<ManualHighlightExample />
 
 ## Signature
 
