@@ -63,11 +63,19 @@ defineSlots<HeaderSlots & CellSlots>();
 
 <style scoped>
 table {
+  --table-bg: white;
+
   display: grid;
   grid-template-columns: v-bind(gridTemplateColumns);
   overflow: auto;
   isolation: isolate;
   container: table-container / scroll-state;
+}
+
+.dark {
+  table {
+    --table-bg: var(--color-neutral-800);
+  }
 }
 
 thead,
@@ -86,7 +94,7 @@ thead {
 
 th,
 td {
-  background-color: white;
+  background-color: var(--table-bg);
   display: flex;
   padding: 8px;
   white-space: nowrap;
