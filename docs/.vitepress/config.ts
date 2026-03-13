@@ -11,6 +11,8 @@ const publicDir = fileURLToPath(new URL("../../public", import.meta.url));
 const componentsDir = fileURLToPath(new URL("../../src/components", import.meta.url));
 const tsConfigPath = fileURLToPath(new URL("../../tsconfig.json", import.meta.url));
 
+console.log(srcDir);
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Goose UI",
@@ -24,13 +26,13 @@ export default defineConfig({
       },
     },
     plugins: [
-      exampleWrapperPlugin(),
-      componentMetaPlugin(tsConfigPath, srcDir),
-      tailwindcss(),
       Components({
         dirs: [componentsDir],
-        include: [/\.vue$/, /\.md$/],
+        include: [/\.(vue|md)($|\?)/],
       }),
+      tailwindcss(),
+      exampleWrapperPlugin(),
+      componentMetaPlugin(tsConfigPath, srcDir),
     ],
   },
   themeConfig: {
