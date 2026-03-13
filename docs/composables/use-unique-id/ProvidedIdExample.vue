@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useUniqueId } from "@core/composables/useUniqueId";
+import { useUniqueId } from "@/composables/useUniqueId";
 
 const id = useUniqueId();
 </script>

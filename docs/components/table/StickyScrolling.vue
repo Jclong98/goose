@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { TableColumn } from '@core/components/GTable/types';
+import type { TableColumn } from '@/components/GTable/types';
 import { ref } from 'vue';
 
 type Row = {

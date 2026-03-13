@@ -18,7 +18,7 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        "@core": srcDir,
+        "@": srcDir,
         "@docs": docsDir,
         public: publicDir,
       },

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useHighlight } from "@core/composables/useHighlight";
+import { useHighlight } from "@/composables/useHighlight";
 import { ref } from "vue";
 
 const container = ref<HTMLElement | null>(null);

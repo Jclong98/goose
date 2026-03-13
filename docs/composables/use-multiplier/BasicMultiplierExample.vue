@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useMultiplier } from "@core/composables/useMultiplier";
+import { useMultiplier } from "@/composables/useMultiplier";
 import { ref } from "vue";
 
 const price = ref(25);

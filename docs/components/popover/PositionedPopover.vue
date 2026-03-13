@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { PopoverPosition } from '@core/components/GPopover/types';
+import type { PopoverPosition } from '@/components/GPopover/types';
 import { ref } from 'vue';
 
 const positions: PopoverPosition[] = ['topCenter', 'topLeft', 'topRight', 'bottomCenter', 'bottomLeft', 'bottomRight', 'left', 'right'];
