@@ -30,7 +30,7 @@ const modelValue = defineModel<T | T[]>();
       <label
         v-for="item in props.items"
         :key="`${item.value}`"
-        class="has-checked:ring-goose has-checked:bg-goose/30 flex-1 cursor-pointer px-4 py-1 text-center ring-2 ring-gray-300 first-of-type:rounded-l-full last-of-type:rounded-r-full has-checked:z-1"
+        class="has-checked:ring-goose has-checked:bg-goose/30 flex-1 cursor-pointer px-4 py-1 text-center text-black ring-2 ring-gray-300 first-of-type:rounded-l-full last-of-type:rounded-r-full has-checked:z-1"
       >
         <input
           v-model="modelValue"
