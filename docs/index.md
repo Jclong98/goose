@@ -13,9 +13,9 @@ hero:
 
 features:
   - title: Components
-    details: Accessible, slot-driven UI components built on modern web APIs.
+    details: UI components built on modern web APIs.
     link: /components/button/index
   - title: Composables
-    details: Reusable Vue composables for highlighting, reactivity, and unique IDs.
+    details: Reusable Vue composables.
     link: /composables/use-highlight
 ---

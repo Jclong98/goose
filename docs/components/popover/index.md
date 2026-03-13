@@ -1,6 +1,8 @@
 <script setup>
 import BasicUsage from './BasicUsage.vue'
 import PositionedPopover from './PositionedPopover.vue'
+import Offsets from './Offsets.vue'
+import Open from './Open.vue'
 </script>
 
 # GPopover
@@ -9,15 +11,31 @@ A flexible popover component built on the native [Popover API](https://developer
 
 ## Demo
 
-### BasicUsage
+### Basic Usage
 
 <!-- example -->
 <BasicUsage />
 
-### Positioned popover
+### Position Area
+
+GPopover is positioned using css anchor positioning's `position-area` property.
+
+[MDN docs](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position-area)
 
 <!-- example -->
 <PositionedPopover />
+
+### Offsets
+
+You can use margins to offset popovers from their anchors. It will automatically flip when a position fallback is triggered.
+
+<!-- example -->
+<Offsets />
+
+### Open prop
+
+<!-- example -->
+<Open />
 
 ## API
 

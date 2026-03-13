@@ -1,48 +1,60 @@
-<script lang="ts" setup>
-import type { PopoverPosition } from "@/components/GPopover/types";
-import { ref } from "vue";
-
-const positions: PopoverPosition[] = [
-  "topCenter",
-  "topLeft",
-  "topRight",
-  "bottomCenter",
-  "bottomLeft",
-  "bottomRight",
-  "left",
-  "right",
-];
-const position = ref<PopoverPosition>("bottomCenter");
-</script>
-
 <template>
-  <div>
-    <select
-      name="position"
-      id="position"
-      v-model="position"
-      class="mb-4 rounded-md border px-3 py-2"
-    >
-      <option v-for="position in positions" :key="position" :value="position">
-        {{ position }}
-      </option>
-    </select>
-    <br />
-
-    <GButton style="anchor-name: --positioned-button" popovertarget="positioned-popover">
-      Open popover
+  <div class="flex flex-col items-start gap-2">
+    <GButton style="anchor-name: --positioned-button-1" popovertarget="positioned-popover-1">
+      bottom span-right
     </GButton>
     <GPopover
-      id="positioned-popover"
-      v-slot="{ close }"
-      anchor="--positioned-button"
-      :position="position"
-      open
+      id="positioned-popover-1"
+      anchor="--positioned-button-1"
+      position-area="bottom span-right"
+      class="card mt-1"
     >
-      <div class="rounded-xl border border-(--vp-c-divider) bg-(--vp-c-bg) p-3">
-        <p class="mb-3">This popover is in the {{ position }} position</p>
-        <GButton @click="close">Dismiss</GButton>
-      </div>
+      <p>Popovers can be positioned in the many ways using the css position-area property</p>
+    </GPopover>
+
+    <GButton style="anchor-name: --positioned-button-2" popovertarget="positioned-popover-2">
+      top span-left
+    </GButton>
+    <GPopover
+      id="positioned-popover-2"
+      anchor="--positioned-button-2"
+      position-area="top span-left"
+      class="card mb-1"
+    >
+      <p>Popovers can be positioned in the many ways using the css position-area property</p>
+    </GPopover>
+
+    <GButton style="anchor-name: --positioned-button-3" popovertarget="positioned-popover-3">
+      right span-top
+    </GButton>
+    <GPopover
+      id="positioned-popover-3"
+      anchor="--positioned-button-3"
+      position-area="right span-top"
+      class="card ml-1 w-64"
+    >
+      <p>Popovers can be positioned in the many ways using the css position-area property</p>
+    </GPopover>
+
+    <GButton style="anchor-name: --positioned-button-4" popovertarget="positioned-popover-4">
+      left span-bottom
+    </GButton>
+    <GPopover
+      id="positioned-popover-4"
+      anchor="--positioned-button-4"
+      position-area="left span-bottom"
+      class="card mr-1"
+    >
+      <p>Popovers can be positioned in the many ways using the css position-area property</p>
     </GPopover>
   </div>
 </template>
+
+<style scoped>
+.card {
+  border-radius: 4px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  padding: 1rem;
+}
+</style>

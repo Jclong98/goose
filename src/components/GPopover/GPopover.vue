@@ -1,15 +1,23 @@
 <script lang="ts" setup>
 import { onMounted, useTemplateRef, watch } from "vue";
 
-import type { PopoverPosition } from "./types";
+import type { PositionArea } from "./types";
 
 const props = withDefaults(
   defineProps<{
-    position?: PopoverPosition;
+    /**
+     * The position area of the popover. This determines where the popover will be positioned relative to its anchor.
+     * [See MDN for more details](https://developer.mozilla.org/en-US/docs/Web/CSS/position-area).
+     */
+    positionArea?: PositionArea;
+
+    /**
+     * The anchor name of the popover. This can be used to anchor the popover to any element with a matching `anchor-name` style property. For example, if `anchor="--my-anchor"`, the popover will be anchored to any element with `style="anchor-name: --my-anchor"`.
+     */
     anchor?: string;
   }>(),
   {
-    position: "bottomCenter",
+    positionArea: "bottom",
   },
 );
 
@@ -17,10 +25,7 @@ const isOpen = defineModel("open", { default: false });
 
 const popover = useTemplateRef("popover");
 
-const open = () => {
-  console.log("Opening popover");
-  popover.value?.showPopover();
-};
+const open = () => popover.value?.showPopover();
 const close = () => popover.value?.hidePopover();
 
 const onToggle = (event: ToggleEvent) => {
@@ -39,9 +44,9 @@ onMounted(() => {
     ref="popover"
     popover
     class="g-popover"
-    :class="[`--${props.position}`]"
     :style="{
-      'position-anchor': props.anchor,
+      positionAnchor: props.anchor,
+      positionArea: props.positionArea,
     }"
     @toggle="onToggle"
   >
@@ -55,9 +60,9 @@ onMounted(() => {
 
   border: none;
   background: transparent;
-  margin: 0;
+
+  /* reset popover styles */
   inset: unset;
-  /* white-space: nowrap; */
 
   /* position styling */
   position: fixed;
@@ -65,53 +70,5 @@ onMounted(() => {
     flip-block,
     flip-inline,
     flip-block flip-inline;
-
-  &.--topCenter {
-    justify-self: anchor-center;
-    bottom: anchor(top);
-    margin-block-end: var(--gap);
-  }
-
-  &.--topLeft {
-    bottom: anchor(top);
-    left: anchor(left);
-    margin-block-end: var(--gap);
-  }
-
-  &.--topRight {
-    bottom: anchor(top);
-    right: anchor(right);
-    margin-block-end: var(--gap);
-  }
-
-  &.--bottomCenter {
-    justify-self: anchor-center;
-    top: anchor(bottom);
-    margin-block-start: var(--gap);
-  }
-
-  &.--bottomLeft {
-    top: anchor(bottom);
-    left: anchor(left);
-    margin-block-start: var(--gap);
-  }
-
-  &.--bottomRight {
-    top: anchor(bottom);
-    right: anchor(right);
-    margin-block-start: var(--gap);
-  }
-
-  &.--left {
-    align-self: anchor-center;
-    right: anchor(left);
-    margin-inline-end: var(--gap);
-  }
-
-  &.--right {
-    align-self: anchor-center;
-    left: anchor(right);
-    margin-inline-start: var(--gap);
-  }
 }
 </style>
