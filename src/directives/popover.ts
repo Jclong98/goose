@@ -9,7 +9,7 @@ import type { Directive } from "vue";
  * To be paired with a popover, the value should match with the value of a corrosponding `v-popover` directive.
  * For example, if `v-popover="'my-popover'"`, the activator should use `v-popover-activator="'my-popover'"`.
  */
-export const vPopoverActivator: Directive<HTMLElement, string> = (el, binding) => {
+export const PopoverActivator: Directive<HTMLElement, string> = (el, binding) => {
   el.setAttribute("popovertarget", binding.value);
   el.style.setProperty("anchor-name", `--${binding.value}`);
 };
@@ -23,7 +23,7 @@ export const vPopoverActivator: Directive<HTMLElement, string> = (el, binding) =
  * To be paired with a popover, the value should match with the value of a corrosponding `v-popover-activator` directive.
  * For example, if `v-popover="'my-popover'"`, the activator should use `v-popover-activator="'my-popover'"`.
  */
-export const vPopover: Directive<HTMLElement, string> = (el, binding) => {
+export const Popover: Directive<HTMLElement, string> = (el, binding) => {
   el.setAttribute("id", binding.value);
   el.style.setProperty("position-anchor", `--${binding.value}`);
 };

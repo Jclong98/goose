@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { GButton, GPopover } from "./components";
 
-import { vPopover, vPopoverActivator } from "./directives";
+import { Popover as vPopover, PopoverActivator as vPopoverActivator } from "./directives";
 </script>
 
 <template>
