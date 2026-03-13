@@ -21,13 +21,13 @@ Returns a computed `product` of two reactive number values.
 
 ```vue
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useMultiplier } from '@goose-ui/core'
+import { ref } from "vue";
+import { useMultiplier } from "@goose-ui/core";
 
-const price = ref(10)
-const quantity = ref(3)
+const price = ref(10);
+const quantity = ref(3);
 
-const { product } = useMultiplier(price, quantity)
+const { product } = useMultiplier(price, quantity);
 // product.value === 30
 </script>
 
@@ -43,21 +43,21 @@ function useMultiplier(
   value: MaybeRefOrGetter<number>,
   multiplier: MaybeRefOrGetter<number>,
 ): {
-  product: ComputedRef<number>
-}
+  product: ComputedRef<number>;
+};
 ```
 
 ## Parameters
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `value` | `MaybeRefOrGetter<number>` | The base value. |
+| Parameter    | Type                       | Description     |
+| ------------ | -------------------------- | --------------- |
+| `value`      | `MaybeRefOrGetter<number>` | The base value. |
 | `multiplier` | `MaybeRefOrGetter<number>` | The multiplier. |
 
 ## Return value
 
-| Property | Type | Description |
-|----------|------|-------------|
+| Property  | Type                  | Description                              |
+| --------- | --------------------- | ---------------------------------------- |
 | `product` | `ComputedRef<number>` | Reactive result of `value * multiplier`. |
 
 ## Examples
@@ -65,13 +65,13 @@ function useMultiplier(
 ### With static values
 
 ```ts
-const { product } = useMultiplier(5, 4)
+const { product } = useMultiplier(5, 4);
 // product.value === 20
 ```
 
 ### With a getter
 
 ```ts
-const scale = ref(2)
-const { product } = useMultiplier(() => baseValue, scale)
+const scale = ref(2);
+const { product } = useMultiplier(() => baseValue, scale);
 ```

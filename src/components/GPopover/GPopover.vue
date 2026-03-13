@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, onMounted, useId, useTemplateRef, watch } from "vue";
+import { onMounted, useTemplateRef, watch } from "vue";
 
 import type { PopoverPosition } from "./types";
 
@@ -10,14 +10,17 @@ const props = withDefaults(
   }>(),
   {
     position: "bottomCenter",
-  }
+  },
 );
 
 const isOpen = defineModel("open", { default: false });
 
 const popover = useTemplateRef("popover");
 
-const open = () => popover.value?.showPopover();
+const open = () => {
+  console.log("Opening popover");
+  popover.value?.showPopover();
+};
 const close = () => popover.value?.hidePopover();
 
 const onToggle = (event: ToggleEvent) => {
@@ -32,9 +35,16 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="popover" popover class="g-popover" :class="[`--${props.position}`]" :style="{
-    'position-anchor': props.anchor,
-  }" @toggle="onToggle">
+  <div
+    ref="popover"
+    popover
+    class="g-popover"
+    :class="[`--${props.position}`]"
+    :style="{
+      'position-anchor': props.anchor,
+    }"
+    @toggle="onToggle"
+  >
     <slot :close="close"></slot>
   </div>
 </template>

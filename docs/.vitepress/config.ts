@@ -3,7 +3,7 @@ import { fileURLToPath } from "node:url";
 import Components from "unplugin-vue-components/vite";
 import { defineConfig } from "vitepress";
 import { componentMetaPlugin } from "./plugins/component-meta-plugin";
-import { exampleWrapperPlugin } from "./plugins/demo-block-plugin";
+import { exampleWrapperPlugin } from "./plugins/example-wrapper-plugin";
 
 const srcDir = fileURLToPath(new URL("../../src", import.meta.url));
 const docsDir = fileURLToPath(new URL("..", import.meta.url));

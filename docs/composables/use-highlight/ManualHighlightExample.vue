@@ -5,7 +5,10 @@ import { ref } from "vue";
 const container = ref<HTMLElement | null>(null);
 const query = ref("fox");
 
-const { highlight, clearHighlight } = useHighlight(container, query, { manual: true, cssHighlightKey: 'manual-highlight' });
+const { highlight, clearHighlight } = useHighlight(container, query, {
+  manual: true,
+  cssHighlightKey: "manual-highlight",
+});
 </script>
 
 <template>

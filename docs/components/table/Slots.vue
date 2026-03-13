@@ -10,17 +10,27 @@ const rows = [
   { name: "John Fallout", role: "Editor", status: "Pending" },
   { name: "John Doe", role: "Viewer", status: "Inactive" },
 ];
+
+function statusColor(status: string) {
+  switch (status) {
+    case "Active":
+      return "bg-green-100 text-green-500";
+    case "Pending":
+      return "bg-amber-100 text-amber-500";
+    case "Inactive":
+      return "bg-red-100 text-red-500";
+    default:
+      return "";
+  }
+}
 </script>
 
 <template>
   <GTable :columns="columns" :items="rows">
-    <template #status-header>
-      Status (but custom!)
-    </template>
+    <template #status-header> Status (but custom!) </template>
 
     <template #status-cell="{ item }">
-      <span class="font-semibold px-4 py-1 rounded-full"
-        :class="item.status === 'Active' ? 'text-green-500 bg-green-100' : item.status === 'Pending' ? 'text-amber-500 bg-amber-100' : 'text-red-500 bg-red-100'">
+      <span class="rounded-full px-4 py-1 font-semibold" :class="statusColor(item.status)">
         {{ item.status }}
       </span>
     </template>

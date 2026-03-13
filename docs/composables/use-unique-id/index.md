@@ -21,9 +21,9 @@ Returns a stable, unique ID for a component. Prefers an `id` passed via `$attrs`
 
 ```vue
 <script setup lang="ts">
-import { useUniqueId } from '@goose-ui/core'
+import { useUniqueId } from "@goose-ui/core";
 
-const id = useUniqueId()
+const id = useUniqueId();
 </script>
 
 <template>
@@ -42,11 +42,12 @@ If the parent passes an `id` attribute the same value is used, keeping the DOM p
 ## Signature
 
 ```ts
-function useUniqueId(): ComputedRef<string>
+function useUniqueId(): ComputedRef<string>;
 ```
 
 ## Return value
 
 A `ComputedRef<string>` that is:
+
 - the `id` from `$attrs` if provided by the caller, or
 - a Vue-generated unique ID otherwise.
