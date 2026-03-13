@@ -2,10 +2,11 @@
 import { computed } from "vue";
 import type { TableColumn } from "./types";
 
+type IntelliString = string & {};
 type RowKey = Extract<keyof TRow, string>;
 
 const props = defineProps<{
-  columns: TableColumn<RowKey>[];
+  columns: TableColumn<RowKey | IntelliString>[];
   items: TRow[];
 }>();
 
@@ -13,7 +14,7 @@ const gridTemplateColumns = computed(() =>
   props.columns.map((column) => column.width || "auto").join(" "),
 );
 
-function getPinClasses(column: TableColumn<RowKey>) {
+function getPinClasses(column: TableColumn<RowKey | IntelliString>) {
   return {
     "--pin": column.pin,
     "--pin-left": column.pin === "left",
@@ -22,11 +23,15 @@ function getPinClasses(column: TableColumn<RowKey>) {
 }
 
 type HeaderSlots = {
-  [K in TableColumn<RowKey> as `${K["key"]}-header`]?: (props: { column: K }) => void;
+  [K in TableColumn<RowKey | IntelliString> as `${K["key"]}-header`]?: (props: {
+    column: K;
+  }) => void;
 };
 
 type CellSlots = {
-  [K in TableColumn<RowKey> as `${K["key"]}-cell`]?: (props: { item: TRow }) => void;
+  [K in TableColumn<RowKey | IntelliString> as `${K["key"]}-cell`]?: (props: {
+    item: TRow;
+  }) => void;
 };
 
 defineSlots<HeaderSlots & CellSlots>();

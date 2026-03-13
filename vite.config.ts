@@ -30,13 +30,17 @@ export default defineConfig({
         components: resolvePath("./src/components/index.ts"),
         composables: resolvePath("./src/composables/index.ts"),
         directives: resolvePath("./src/directives/index.ts"),
+        integrations: resolvePath("./src/integrations/index.ts"),
       },
       name: "Goose",
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ["vue", "vue-router"],
+      external: (id) => {
+        if (id.startsWith("node:")) return true;
+        return ["vue", "vue-router"].includes(id);
+      },
       output: {
         // Provide global variables to use in the UMD build
         // for externalized deps
