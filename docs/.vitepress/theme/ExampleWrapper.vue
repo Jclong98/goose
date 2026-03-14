@@ -1,54 +1,33 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import ChevronUp from "./icons/ChevronUp.vue";
+import Code from "./icons/Code.vue";
 const showCode = ref(false);
 </script>
 
 <template>
   <div class="example-wrapper overflow-hidden rounded-lg border border-(--vp-c-divider)">
+    <!-- rendered example -->
     <div class="vp-raw p-2">
       <slot />
     </div>
+
+    <!-- code toggle button -->
     <div
       class="example-wrapper-actions flex border-t border-(--vp-c-divider)"
       :class="{ 'border-b': showCode }"
     >
       <button class="example-wrapper-toggle border-t" @click="showCode = !showCode">
-        <svg
-          v-if="!showCode"
-          xmlns="http://www.w3.org/2000/svg"
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <polyline points="16 18 22 12 16 6" />
-          <polyline points="8 6 2 12 8 18" />
-        </svg>
-        <svg
-          v-else
-          xmlns="http://www.w3.org/2000/svg"
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <polyline points="18 15 12 9 6 15" />
-        </svg>
-        {{ showCode ? "Hide source" : "View source" }}
+        <Code v-if="!showCode" />
+        <ChevronUp v-else />
+
+        {{ showCode ? "Hide code" : "View code" }}
       </button>
     </div>
+
+    <!-- code block -->
     <div class="code-block" :class="{ '--open': showCode }">
-      <slot name="source" />
+      <slot name="code" />
     </div>
   </div>
 </template>

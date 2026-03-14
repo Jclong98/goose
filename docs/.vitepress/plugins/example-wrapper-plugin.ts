@@ -41,7 +41,7 @@ export function exampleWrapperPlugin(): Plugin {
                 `<ClientOnly>`,
                 `<ExampleWrapper>`,
                 `<${name}${attrs ? " " + attrs.trim() : ""} />`,
-                `<template #source>`,
+                `<template #code>`,
                 "",
                 "```vue",
                 sources[name],
