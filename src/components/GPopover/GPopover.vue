@@ -98,4 +98,24 @@ defineExpose({
     flip-inline,
     flip-block flip-inline;
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .g-popover {
+    transition-duration: 0.2s;
+    transition-property: opacity, scale, display, overlay;
+    transition-behavior: allow-discrete;
+    opacity: 0;
+    scale: 0.95;
+
+    &:popover-open {
+      opacity: 1;
+      scale: 1;
+
+      @starting-style {
+        opacity: 0;
+        scale: 0.95;
+      }
+    }
+  }
+}
 </style>
