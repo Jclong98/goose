@@ -36,6 +36,7 @@ export default defineConfig({
         integrations: resolvePath("./src/integrations/index.ts"),
       },
       name: "Goose",
+      formats: ["es"],
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
