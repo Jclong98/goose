@@ -47,7 +47,7 @@ const showCode = ref(false);
         {{ showCode ? "Hide source" : "View source" }}
       </button>
     </div>
-    <div v-if="showCode" class="code-block">
+    <div class="code-block" :class="{ '--open': showCode }">
       <slot name="source" />
     </div>
   </div>
@@ -78,6 +78,16 @@ const showCode = ref(false);
 
 /* the only thing that should ever be in here is code so !important should be okay */
 .code-block {
+  interpolate-size: allow-keywords;
+
+  transition: height 0.2s ease;
+
+  height: 0;
+
+  &.--open {
+    height: auto;
+  }
+
   & > * {
     margin: 0 !important;
   }
