@@ -44,16 +44,12 @@ const sideClass = computed(() => `--${props.side}`);
   translate: var(--g-drawer-animation-translate);
 
   &:popover-open {
-    /* display: flex;
-    flex-direction: column; */
     opacity: 1;
     translate: none;
 
     @starting-style {
-      & {
-        opacity: 0;
-        translate: var(--g-drawer-animation-translate);
-      }
+      opacity: 0;
+      translate: var(--g-drawer-animation-translate);
     }
   }
 
