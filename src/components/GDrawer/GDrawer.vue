@@ -19,38 +19,62 @@ const sideClass = computed(() => `--${props.side}`);
 </script>
 
 <template>
-  <div :class="['g-side-panel', sideClass]" popover role="dialog" aria-modal="true">
+  <div :class="['g-drawer', sideClass]" popover role="dialog" aria-modal="true">
     <slot></slot>
   </div>
 </template>
 
 <style scoped>
-.g-side-panel {
+/* GDrawer Layout & Structure */
+.g-drawer {
+  /* Layout & Reset */
   border: none;
   margin: 0;
   inset: auto;
 
+  /* Anchor Positioning */
   position-anchor: v-bind("props.anchor");
 
+  /* Animation & Transition */
+  transition:
+    opacity 0.2s,
+    translate 0.2s,
+    display 0.2s allow-discrete;
+  opacity: 0;
+  translate: var(--g-drawer-animation-translate);
+
   &:popover-open {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
+    opacity: 1;
+    translate: none;
+
+    @starting-style {
+      & {
+        opacity: 0;
+        translate: var(--g-drawer-animation-translate);
+      }
+    }
   }
 
+  /* Side-specific Anchor Styles */
   &.--left {
+    --g-drawer-animation-translate: -100%;
     left: anchor(left);
     top: anchor(top);
     height: anchor-size();
   }
 
   &.--right {
+    --g-drawer-animation-translate: 100%;
     right: anchor(right);
     top: anchor(top);
     height: anchor-size();
   }
 }
 
-.g-side-panel::backdrop {
+/* Backdrop Styling */
+.g-drawer::backdrop {
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
 
