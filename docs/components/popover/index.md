@@ -27,7 +27,7 @@ Using the mode prop, you can open popovers by hovering/focusing the activator by
 
 ### Manual Registration
 
-If you don't want to bind the style directly from the exposed `activatorBinding`, you can register the position anchor and popover target manually.
+If you don't want to bind the activator with a slot for layout or other reasons, you can manually register the anchor style and popovertarget/interestfor attributes manually, or use `templateRef` to access the `activatorBinding` to connect an activator to a popover.
 
 <!-- example -->
 <ManualRegistration />
