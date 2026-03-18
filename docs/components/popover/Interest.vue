@@ -3,7 +3,7 @@ import { GButton, GPopover } from "@/components";
 </script>
 
 <template>
-  <GPopover>
+  <GPopover mode="interest">
     <template #activator="{ binding }">
       <GButton v-bind="binding"> Open popover </GButton>
     </template>

@@ -4,6 +4,8 @@ import { computed, onMounted, useTemplateRef, watch } from "vue";
 import { useUniqueId } from "@/composables";
 import type { PositionArea } from "./types";
 
+defineOptions({ inheritAttrs: false });
+
 const props = withDefaults(
   defineProps<{
     /**
@@ -18,7 +20,7 @@ const props = withDefaults(
     anchor?: string;
 
     /** switch between the popovertarget and interestfor attributes */
-    mode?: "click" | "hover";
+    mode?: "click" | "interest";
   }>(),
   {
     positionArea: "bottom",
@@ -70,7 +72,9 @@ defineExpose({
 </script>
 
 <template>
+  <slot name="activator" :binding="activatorBinding"></slot>
   <div
+    v-bind="$attrs"
     ref="popover"
     popover
     class="g-popover"

@@ -4,6 +4,7 @@ import PositionedPopover from './PositionedPopover.vue'
 import Offsets from './Offsets.vue'
 import Open from './Open.vue'
 import ManualRegistration from './ManualRegistration.vue'
+import Interest from './Interest.vue'
 </script>
 
 # GPopover
@@ -16,6 +17,13 @@ A flexible popover component built on the native [Popover API](https://developer
 
 <!-- example -->
 <BasicUsage />
+
+### Interest mode
+
+Using the mode prop, you can open popovers by hovering/focusing the activator by setting `mode="interest"`
+
+<!-- example -->
+<Interest />
 
 ### Manual Registration
 

@@ -26,7 +26,7 @@ const showCode = ref(false);
     </div>
 
     <!-- code block -->
-    <div class="code-block" :class="{ '--open': showCode }">
+    <div v-if="showCode" class="code-block">
       <slot name="code" />
     </div>
   </div>
@@ -61,14 +61,14 @@ const showCode = ref(false);
 
   transition: height 0.2s ease;
 
-  height: 0;
-
-  &.--open {
-    height: auto;
-  }
+  height: auto;
 
   & > * {
     margin: 0 !important;
+  }
+
+  @starting-style {
+    height: 0;
   }
 }
 </style>

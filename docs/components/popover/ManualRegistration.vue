@@ -3,16 +3,9 @@
     Open popover
   </GButton>
 
-  <GPopover id="manual-popover" anchor="--manual-button" class="card mt-1">
-    <p>Popovers have position-area="bottom" by default.</p>
+  <GPopover id="manual-popover" anchor="--manual-button">
+    <div class="card">
+      <p>Manually registered popovers require specifying both the anchor and the popover ID.</p>
+    </div>
   </GPopover>
 </template>
-
-<style scoped>
-.card {
-  border-radius: 4px;
-  border: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg);
-  padding: 1rem;
-}
-</style>

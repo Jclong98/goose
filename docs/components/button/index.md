@@ -1,5 +1,5 @@
 <script setup>
-import BasicButtonExample from './BasicButtonExample.vue'
+import BasicUsage from './BasicUsage.vue'
 </script>
 
 # GButton
@@ -11,7 +11,7 @@ A simple styled button component.
 ### Basic Usage
 
 <!-- example -->
-<BasicButtonExample />
+<BasicUsage />
 
 ## API
 
