@@ -16,10 +16,14 @@ const props = withDefaults(
      * The anchor name of the popover. This can be used to anchor the popover to any element with a matching `anchor-name` style property. For example, if `anchor="--my-anchor"`, the popover will be anchored to any element with `style="anchor-name: --my-anchor"`.
      */
     anchor?: string;
+
+    /** switch between the popovertarget and interestfor attributes */
+    mode?: "click" | "hover";
   }>(),
   {
     positionArea: "bottom",
     anchor: undefined,
+    mode: "click",
   },
 );
 
@@ -46,7 +50,7 @@ const activatorBinding = computed(() => ({
   style: {
     "anchor-name": anchorName.value,
   },
-  popovertarget: id.value,
+  [props.mode === "click" ? "popovertarget" : "interestfor"]: id.value,
 }));
 
 defineExpose({
