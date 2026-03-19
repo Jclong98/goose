@@ -1,17 +1,39 @@
 <script setup lang="ts">
-import { GButton, GPopover } from "./components";
+import GTimeline from "./components/GTimeline/GTimeline.vue";
+import GTimelineItem from "./components/GTimeline/GTimelineItem.vue";
 </script>
 
 <template>
-  <div class="grid h-screen w-screen place-content-center">
-    <GPopover open>
-      <template #activator="{ binding }">
-        <GButton v-bind="binding"> Open popover </GButton>
-      </template>
+  <div>
+    <GTimeline>
+      <GTimelineItem state="completed">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga facilis sunt porro?
+          Aspernatur quasi id vero vitae sapiente totam inventore ducimus, voluptatem, ea sed aut
+          delectus porro velit laudantium officia?
+        </p>
+      </GTimelineItem>
 
-      <div class="mt-2 rounded border border-gray-500 p-4">
-        <p>A more streamlined way to connect popovers to their activators</p>
-      </div>
-    </GPopover>
+      <GTimelineItem state="active">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga facilis sunt porro?
+          Aspernatur quasi id vero vitae sapiente totam inventore ducimus, voluptatem, ea sed aut
+          delectus porro velit laudantium officia?
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga facilis sunt porro?
+          Aspernatur quasi id vero vitae sapiente totam inventore ducimus, voluptatem, ea sed aut
+          delectus porro velit laudantium officia?
+        </p>
+      </GTimelineItem>
+
+      <GTimelineItem state="pending">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga facilis sunt porro?
+          Aspernatur quasi id vero vitae sapiente totam inventore ducimus, voluptatem, ea sed aut
+          delectus porro velit laudantium officia?
+        </p>
+      </GTimelineItem>
+    </GTimeline>
   </div>
 </template>

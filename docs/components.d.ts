@@ -17,6 +17,9 @@ declare module 'vue' {
     GSegmentedControl: typeof import('./../src/components/GSegmentedControl/GSegmentedControl.vue')['default']
     GSelect: typeof import('./../src/components/GSelect/GSelect.vue')['default']
     GTable: typeof import('./../src/components/GTable/GTable.vue')['default']
+    GTimeline: typeof import('./../src/components/GTimeline/GTimeline.vue')['default']
+    GTimelineItem: typeof import('./../src/components/GTimeline/GTimelineItem.vue')['default']
+    GTimelineLine: typeof import('./../src/components/GTimeline/GTimelineLine.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

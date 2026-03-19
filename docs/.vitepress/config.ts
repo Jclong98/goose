@@ -52,6 +52,7 @@ export default defineConfig({
           { text: "GSegmentedControl", link: "/components/segmented-control/index" },
           { text: "GTable", link: "/components/table/index" },
           { text: "GSelect", link: "/components/select/index" },
+          { text: "GTimeline", link: "/components/timeline/index" },
         ],
       },
       {
