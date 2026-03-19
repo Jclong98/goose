@@ -1,5 +1,6 @@
 <script setup>
 import BasicUsage from './BasicUsage.vue'
+import DynamicItems from './DynamicItems.vue'
 </script>
 
 # GTimeline
@@ -10,6 +11,11 @@ import BasicUsage from './BasicUsage.vue'
 
 <!-- example -->
 <BasicUsage />
+
+### Adding/Removing Items
+
+<!-- example -->
+<DynamicItems />
 
 ## API
 

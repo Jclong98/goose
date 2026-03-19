@@ -8,10 +8,9 @@ const props = defineProps<{
 </script>
 
 <template>
-  <!-- @vue-ignore -->
   <div
     :key="props.item.id"
-    class="timeline__line"
+    class="timeline-line"
     :class="[
       `--${props.item.state}`,
       {
@@ -19,17 +18,20 @@ const props = defineProps<{
       },
     ]"
     aria-hidden="true"
-  ></div>
+  >
+    <div class="timeline-line__indicator"></div>
+  </div>
 </template>
 
 <style scoped>
-.timeline__line {
+.timeline-line {
+  --indicator-color: var(--color-gray-300);
   position: absolute;
-  top: anchor(v-bind("props.previousAnchorName") 50%);
+  top: calc(anchor(v-bind("props.previousAnchorName") 50%) + 0.5rem);
   bottom: anchor(v-bind("props.item.anchorName") 50%);
   left: calc(anchor(v-bind("props.item.anchorName") left) - 1rem);
 
-  border: 1px solid black;
+  border: 1px solid var(--indicator-color);
   width: 2px;
 
   &.--no-previous {
@@ -37,16 +39,26 @@ const props = defineProps<{
   }
 
   &.--completed {
-    border-color: var(--color-blue-300);
+    --indicator-color: var(--color-blue-300);
   }
 
   &.--active {
-    border-color: var(--color-orange-300);
+    --indicator-color: var(--color-orange-300);
   }
 
   &.--pending {
     border-style: dashed;
-    border-color: var(--color-gray-300);
   }
+}
+
+.timeline-line__indicator {
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 100vw;
+  background-color: var(--indicator-color);
 }
 </style>

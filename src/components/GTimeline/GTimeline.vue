@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { useUniqueId } from "@/composables";
 import { provide, ref } from "vue";
 import GTimelineLine from "./GTimelineLine.vue";
 import { TimelineInjectionKey, type TimelineItem } from "./types";
@@ -23,7 +24,7 @@ function findPreviousAnchorName(id: string) {
 </script>
 
 <template>
-  <div class="g-timeline">
+  <ul class="g-timeline">
     <GTimelineLine
       v-for="item in items.values()"
       :key="item.id"
@@ -32,7 +33,7 @@ function findPreviousAnchorName(id: string) {
     ></GTimelineLine>
 
     <slot></slot>
-  </div>
+  </ul>
 </template>
 
 <style scoped>
