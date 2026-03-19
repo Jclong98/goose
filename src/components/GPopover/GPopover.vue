@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, onMounted, useTemplateRef, watch } from "vue";
+import { computed, onMounted, useTemplateRef, watch, type IntrinsicElementAttributes } from "vue";
 
 import { useUniqueId } from "@/composables";
 import type { PositionArea } from "./types";
@@ -29,7 +29,7 @@ const props = withDefaults(
   },
 );
 
-const isOpen = defineModel("open", { default: false });
+const isOpen = defineModel<boolean>("open");
 
 const popover = useTemplateRef("popover");
 
@@ -73,18 +73,8 @@ defineExpose({
 
 <template>
   <slot name="activator" :binding="activatorBinding"></slot>
-  <div
-    v-bind="$attrs"
-    ref="popover"
-    popover
-    class="g-popover"
-    :id="id"
-    :style="{
-      positionAnchor: props.anchor ?? anchorName,
-      positionArea: props.positionArea,
-    }"
-    @toggle="onToggle"
-  >
+
+  <div v-bind="$attrs" ref="popover" popover class="g-popover" :id="id" @toggle="onToggle">
     <slot :close="close" :id="id"></slot>
   </div>
 </template>
@@ -101,6 +91,8 @@ defineExpose({
 
   /* position styling */
   position: fixed;
+  position-anchor: v-bind("props.anchor ?? anchorName");
+  position-area: v-bind("positionArea");
   position-try-fallbacks:
     flip-block,
     flip-inline,
