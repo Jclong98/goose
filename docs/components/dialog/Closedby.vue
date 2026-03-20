@@ -10,7 +10,7 @@
 
       <template #default="{ closeBinding }">
         <div class="card">
-          <p>This dialog can only be close by clicking the close button or by using javascript.</p>
+          <p>This dialog can only be closed by clicking the close button or by using javascript.</p>
 
           <div>
             <GButton v-bind="closeBinding">close</GButton>
