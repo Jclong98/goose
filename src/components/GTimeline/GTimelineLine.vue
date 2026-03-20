@@ -21,7 +21,6 @@ const props = defineProps<{
   >
     <svg
       class="g-timeline-line__svg"
-      :class="[`--${props.item.state}`]"
       viewBox="0 0 2 100"
       preserveAspectRatio="none"
       aria-hidden="true"
@@ -33,10 +32,10 @@ const props = defineProps<{
         y2="100"
         stroke="currentColor"
         stroke-width="2"
-        :stroke-dasharray="props.item.state === 'pending' ? '6,6' : '0'"
+        :stroke-dasharray="props.item.state === 'pending' ? '8,4' : '0'"
       />
     </svg>
-    <div class="g-timeline-line__indicator"></div>
+    <div class="g-timeline-line__circle"></div>
   </div>
 </template>
 
@@ -55,32 +54,32 @@ const props = defineProps<{
   }
 
   &.--completed {
-    --indicator-color: var(--color-blue-300);
+    --timeline-color: var(--color-blue-300);
   }
 
   &.--active {
-    --indicator-color: var(--color-orange-300);
+    --timeline-color: var(--color-orange-300);
   }
 
   &.--pending {
-    --indicator-color: var(--color-gray-300);
+    --timeline-color: var(--color-gray-300);
   }
-}
 
-.g-timeline-line__svg {
-  width: 2px;
-  height: 100%;
-  color: var(--indicator-color);
-}
+  & .g-timeline-line__svg {
+    width: 2px;
+    height: 100%;
+    color: var(--timeline-color, currentColor);
+  }
 
-.g-timeline-line__indicator {
-  position: absolute;
-  bottom: -0.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1rem;
-  height: 1rem;
-  border-radius: 100vw;
-  background-color: var(--indicator-color);
+  & .g-timeline-line__circle {
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1rem;
+    height: 1rem;
+    border-radius: 100vw;
+    background-color: var(--timeline-color, currentColor);
+  }
 }
 </style>
