@@ -10,7 +10,7 @@ const props = defineProps<{
 <template>
   <div
     :key="props.item.id"
-    class="timeline-line"
+    class="g-timeline-line"
     :class="[
       `--${props.item.state}`,
       {
@@ -19,20 +19,36 @@ const props = defineProps<{
     ]"
     aria-hidden="true"
   >
-    <div class="timeline-line__indicator"></div>
+    <svg
+      class="g-timeline-line__svg"
+      :class="[`--${props.item.state}`]"
+      viewBox="0 0 2 100"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <line
+        x1="1"
+        y1="0"
+        x2="1"
+        y2="100"
+        stroke="currentColor"
+        stroke-width="2"
+        :stroke-dasharray="props.item.state === 'pending' ? '6,6' : '0'"
+      />
+    </svg>
+    <div class="g-timeline-line__indicator"></div>
   </div>
 </template>
 
 <style scoped>
-.timeline-line {
-  --indicator-color: var(--color-gray-300);
+.g-timeline-line {
   position: absolute;
   top: calc(anchor(v-bind("props.previousAnchorName") 50%) + 0.5rem);
   bottom: anchor(v-bind("props.item.anchorName") 50%);
   left: calc(anchor(v-bind("props.item.anchorName") left) - 1rem);
-
-  border: 1px solid var(--indicator-color);
   width: 2px;
+  height: auto;
+  pointer-events: none;
 
   &.--no-previous {
     top: anchor(v-bind("props.item.anchorName") top);
@@ -47,11 +63,17 @@ const props = defineProps<{
   }
 
   &.--pending {
-    border-style: dashed;
+    --indicator-color: var(--color-gray-300);
   }
 }
 
-.timeline-line__indicator {
+.g-timeline-line__svg {
+  width: 2px;
+  height: 100%;
+  color: var(--indicator-color);
+}
+
+.g-timeline-line__indicator {
   position: absolute;
   bottom: -0.5rem;
   left: 50%;
