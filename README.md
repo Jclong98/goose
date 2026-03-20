@@ -19,7 +19,7 @@ pnpm add @jclong98/goose
 
 ## Usage
 
-### Register Components Globally
+### Auto Import Components
 
 ```ts
 // vite.config.ts
@@ -32,6 +32,25 @@ export default defineConfig({
     // https://github.com/unplugin/unplugin-vue-components
     Components({
       resolvers: [GooseVueComponentsResolver],
+    }),
+  ],
+});
+```
+
+### Auto Import Composables and Directives
+
+```ts
+// vite.config.ts
+import { defineConfig } from "vite";
+import AutoImport from "unplugin-auto-import/vite";
+
+import { GooseAutoImports } from "@jclong98/goose/integrations";
+
+export default defineConfig({
+  plugins: [
+    // https://github.com/unplugin/unplugin-auto-import
+    AutoImport({
+      imports: [GooseAutoImports],
     }),
   ],
 });

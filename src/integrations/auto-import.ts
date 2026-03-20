@@ -1,5 +1,5 @@
-import * as composables from "@jclong98/goose/composables";
-import * as directives from "@jclong98/goose/directives";
+import * as composables from "@/composables";
+import * as directives from "@/directives";
 
 import { defineUnimportPreset } from "unimport";
 
