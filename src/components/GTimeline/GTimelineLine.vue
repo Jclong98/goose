@@ -26,16 +26,19 @@ const props = defineProps<{
 
 <style scoped>
 .g-timeline-line {
+  --previous-anchor-name: v-bind("props.previousAnchorName");
+  --anchor-name: v-bind("props.item.anchorName");
+
   position: absolute;
-  top: calc(anchor(v-bind("props.previousAnchorName") 50%) + 0.5rem);
-  bottom: anchor(v-bind("props.item.anchorName") 50%);
-  left: calc(anchor(v-bind("props.item.anchorName") left) - 1rem);
+  top: calc(anchor(var(--previous-anchor-name) 50%) + 0.5rem);
+  bottom: anchor(var(--anchor-name) 50%);
+  left: calc(anchor(var(--anchor-name) left) - 1rem);
   width: 2px;
   height: auto;
   pointer-events: none;
 
   &.--no-previous {
-    top: anchor(v-bind("props.item.anchorName") top);
+    top: anchor(var(--anchor-name) top);
   }
 
   &.--completed {
