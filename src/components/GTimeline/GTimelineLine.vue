@@ -28,17 +28,16 @@ const props = defineProps<{
 .g-timeline-line {
   --previous-anchor-name: v-bind("props.previousAnchorName");
   --anchor-name: v-bind("props.item.anchorName");
+  --circle-radius: 0.5rem;
+  --circle-diameter: calc(var(--circle-radius) * 2);
 
   position: absolute;
-  top: calc(anchor(var(--previous-anchor-name) 50%) + 0.5rem);
+  top: calc(anchor(var(--previous-anchor-name) 50%) + var(--circle-radius));
   bottom: anchor(var(--anchor-name) 50%);
   left: calc(anchor(var(--anchor-name) left) - 1rem);
-  width: 2px;
-  height: auto;
-  pointer-events: none;
 
   &.--no-previous {
-    top: anchor(var(--anchor-name) top);
+    top: 0;
   }
 
   &.--completed {
@@ -62,11 +61,11 @@ const props = defineProps<{
 
   & .g-timeline-line__circle {
     position: absolute;
-    bottom: -0.5rem;
+    bottom: calc(-1 * var(--circle-radius));
     left: 50%;
-    transform: translateX(-50%);
-    width: 1rem;
-    height: 1rem;
+    translate: -50% 0;
+    width: var(--circle-diameter);
+    height: var(--circle-diameter);
     border-radius: 100vw;
     background-color: var(--timeline-color, currentColor);
   }

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { useUniqueId } from "@/composables";
 import { provide, ref } from "vue";
 import GTimelineLine from "./GTimelineLine.vue";
 import { TimelineInjectionKey, type TimelineItem } from "./types";
