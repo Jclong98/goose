@@ -19,22 +19,7 @@ const props = defineProps<{
     ]"
     aria-hidden="true"
   >
-    <svg
-      class="g-timeline-line__svg"
-      viewBox="0 0 2 100"
-      preserveAspectRatio="none"
-      aria-hidden="true"
-    >
-      <line
-        x1="1"
-        y1="0"
-        x2="1"
-        y2="100"
-        stroke="currentColor"
-        stroke-width="2"
-        :stroke-dasharray="props.item.state === 'pending' ? '8,4' : '0'"
-      />
-    </svg>
+    <div class="g-timeline-line__line"></div>
     <div class="g-timeline-line__circle"></div>
   </div>
 </template>
@@ -63,12 +48,13 @@ const props = defineProps<{
 
   &.--pending {
     --timeline-color: var(--color-gray-300);
+    --border-style: dashed;
   }
 
-  & .g-timeline-line__svg {
+  & .g-timeline-line__line {
     width: 2px;
     height: 100%;
-    color: var(--timeline-color, currentColor);
+    border-left: 2px var(--border-style, solid) var(--timeline-color, currentColor);
   }
 
   & .g-timeline-line__circle {
