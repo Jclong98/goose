@@ -12,6 +12,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     GButton: typeof import('./../src/components/GButton/GButton.vue')['default']
+    GDialog: typeof import('./../src/components/GDialog/GDialog.vue')['default']
     GDrawer: typeof import('./../src/components/GDrawer/GDrawer.vue')['default']
     GPopover: typeof import('./../src/components/GPopover/GPopover.vue')['default']
     GSegmentedControl: typeof import('./../src/components/GSegmentedControl/GSegmentedControl.vue')['default']

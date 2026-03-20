@@ -49,6 +49,7 @@ export default defineConfig({
           { text: "GButton", link: "/components/button/index" },
           { text: "GDrawer", link: "/components/drawer/index" },
           { text: "GPopover", link: "/components/popover/index" },
+          { text: "GDialog", link: "/components/dialog/index" },
           { text: "GSegmentedControl", link: "/components/segmented-control/index" },
           { text: "GTable", link: "/components/table/index" },
           { text: "GSelect", link: "/components/select/index" },

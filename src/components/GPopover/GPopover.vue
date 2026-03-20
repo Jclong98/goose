@@ -54,6 +54,10 @@ const activatorBinding = computed(() => ({
   },
   [props.mode === "click" ? "popovertarget" : "interestfor"]: id.value,
 }));
+const closeBinding = computed(() => ({
+  popovertarget: id.value,
+  command: "hide-popover",
+}));
 
 defineExpose({
   open,
@@ -72,10 +76,10 @@ defineExpose({
 </script>
 
 <template>
-  <slot name="activator" :binding="activatorBinding"></slot>
+  <slot name="activator" :id :binding="activatorBinding"></slot>
 
   <div v-bind="$attrs" ref="popover" popover class="g-popover" :id="id" @toggle="onToggle">
-    <slot :close="close" :id="id"></slot>
+    <slot :id :close-binding></slot>
   </div>
 </template>
 
