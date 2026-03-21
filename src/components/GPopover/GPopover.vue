@@ -13,11 +13,14 @@ const props = withDefaults(
      * [See MDN for more details](https://developer.mozilla.org/en-US/docs/Web/CSS/position-area).
      */
     positionArea?: PositionArea;
-
     /**
      * The anchor name of the popover. This can be used to anchor the popover to any element with a matching `anchor-name` style property. For example, if `anchor="--my-anchor"`, the popover will be anchored to any element with `style="anchor-name: --my-anchor"`.
      */
     anchor?: string;
+    /** sets the minimum width of the popover to match the anchor */
+    minWAnchor?: boolean;
+    /** sets the minimum height of the popover to match the anchor */
+    minHAnchor?: boolean;
 
     /** switch between the popovertarget and interestfor attributes */
     mode?: "click" | "interest";
@@ -26,6 +29,8 @@ const props = withDefaults(
     positionArea: "bottom",
     anchor: undefined,
     mode: "click",
+    minWAnchor: false,
+    minHAnchor: false,
   },
 );
 
@@ -76,9 +81,20 @@ defineExpose({
 </script>
 
 <template>
-  <slot name="activator" :id :binding="activatorBinding"></slot>
+  <slot name="activator" :id :binding="activatorBinding" :close :open></slot>
 
-  <div v-bind="$attrs" ref="popover" popover class="g-popover" :id="id" @toggle="onToggle">
+  <div
+    v-bind="$attrs"
+    ref="popover"
+    popover
+    class="g-popover"
+    :class="{
+      '--min-w-anchor': props.minWAnchor,
+      '--min-h-anchor': props.minHAnchor,
+    }"
+    :id="id"
+    @toggle="onToggle"
+  >
     <slot :id :close-binding></slot>
   </div>
 </template>
@@ -101,6 +117,15 @@ defineExpose({
     flip-block,
     flip-inline,
     flip-block flip-inline;
+
+  /* size styling */
+  &.--min-w-anchor {
+    min-width: anchor-size(width);
+  }
+
+  &.--min-h-anchor {
+    min-height: anchor-size(height);
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {

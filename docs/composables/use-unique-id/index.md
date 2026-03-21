@@ -11,38 +11,21 @@ Returns a stable, unique ID for a component. Prefers an `id` passed via `$attrs`
 
 ### Generated ID
 
+<!-- example -->
 <GeneratedIdExample />
 
 ### Consumer-provided ID
 
+<!-- example -->
 <ProvidedIdExample id="provided-id-example" />
 
 ## Usage
-
-```vue
-<script setup lang="ts">
-import { useUniqueId } from "@goose-ui/core";
-
-const id = useUniqueId();
-</script>
-
-<template>
-  <label :for="id">Name</label>
-  <input :id="id" type="text" />
-</template>
-```
 
 If the parent passes an `id` attribute the same value is used, keeping the DOM predictable:
 
 ```vue
 <!-- parent -->
 <MyInput id="user-name" />
-```
-
-## Signature
-
-```ts
-function useUniqueId(): ComputedRef<string>;
 ```
 
 ## Return value

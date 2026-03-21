@@ -30,3 +30,4 @@ coverage
 *.tsbuildinfo
 
 **/.vitepress/cache
+**/components.d.ts

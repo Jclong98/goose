@@ -5,7 +5,7 @@ const jsPopover = useTemplateRef("jsPopover");
 </script>
 
 <template>
-  <div class="flex gap-2">
+  <div class="flex flex-col items-start gap-2">
     <!-- no js -->
     <GButton style="anchor-name: --manual-button" popovertarget="manual-popover">
       Open popover no js

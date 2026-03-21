@@ -11,8 +11,6 @@ const publicDir = fileURLToPath(new URL("../../public", import.meta.url));
 const componentsDir = fileURLToPath(new URL("../../src/components", import.meta.url));
 const tsConfigPath = fileURLToPath(new URL("../../tsconfig.json", import.meta.url));
 
-console.log(srcDir);
-
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Goose UI",
@@ -47,20 +45,19 @@ export default defineConfig({
         text: "Components",
         items: [
           { text: "GButton", link: "/components/button/index" },
-          { text: "GDrawer", link: "/components/drawer/index" },
           { text: "GPopover", link: "/components/popover/index" },
           { text: "GDialog", link: "/components/dialog/index" },
+          { text: "GDrawer", link: "/components/drawer/index" },
           { text: "GSegmentedControl", link: "/components/segmented-control/index" },
           { text: "GTable", link: "/components/table/index" },
-          { text: "GSelect", link: "/components/select/index" },
           { text: "GTimeline", link: "/components/timeline/index" },
+          { text: "GSelect", link: "/components/select/index" },
         ],
       },
       {
         text: "Composables",
         items: [
           { text: "useHighlight", link: "/composables/use-highlight/index" },
-          { text: "useMultiplier", link: "/composables/use-multiplier/index" },
           { text: "useUniqueId", link: "/composables/use-unique-id/index" },
         ],
       },
