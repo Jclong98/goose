@@ -41,6 +41,7 @@ const props = withDefaults(
   &.--secondary {
     background-color: #eee;
     color: black;
+    border: 1px solid #ccc;
 
     &:hover {
       background-color: #ddd;

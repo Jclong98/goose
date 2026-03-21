@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-2">
+  <div class="flex flex-wrap gap-2">
     <GButton variant="primary">Primary</GButton>
     <GButton variant="secondary">Secondary (default)</GButton>
     <GButton variant="ghost">Ghost</GButton>
