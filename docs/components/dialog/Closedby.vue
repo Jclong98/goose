@@ -8,12 +8,12 @@
         <GButton v-bind="binding">none</GButton>
       </template>
 
-      <template #default="{ closeBinding }">
+      <template #default="{ cancelBinding }">
         <div class="card">
           <p>This dialog can only be closed by clicking the close button or by using javascript.</p>
 
           <div>
-            <GButton v-bind="closeBinding">close</GButton>
+            <GButton v-bind="cancelBinding">close</GButton>
           </div>
         </div>
       </template>
@@ -25,7 +25,7 @@
         <GButton v-bind="binding">close-request</GButton>
       </template>
 
-      <template #default="{ closeBinding }">
+      <template #default="{ cancelBinding }">
         <div class="card">
           <p>
             This dialog can be closed by clicking the close button, by using javascript, or by
@@ -33,7 +33,7 @@
           </p>
 
           <div>
-            <GButton v-bind="closeBinding">close</GButton>
+            <GButton v-bind="cancelBinding">close</GButton>
           </div>
         </div>
       </template>
@@ -45,7 +45,7 @@
         <GButton v-bind="binding">any</GButton>
       </template>
 
-      <template #default="{ closeBinding }">
+      <template #default="{ cancelBinding }">
         <div class="card">
           <p>
             This dialog can be closed by clicking the close button, by using javascript, by pressing
@@ -53,7 +53,7 @@
           </p>
 
           <div>
-            <GButton v-bind="closeBinding">close</GButton>
+            <GButton v-bind="cancelBinding">close</GButton>
           </div>
         </div>
       </template>

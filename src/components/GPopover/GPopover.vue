@@ -24,6 +24,8 @@ const props = withDefaults(
 
     /** switch between the popovertarget and interestfor attributes */
     mode?: "click" | "interest";
+
+    is?: string;
   }>(),
   {
     positionArea: "bottom",
@@ -31,12 +33,13 @@ const props = withDefaults(
     mode: "click",
     minWAnchor: false,
     minHAnchor: false,
+    is: "div",
   },
 );
 
 const isOpen = defineModel<boolean>("open");
 
-const popover = useTemplateRef("popover");
+const popover = useTemplateRef<HTMLElement>("popover");
 
 const open = () => popover.value?.showPopover();
 const close = () => popover.value?.hidePopover();
@@ -83,7 +86,8 @@ defineExpose({
 <template>
   <slot name="activator" :id :binding="activatorBinding" :close :open></slot>
 
-  <div
+  <component
+    :is="props.is"
     v-bind="$attrs"
     ref="popover"
     popover
@@ -96,15 +100,12 @@ defineExpose({
     @toggle="onToggle"
   >
     <slot :id :close-binding></slot>
-  </div>
+  </component>
 </template>
 
 <style scoped>
 .g-popover {
   --gap: 0.5rem;
-
-  border: none;
-  background: transparent;
 
   /* reset popover styles */
   inset: unset;

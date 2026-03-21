@@ -9,7 +9,7 @@ import { GButton, GDialog } from "@/components";
         <GButton v-bind="binding">Open dialog</GButton>
       </template>
 
-      <template #default="{ closeBinding }">
+      <template #default="{ cancelBinding }">
         <div class="card">
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus saepe error
@@ -21,7 +21,7 @@ import { GButton, GDialog } from "@/components";
           </p>
 
           <div>
-            <GButton v-bind="closeBinding">close</GButton>
+            <GButton v-bind="cancelBinding">close</GButton>
           </div>
         </div>
       </template>

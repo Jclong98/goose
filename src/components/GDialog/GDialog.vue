@@ -22,6 +22,10 @@ const props = withDefaults(
 
 const isOpen = defineModel<boolean>("open");
 
+const emit = defineEmits<{
+  toggle: [event: ToggleEvent];
+}>();
+
 const dialogElement = useTemplateRef("dialogElement");
 const open = () => dialogElement.value?.showModal();
 const close = () => dialogElement.value?.close();
@@ -42,7 +46,7 @@ const activatorBinding = computed(() => ({
   command: "show-modal",
 }));
 
-const closeBinding = computed(() => ({
+const cancelBinding = computed(() => ({
   commandfor: id.value,
   command: "request-close",
 }));
@@ -58,15 +62,23 @@ const closeBinding = computed(() => ({
     @toggle="onToggle"
     :closedby="props.closedby"
   >
-    <slot :closeBinding="closeBinding"></slot>
+    <slot :cancelBinding="cancelBinding"></slot>
   </dialog>
 </template>
 
 <style scoped>
 .g-dialog {
-  left: 50%;
-  top: 50%;
-  translate: -50% -50%;
   background: transparent;
+  max-width: unset;
+  width: min(95vw, 600px);
+  max-height: 95dvh;
+  margin: auto;
+}
+</style>
+
+<style>
+/* global style to disable scrolling when a dialog is open */
+html:has(.g-dialog[open]) {
+  overflow: hidden;
 }
 </style>
