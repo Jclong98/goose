@@ -1,9 +1,7 @@
 <script lang="ts" setup>
-type ButtonVariant = "primary" | "secondary" | "ghost" | "link";
-
 const props = withDefaults(
   defineProps<{
-    variant?: ButtonVariant;
+    variant?: "primary" | "secondary" | "ghost" | "link";
   }>(),
   {
     variant: "secondary",
