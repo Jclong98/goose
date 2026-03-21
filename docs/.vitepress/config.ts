@@ -59,6 +59,7 @@ export default defineConfig({
         items: [
           { text: "useHighlight", link: "/composables/use-highlight/index" },
           { text: "useUniqueId", link: "/composables/use-unique-id/index" },
+          { text: "useDialogForm", link: "/composables/use-dialog-form/index" },
         ],
       },
     ],

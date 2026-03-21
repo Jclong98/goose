@@ -5,7 +5,7 @@ import Closedby from './Closedby.vue'
 
 # GDialog
 
-A simple styled button component.
+A dialog component that uses `<dialog>` under the hood.
 
 ## Demo
 
