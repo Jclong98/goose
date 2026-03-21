@@ -1,5 +1,6 @@
 <script setup>
 import BasicUsage from './BasicUsage.vue'
+import Variants from './Variants.vue'
 </script>
 
 # GButton
@@ -12,6 +13,11 @@ A simple styled button component.
 
 <!-- example -->
 <BasicUsage />
+
+### Variants
+
+<!-- example -->
+<Variants />
 
 ## API
 
