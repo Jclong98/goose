@@ -1,4 +1,4 @@
-import type { MaybeComputedElementRef, MaybeElement } from "@vueuse/core";
+import type { MaybeComputedElementRef } from "@vueuse/core";
 import { tryOnScopeDispose, unrefElement } from "@vueuse/core";
 import type { MaybeRefOrGetter } from "vue";
 import { ref, toValue, watch } from "vue";
