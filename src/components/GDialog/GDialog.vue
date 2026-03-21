@@ -20,10 +20,11 @@ const props = withDefaults(
   },
 );
 
-const isOpen = defineModel<boolean>("open");
+const isOpen = defineModel<boolean>("open", { default: false });
 
 const emit = defineEmits<{
-  toggle: [event: ToggleEvent];
+  cancel: [event: Event];
+  close: [event: Event];
 }>();
 
 const dialogElement = useTemplateRef("dialogElement");
@@ -49,7 +50,14 @@ const activatorBinding = computed(() => ({
 const cancelBinding = computed(() => ({
   commandfor: id.value,
   command: "request-close",
+  type: "button" as const,
 }));
+
+defineExpose({
+  open,
+  close,
+  id,
+});
 </script>
 
 <template>
@@ -60,6 +68,8 @@ const cancelBinding = computed(() => ({
     :id="id"
     ref="dialogElement"
     @toggle="onToggle"
+    @cancel="emit('cancel', $event)"
+    @close="emit('close', $event)"
     :closedby="props.closedby"
   >
     <slot :cancelBinding="cancelBinding"></slot>
