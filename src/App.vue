@@ -2,6 +2,7 @@
 import { ref } from "vue";
 
 import { useDialogForm } from "@/composables/useDialogForm";
+import { GButton, GDialog } from "./components";
 
 const data = ref<{ name: string; age: number }>({
   name: "John Doe",
@@ -21,13 +22,13 @@ const { dialogState, bindings } = useDialogForm({
   <div>
     <pre>{{ data }}</pre>
 
-    <GDialog v-bind="bindings.dialog">
+    <GDialog v-bind="bindings.dialog" class="rounded-xl p-4">
       <template #activator="{ binding }">
         <GButton v-bind="binding"> Open Dialog </GButton>
       </template>
 
       <template #default="{ cancelBinding }">
-        <form v-bind="bindings.form" class="card flex flex-col gap-4">
+        <form v-bind="bindings.form" class="flex flex-col gap-2">
           <h2 class="text-lg font-bold">Edit Profile</h2>
 
           <label>
