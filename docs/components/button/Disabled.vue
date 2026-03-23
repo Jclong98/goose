@@ -1,6 +1,10 @@
 <script lang="ts" setup>
+import { ref } from "vue";
+
+const disabledState = ref<boolean | "lite" | undefined>(undefined);
+
 function onClick() {
-  alert("This won't be called");
+  alert("This button works fine!");
 }
 
 function onDisabledClick() {
@@ -9,5 +13,13 @@ function onDisabledClick() {
 </script>
 
 <template>
-  <GButton disabled @click="onClick" @click:disabled="onDisabledClick"> Disabled Button </GButton>
+  <select v-model="disabledState" class="mb-1 rounded border px-4 py-1">
+    <option :value="undefined">Enabled</option>
+    <option :value="true">Disabled</option>
+    <option :value="'lite'">Disabled Lite</option>
+  </select>
+
+  <GButton :disabled="disabledState" @click="onClick" @click:disabled="onDisabledClick">
+    Click Me
+  </GButton>
 </template>

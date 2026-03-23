@@ -4,7 +4,7 @@ import LoadingThrobber from "./LoadingThrobber.vue";
 const props = withDefaults(
   defineProps<{
     variant?: "primary" | "secondary" | "ghost" | "link";
-    disabled?: boolean;
+    disabled?: boolean | "lite";
     loading?: boolean;
   }>(),
   {
@@ -32,8 +32,8 @@ function onClick(event: MouseEvent) {
 <template>
   <button
     class="g-button"
-    :class="`--${props.variant}`"
-    :aria-disabled="props.disabled"
+    :class="[`--${props.variant}`, { '--disabled': props.disabled === true }]"
+    :aria-disabled="!!props.disabled"
     @click="onClick"
   >
     <slot v-if="props.loading" name="loading">
@@ -58,7 +58,7 @@ function onClick(event: MouseEvent) {
   align-items: center;
   justify-content: center;
 
-  &[aria-disabled="true"] {
+  &.--disabled {
     cursor: not-allowed;
     opacity: 0.5;
   }
