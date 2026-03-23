@@ -63,7 +63,7 @@ const activatorBinding = computed(() => ({
   [props.mode === "click" ? "popovertarget" : "interestfor"]: id.value,
 }));
 const closeBinding = computed(() => ({
-  popovertarget: id.value,
+  commandfor: id.value,
   command: "hide-popover",
 }));
 

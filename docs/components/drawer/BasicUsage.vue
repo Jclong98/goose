@@ -3,12 +3,16 @@
     class="grid h-96 place-content-center rounded-lg border border-(--vp-c-divider)"
     style="anchor-name: --drawer-anchor"
   >
-    <GButton popovertarget="anchored-example"> Open drawer </GButton>
+    <GDrawer anchor="--drawer-anchor" class="max-w-64 p-4">
+      <template #activator="{ binding }">
+        <GButton v-bind="binding"> Open drawer </GButton>
+      </template>
+
+      <template #default="{ closeBinding }">
+        <p>this drawer has some stuff in it!</p>
+
+        <GButton v-bind="closeBinding"> Close </GButton>
+      </template>
+    </GDrawer>
   </div>
-
-  <GDrawer id="anchored-example" anchor="--drawer-anchor" class="max-w-64 p-4">
-    <p>this drawer has some stuff in it!</p>
-
-    <GButton popovertarget="anchored-example" class="mt-auto"> Close </GButton>
-  </GDrawer>
 </template>

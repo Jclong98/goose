@@ -78,6 +78,7 @@ defineExpose({
 
 <style scoped>
 .g-dialog {
+  background: transparent;
   max-width: unset;
   width: min(95vw, 600px);
   max-height: 95dvh;

@@ -1,5 +1,8 @@
 <script lang="ts" setup>
+import { useUniqueId } from "@/composables";
 import { computed } from "vue";
+
+defineOptions({ inheritAttrs: false });
 
 const props = withDefaults(
   defineProps<{
@@ -16,11 +19,30 @@ const props = withDefaults(
 );
 
 const sideClass = computed(() => `--${props.side}`);
+
+const id = useUniqueId();
+const activatorBinding = computed(() => ({
+  popovertarget: id.value,
+}));
+
+const closeBinding = computed(() => ({
+  commandfor: id.value,
+  command: "hide-popover",
+}));
 </script>
 
 <template>
-  <div :class="['g-drawer', sideClass]" popover role="dialog" aria-modal="true">
-    <slot></slot>
+  <slot name="activator" :binding="activatorBinding"></slot>
+
+  <div
+    v-bind="$attrs"
+    :id="id"
+    :class="['g-drawer', sideClass]"
+    popover
+    role="dialog"
+    aria-modal="true"
+  >
+    <slot :closeBinding="closeBinding"></slot>
   </div>
 </template>
 
