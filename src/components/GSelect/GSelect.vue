@@ -57,10 +57,10 @@ select:open::picker-icon {
 option {
   padding: 4px 8px;
   border-radius: 4px;
+  margin: 2px 0;
 }
 
 option:checked {
   background-color: var(--color-goose);
-  color: white;
 }
 </style>
