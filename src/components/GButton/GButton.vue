@@ -38,6 +38,8 @@ function onClick(event: MouseEvent) {
 
 <style scoped>
 .g-button {
+  --g-button-padding: 0.25em 1em;
+
   white-space: nowrap;
   cursor: pointer;
   border-radius: 4px;
@@ -51,7 +53,7 @@ function onClick(event: MouseEvent) {
   &.--primary {
     background-color: var(--color-goose);
     color: black;
-    padding: 0.25em 1em;
+    padding: var(--g-button-padding);
 
     &:hover {
       background-color: oklch(from var(--color-goose) 0.85 c h);
@@ -63,45 +65,45 @@ function onClick(event: MouseEvent) {
   }
 
   &.--secondary {
-    background-color: #eee;
+    background-color: var(--color-zinc-100);
     color: black;
-    border: 1px solid #ccc;
-    padding: 0.25em 1em;
+    border: 1px solid var(--color-zinc-300);
+    padding: var(--g-button-padding);
 
     &:hover {
-      background-color: #ddd;
+      background-color: var(--color-zinc-200);
     }
 
     &:active {
-      background-color: #ccc;
+      background-color: var(--color-zinc-300);
     }
   }
 
   &.--ghost {
     background-color: transparent;
     color: black;
-    padding: 0.25em 1em;
+    padding: var(--g-button-padding);
 
     &:hover {
-      background-color: #eee;
+      background-color: var(--color-zinc-100);
     }
 
     &:active {
-      background-color: #ddd;
+      background-color: var(--color-zinc-200);
     }
   }
 
   &.--link {
     background-color: transparent;
-    color: #007bff;
+    color: var(--color-blue-500);
     text-decoration: underline;
 
     &:hover {
-      color: #0056b3;
+      color: var(--color-blue-600);
     }
 
     &:active {
-      color: #004085;
+      color: var(--color-blue-700);
     }
   }
 }
@@ -118,43 +120,43 @@ function onClick(event: MouseEvent) {
   }
 
   &.--secondary {
-    background-color: #333;
-    color: white;
-    border: 1px solid #555;
+    background-color: var(--color-zinc-800);
+    color: var(--color-white);
+    border: 1px solid var(--color-zinc-600);
 
     &:hover {
-      background-color: #444;
+      background-color: var(--color-zinc-700);
     }
 
     &:active {
-      background-color: #555;
+      background-color: var(--color-zinc-600);
     }
   }
 
   &.--ghost {
     background-color: transparent;
-    color: white;
+    color: var(--color-white);
 
     &:hover {
-      background-color: #333;
+      background-color: var(--color-zinc-800);
     }
 
     &:active {
-      background-color: #444;
+      background-color: var(--color-zinc-700);
     }
   }
 
   &.--link {
     background-color: transparent;
-    color: #66b2ff;
+    color: var(--color-blue-400);
     text-decoration: underline;
 
     &:hover {
-      color: #3399ff;
+      color: var(--color-blue-300);
     }
 
     &:active {
-      color: #007acc;
+      color: var(--color-blue-200);
     }
   }
 }
