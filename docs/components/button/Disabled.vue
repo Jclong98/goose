@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 
-const disabledState = ref<boolean | "lite" | undefined>(undefined);
+const disabledState = ref<boolean | "lite" | undefined>(true);
 
 function onClick() {
   alert("This button works fine!");
