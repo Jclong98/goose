@@ -1,12 +1,16 @@
 <script lang="ts" setup>
+import LoadingThrobber from "./LoadingThrobber.vue";
+
 const props = withDefaults(
   defineProps<{
     variant?: "primary" | "secondary" | "ghost" | "link";
     disabled?: boolean;
+    loading?: boolean;
   }>(),
   {
     variant: "secondary",
     disabled: false,
+    loading: false,
   },
 );
 
@@ -32,6 +36,11 @@ function onClick(event: MouseEvent) {
     :aria-disabled="props.disabled"
     @click="onClick"
   >
+    <slot v-if="props.loading" name="loading">
+      <LoadingThrobber />
+    </slot>
+    <slot v-else name="icon"></slot>
+
     <slot />
   </button>
 </template>
@@ -44,6 +53,10 @@ function onClick(event: MouseEvent) {
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 0.1s ease;
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  justify-content: center;
 
   &[aria-disabled="true"] {
     cursor: not-allowed;

@@ -1,53 +1,13 @@
 <script setup lang="ts">
-import { ref } from "vue";
-
-import { useDialogForm } from "@/composables/useDialogForm";
-import { GButton, GDialog } from "./components";
-
-const data = ref<{ name: string; age: number }>({
-  name: "John Doe",
-  age: 30,
-});
-
-const { dialogState, bindings } = useDialogForm({
-  state: data,
-  onSubmit: async (state) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate async operation
-    data.value = state;
-  },
-});
+import { GButton } from "./components";
 </script>
 
 <template>
   <div>
-    <pre>{{ data }}</pre>
+    <GButton loading>
+      <template #icon> <span>🙂</span> </template>
 
-    <GDialog v-bind="bindings.dialog" class="rounded-xl p-4">
-      <template #activator="{ binding }">
-        <GButton v-bind="binding"> Open Dialog </GButton>
-      </template>
-
-      <template #default="{ cancelBinding }">
-        <form v-bind="bindings.form" class="flex flex-col gap-2">
-          <h2 class="text-lg font-bold">Edit Profile</h2>
-
-          <label>
-            Name:
-            <input v-model="dialogState.name" class="ml-2 rounded border px-2 py-1" type="text" />
-          </label>
-
-          <label>
-            Age:
-            <input v-model="dialogState.age" class="ml-2 rounded border px-2 py-1" type="number" />
-          </label>
-
-          <div class="flex justify-end gap-2">
-            <GButton v-bind="cancelBinding"> Close </GButton>
-
-            <GButton type="submit" variant="primary"> Save </GButton>
-          </div>
-        </form>
-      </template>
-    </GDialog>
+      Click me
+    </GButton>
   </div>
 </template>

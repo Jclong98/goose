@@ -8,11 +8,14 @@ const data = ref<{ name: string; age: number }>({
   age: 30,
 });
 
+const loading = ref(false);
 const { dialogState, bindings } = useDialogForm({
   state: data,
   onSubmit: async (state) => {
+    loading.value = true;
     await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate async operation
     data.value = state;
+    loading.value = false;
   },
 });
 </script>
@@ -43,7 +46,9 @@ const { dialogState, bindings } = useDialogForm({
           <div class="flex justify-end gap-2">
             <GButton v-bind="cancelBinding"> Close </GButton>
 
-            <GButton type="submit" variant="primary"> Save </GButton>
+            <GButton type="submit" variant="primary" :loading="loading" :disabled="loading">
+              Save
+            </GButton>
           </div>
         </form>
       </template>
