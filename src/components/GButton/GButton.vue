@@ -2,15 +2,36 @@
 const props = withDefaults(
   defineProps<{
     variant?: "primary" | "secondary" | "ghost" | "link";
+    disabled?: boolean;
   }>(),
   {
     variant: "secondary",
+    disabled: false,
   },
 );
+
+const emit = defineEmits<{
+  click: [event: MouseEvent];
+  "click:disabled": [event: MouseEvent];
+}>();
+
+function onClick(event: MouseEvent) {
+  if (props.disabled) {
+    event.preventDefault();
+    emit("click:disabled", event);
+    return;
+  }
+  emit("click", event);
+}
 </script>
 
 <template>
-  <button class="g-button" :class="`--${props.variant}`">
+  <button
+    class="g-button"
+    :class="`--${props.variant}`"
+    :aria-disabled="props.disabled"
+    @click="onClick"
+  >
     <slot />
   </button>
 </template>
@@ -18,14 +39,19 @@ const props = withDefaults(
 <style scoped>
 .g-button {
   white-space: nowrap;
-  padding: 0.25em 1em;
   cursor: pointer;
   border-radius: 4px;
   transition: background-color 0.1s ease;
 
+  &[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
   &.--primary {
     background-color: var(--color-goose);
     color: black;
+    padding: 0.25em 1em;
 
     &:hover {
       background-color: oklch(from var(--color-goose) 0.85 c h);
@@ -40,6 +66,7 @@ const props = withDefaults(
     background-color: #eee;
     color: black;
     border: 1px solid #ccc;
+    padding: 0.25em 1em;
 
     &:hover {
       background-color: #ddd;
@@ -53,6 +80,7 @@ const props = withDefaults(
   &.--ghost {
     background-color: transparent;
     color: black;
+    padding: 0.25em 1em;
 
     &:hover {
       background-color: #eee;
