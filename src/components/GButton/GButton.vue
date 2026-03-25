@@ -3,12 +3,12 @@ import LoadingThrobber from "./LoadingThrobber.vue";
 
 const props = withDefaults(
   defineProps<{
-    variant?: "primary" | "secondary" | "ghost" | "link";
+    variant?: "primary" | "neutral" | "ghost" | "link";
     disabled?: boolean | "lite";
     loading?: boolean;
   }>(),
   {
-    variant: "secondary",
+    variant: "neutral",
     disabled: false,
     loading: false,
   },
@@ -77,7 +77,7 @@ function onClick(event: MouseEvent) {
     }
   }
 
-  &.--secondary {
+  &.--neutral {
     background-color: var(--color-zinc-100);
     color: black;
     border: 1px solid var(--color-zinc-300);
@@ -132,7 +132,7 @@ function onClick(event: MouseEvent) {
     }
   }
 
-  &.--secondary {
+  &.--neutral {
     background-color: var(--color-zinc-800);
     color: var(--color-white);
     border: 1px solid var(--color-zinc-600);
