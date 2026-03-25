@@ -20,7 +20,9 @@ const props = defineProps<{
     aria-hidden="true"
   >
     <div class="g-timeline-line__line"></div>
-    <div class="g-timeline-line__circle"></div>
+    <div class="g-timeline-line__circle">
+      <slot name="icon"></slot>
+    </div>
   </div>
 </template>
 
@@ -28,13 +30,11 @@ const props = defineProps<{
 .g-timeline-line {
   --previous-anchor-name: v-bind("props.previousAnchorName");
   --anchor-name: v-bind("props.item.anchorName");
-  --circle-radius: 0.5rem;
-  --circle-diameter: calc(var(--circle-radius) * 2);
 
   position: absolute;
-  top: calc(anchor(var(--previous-anchor-name) 50%) + var(--circle-radius));
+  top: calc(anchor(var(--previous-anchor-name) 50%) + var(--g-timeline-circle-radius));
   bottom: anchor(var(--anchor-name) 50%);
-  left: calc(anchor(var(--anchor-name) left) - 1rem);
+  left: calc(anchor(var(--anchor-name) left) - var(--g-timeline-gutter-width) / 2);
 
   &.--no-previous {
     top: 0;
@@ -61,13 +61,15 @@ const props = defineProps<{
 
   & .g-timeline-line__circle {
     position: absolute;
-    bottom: calc(-1 * var(--circle-radius));
+    bottom: calc(-1 * var(--g-timeline-circle-radius));
     left: 50%;
     translate: -50% 0;
-    width: var(--circle-diameter);
-    height: var(--circle-diameter);
+    width: var(--g-timeline-circle-diameter);
+    height: var(--g-timeline-circle-diameter);
     border-radius: 100vw;
     background-color: var(--timeline-color, currentColor);
+    display: grid;
+    place-content: center;
   }
 }
 </style>

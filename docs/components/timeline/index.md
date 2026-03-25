@@ -1,6 +1,8 @@
 <script setup>
 import BasicUsage from './BasicUsage.vue'
 import DynamicItems from './DynamicItems.vue'
+import Icons from './Icons.vue'
+import CircleSize from './CircleSize.vue'
 </script>
 
 # GTimeline
@@ -16,6 +18,16 @@ import DynamicItems from './DynamicItems.vue'
 
 <!-- example -->
 <DynamicItems />
+
+### Circle Size
+
+<!-- example -->
+<CircleSize />
+
+### Icons
+
+<!-- example -->
+<Icons />
 
 ## API
 

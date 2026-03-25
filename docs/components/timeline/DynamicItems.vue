@@ -36,9 +36,9 @@ function addItem() {
 
       <!-- remove -->
       <select v-model="item.state" class="ml-4 rounded border">
-        <option value="pending" :selected="item.state === 'pending'">Pending</option>
-        <option value="active" :selected="item.state === 'active'">Active</option>
         <option value="completed" :selected="item.state === 'completed'">Completed</option>
+        <option value="active" :selected="item.state === 'active'">Active</option>
+        <option value="pending" :selected="item.state === 'pending'">Pending</option>
       </select>
 
       <!-- remove -->
