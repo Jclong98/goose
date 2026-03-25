@@ -107,9 +107,6 @@ defineExpose({
 .g-popover {
   --gap: 0.5rem;
 
-  /* reset popover styles */
-  inset: unset;
-
   /* position styling */
   position: fixed;
   position-anchor: v-bind("props.anchor ?? anchorName");
