@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, onMounted, useTemplateRef, watch, type IntrinsicElementAttributes } from "vue";
+import { computed, onMounted, useTemplateRef, watch } from "vue";
 
 import { useUniqueId } from "@/composables";
 import type { PositionArea } from "./types";
