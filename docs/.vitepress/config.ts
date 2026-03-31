@@ -52,6 +52,7 @@ export default defineConfig({
           { text: "GTable", link: "/components/table/index" },
           { text: "GTimeline", link: "/components/timeline/index" },
           { text: "GSelect", link: "/components/select/index" },
+          { text: "GGraph", link: "/components/graph/index" },
         ],
       },
       {
