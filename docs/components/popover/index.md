@@ -5,6 +5,7 @@ import Offsets from './Offsets.vue'
 import Open from './Open.vue'
 import ManualRegistration from './ManualRegistration.vue'
 import Interest from './Interest.vue'
+import PopoverAttribute from './PopoverAttribute.vue'
 </script>
 
 # GPopover
@@ -48,10 +49,17 @@ You can use margins to offset popovers from their anchors. It will automatically
 <!-- example -->
 <Offsets />
 
-### Open prop
+### Modelling Open
 
 <!-- example -->
 <Open />
+
+### Popover Attribute
+
+[MDN docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/popover#values)
+
+<!-- example -->
+<PopoverAttribute />
 
 ## API
 

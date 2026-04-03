@@ -25,6 +25,12 @@ const props = withDefaults(
     /** switch between the popovertarget and interestfor attributes */
     mode?: "click" | "interest";
 
+    /**
+     * The popover attribute specifies the type of popover.
+     * [See MDN for more details](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/popover#values).
+     */
+    popover?: "auto" | "hint" | "manual";
+
     is?: string;
   }>(),
   {
@@ -34,6 +40,7 @@ const props = withDefaults(
     minWAnchor: false,
     minHAnchor: false,
     is: "div",
+    popover: "auto",
   },
 );
 
@@ -48,8 +55,7 @@ const onToggle = (event: ToggleEvent) => {
   isOpen.value = event.newState === "open";
 };
 
-// watch is inside onMounted because you can't
-// open a popover that isn't mounted
+// If the popover is initially open, we need to call open() to set the correct state and position.
 onMounted(() => {
   watch(isOpen, (nv) => (nv ? open() : close()), { immediate: true });
 });
@@ -90,7 +96,7 @@ defineExpose({
     :is="props.is"
     v-bind="$attrs"
     ref="popover"
-    popover
+    :popover="props.popover"
     class="g-popover"
     :class="{
       '--min-w-anchor': props.minWAnchor,
