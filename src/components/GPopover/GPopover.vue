@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, onMounted, useTemplateRef, watch } from "vue";
+import { computed, onMounted, useTemplateRef, watch, type StyleValue } from "vue";
 
 import { useUniqueId } from "@/composables";
 import type { PositionArea } from "./types";
@@ -35,7 +35,7 @@ const props = withDefaults(
      * The popovertargetaction attribute specifies the action to perform when the popovertarget is activated. This attribute is only applicable when `mode="click"`.
      * [See MDN for more details](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#popovertargetaction).
      */
-    popovertargetaction?: "toggle" | "show" | "hide";
+    popovertargetaction?: "toggle" | "show";
 
     is?: string;
   }>(),
@@ -53,10 +53,10 @@ const props = withDefaults(
 
 const isOpen = defineModel<boolean>("open");
 
-const popover = useTemplateRef<HTMLElement>("popover");
+const popoverElement = useTemplateRef<HTMLElement>("popover");
 
-const open = () => popover.value?.showPopover();
-const close = () => popover.value?.hidePopover();
+const open = () => popoverElement.value?.showPopover();
+const close = () => popoverElement.value?.hidePopover();
 
 const onToggle = (event: ToggleEvent) => {
   isOpen.value = event.newState === "open";
@@ -71,12 +71,21 @@ const id = useUniqueId();
 const anchorName = computed(() => `--${id.value}-anchor`);
 const selfAnchorName = computed(() => `--${id.value}-popover`);
 const activatorBinding = computed(() => {
+  const style: StyleValue = {
+    "anchor-name": anchorName.value,
+  };
+
+  if (props.mode === "interest") {
+    return {
+      style,
+      interestfor: id.value,
+    };
+  }
+
   return {
-    style: {
-      "anchor-name": anchorName.value,
-    },
-    [props.mode === "click" ? "popovertarget" : "interestfor"]: id.value,
-    [props.mode === "click" ? "popovertargetaction" : ""]: props.popovertargetaction,
+    style,
+    popovertarget: id.value,
+    popovertargetaction: props.popovertargetaction,
   };
 });
 const closeBinding = computed(() => ({
@@ -89,6 +98,7 @@ defineExpose({
   close,
   id,
   anchorName,
+  selfAnchorName,
 
   /**
    * use v-bind="activatorBinding" on the popover's activator to
@@ -113,10 +123,10 @@ defineExpose({
       '--min-w-anchor': props.minWAnchor,
       '--min-h-anchor': props.minHAnchor,
     }"
-    :id="id"
+    :id
     @toggle="onToggle"
   >
-    <slot :id :close-binding :self-anchor-name="selfAnchorName"></slot>
+    <slot :id :close-binding :self-anchor-name></slot>
   </component>
 </template>
 
