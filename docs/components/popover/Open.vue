@@ -12,13 +12,11 @@ const isOpen = ref(true);
     </label>
   </div>
 
-  <GPopover ref="popover" class="mt-1" v-model:open="isOpen">
+  <GPopover class="card mt-1" v-model:open="isOpen">
     <template #activator="{ binding }">
       <GButton v-bind="binding"> Open popover </GButton>
     </template>
 
-    <div class="card">
-      <p>This popover should open by default.</p>
-    </div>
+    <p>This popover should open by default.</p>
   </GPopover>
 </template>
