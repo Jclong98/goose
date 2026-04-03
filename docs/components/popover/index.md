@@ -50,7 +50,7 @@ You can use margins to offset popovers from their anchors. It will automatically
 <!-- example -->
 <Offsets />
 
-### Modelling Open
+### Modeling Open
 
 <!-- example -->
 <Open />
