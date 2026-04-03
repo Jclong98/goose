@@ -17,9 +17,9 @@
             </template>
 
             <template #default="{ selfAnchorName }">
-              <GPopover class="card mr-1" :anchor="selfAnchorName" position-area="left">
+              <GPopover class="card ml-1" :anchor="selfAnchorName" position-area="right">
                 <template #activator="{ binding }">
-                  <GButton v-bind="binding">⬅️</GButton>
+                  <GButton v-bind="binding">➡️</GButton>
                 </template>
 
                 <p>Yahaha! You found me! 🌳</p>

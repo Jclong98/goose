@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div class="flex gap-2">
+  <div class="flex flex-wrap gap-2">
     <GPopover class="card mt-1 max-w-64" popover="auto">
       <template #activator="{ binding }">
         <GButton v-bind="binding">Auto (default)</GButton>
