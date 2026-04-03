@@ -31,6 +31,12 @@ const props = withDefaults(
      */
     popover?: "auto" | "hint" | "manual";
 
+    /**
+     * The popovertargetaction attribute specifies the action to perform when the popovertarget is activated. This attribute is only applicable when `mode="click"`.
+     * [See MDN for more details](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#popovertargetaction).
+     */
+    popovertargetaction?: "toggle" | "show" | "hide";
+
     is?: string;
   }>(),
   {
@@ -41,6 +47,7 @@ const props = withDefaults(
     minHAnchor: false,
     is: "div",
     popover: "auto",
+    popovertargetaction: "toggle",
   },
 );
 
@@ -62,12 +69,16 @@ onMounted(() => {
 
 const id = useUniqueId();
 const anchorName = computed(() => `--${id.value}-anchor`);
-const activatorBinding = computed(() => ({
-  style: {
-    "anchor-name": anchorName.value,
-  },
-  [props.mode === "click" ? "popovertarget" : "interestfor"]: id.value,
-}));
+const selfAnchorName = computed(() => `--${id.value}-popover`);
+const activatorBinding = computed(() => {
+  return {
+    style: {
+      "anchor-name": anchorName.value,
+    },
+    [props.mode === "click" ? "popovertarget" : "interestfor"]: id.value,
+    [props.mode === "click" ? "popovertargetaction" : ""]: props.popovertargetaction,
+  };
+});
 const closeBinding = computed(() => ({
   commandfor: id.value,
   command: "hide-popover",
@@ -105,7 +116,7 @@ defineExpose({
     :id="id"
     @toggle="onToggle"
   >
-    <slot :id :close-binding></slot>
+    <slot :id :close-binding :self-anchor-name="selfAnchorName"></slot>
   </component>
 </template>
 
@@ -116,6 +127,7 @@ defineExpose({
   /* position styling */
   position: fixed;
   position-anchor: v-bind("props.anchor ?? anchorName");
+  anchor-name: v-bind("selfAnchorName");
   position-area: v-bind("positionArea");
   position-try-fallbacks:
     flip-block,

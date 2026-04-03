@@ -13,7 +13,7 @@
       </p>
     </GPopover>
 
-    <GPopover class="card mt-1 max-w-64" popover="manual">
+    <GPopover class="card mt-1 max-w-64" popover="manual" popovertargetaction="show">
       <template #activator="{ binding }">
         <GButton v-bind="binding">Manual</GButton>
       </template>
@@ -25,7 +25,7 @@
       </template>
     </GPopover>
 
-    <GPopover class="card mt-1 max-w-64" popover="manual">
+    <GPopover class="card mt-1 max-w-64" popover="manual" popovertargetaction="show">
       <template #activator="{ binding }">
         <GButton v-bind="binding">Manual 2</GButton>
       </template>

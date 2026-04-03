@@ -6,6 +6,7 @@ import Open from './Open.vue'
 import ManualRegistration from './ManualRegistration.vue'
 import Interest from './Interest.vue'
 import PopoverAttribute from './PopoverAttribute.vue'
+import Nesting from './Nesting.vue'
 </script>
 
 # GPopover
@@ -60,6 +61,15 @@ You can use margins to offset popovers from their anchors. It will automatically
 
 <!-- example -->
 <PopoverAttribute />
+
+### Nesting
+
+Nested popovers don't close their parents when opened. They can all be closed at once by clicking outisde or closed sequentially in the reverse order they were opened by pressing escape.
+
+This example anchors the popovers to their parent popover, rather than to their activator.
+
+<!-- example -->
+<Nesting />
 
 ## API
 
