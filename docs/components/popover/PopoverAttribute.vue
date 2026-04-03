@@ -19,7 +19,10 @@
       </template>
 
       <template #default="{ closeBinding }">
-        <p>Manual popovers can only be closed by clicking the close button or its activator.</p>
+        <p>
+          Manual popovers can only be closed by clicking the close button or its activator if it has
+          <code>popovertargetaction="close"</code>.
+        </p>
 
         <GButton v-bind="closeBinding" class="mt-2" autofocus> Close </GButton>
       </template>
