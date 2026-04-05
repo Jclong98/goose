@@ -1,47 +1,25 @@
 <script lang="ts" setup>
-import { tryOnScopeDispose } from "@vueuse/core";
-import { createApp } from "vue";
+import { GButton } from "@/components";
+import { useToast } from "./composables/useToast";
 
-import { GButton, GPopover } from "@/components";
-import GToastContainer from "./components/GToastContainer/GToastContainer.vue";
-
-const containers: Map<string, Element> = new Map();
-
-function useToast(anchorName: string) {
-  // create or find the toast container
-  let container = document.querySelector(`.toast-container[data-anchor-name="${anchorName}"]`);
-  if (!container) {
-    container = document.createElement("div");
-    container.classList.add("toast-container");
-    container.setAttribute("data-anchor-name", anchorName);
-    document.body.appendChild(container);
-  }
-
-  containers.set(anchorName, container);
-
-  const app = createApp(GToastContainer, { anchorName });
-  app.provide("containers", containers);
-  app.mount(container);
-
-  tryOnScopeDispose(() => {
-    app.unmount();
-    container?.remove();
-  });
-
-  return { show: app.show };
-}
-
+const defaultToast = useToast();
 const leftToast = useToast("--left");
 const rightToast = useToast("--right");
 </script>
 
 <template>
-  <div class="grid h-screen grid-cols-2 justify-center">
+  <div
+    class="grid h-screen grid-cols-2 grid-rows-[auto_1fr] justify-center"
+    style="anchor-name: --g-toast-container"
+  >
+    <div class="col-span-full">
+      <GButton @click="defaultToast.show('Hello, world!')">Show Toast</GButton>
+    </div>
     <div class="bg-red-200" style="anchor-name: --left">
       <GButton @click="leftToast.show('Left toast')">left</GButton>
     </div>
     <div class="bg-green-200" style="anchor-name: --right">
-      <GButton @click="rightToast.show('Right toast')">right</GButton>
+      <GButton @click="rightToast.show('Right toast', { duration: -1 })">right</GButton>
     </div>
   </div>
 </template>
