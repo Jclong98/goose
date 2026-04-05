@@ -9,7 +9,7 @@ const containers = inject<Map<string, Element>>("containers", new Map());
 
 const toasts = ref<{ id: string; content: string | Component }[]>([]);
 
-function removeToast(id: string) {
+function remove(id: string) {
   toasts.value = toasts.value.filter((toast) => toast.id !== id);
 }
 
@@ -32,19 +32,20 @@ function show(content: string | Component, options?: ShowToastOptions): ShowToas
   toasts.value.push({ id, content });
 
   if (duration > 0) {
-    setTimeout(() => removeToast(id), duration);
+    setTimeout(() => remove(id), duration);
   }
 
-  return { id, close: () => removeToast(id) };
+  return { id, close: () => remove(id) };
 }
 
-defineExpose({ show });
+defineExpose({ show, remove });
 </script>
 
 <template>
   <div class="g-toast-container">
     <div class="g-toast" v-for="toast in toasts" :key="toast.id">
-      <component :is="() => toast.content" class="g-toast" />
+      <template v-if="typeof toast.content === 'string'">{{ toast.content }}</template>
+      <component v-else :is="toast.content" class="g-toast" />
     </div>
   </div>
 </template>

@@ -19,16 +19,7 @@ const rightToast = useToast("--right");
       <GButton @click="leftToast.show('Left toast')">left</GButton>
     </div>
     <div class="bg-green-200" style="anchor-name: --right">
-      <GButton @click="rightToast.show('Right toast', { duration: -1 })">right</GButton>
+      <GButton @click="rightToast.show('Right toast')">right</GButton>
     </div>
   </div>
 </template>
-
-<style>
-.card {
-  border: 1px solid #ccc;
-  padding: 16px;
-  border-radius: 8px;
-  max-width: 300px;
-}
-</style>

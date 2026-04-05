@@ -18,7 +18,7 @@ function getOrCreateContainer(anchorName: string): Element {
   return container;
 }
 
-export function useToast(anchorName: string = "--g-toast-container") {
+export function useToast(anchorName: string = "--g-toast-anchor") {
   const container = getOrCreateContainer(anchorName);
 
   const app = createApp(GToastContainer, { anchorName });
@@ -31,5 +31,9 @@ export function useToast(anchorName: string = "--g-toast-container") {
     containers.delete(anchorName);
   }
 
-  return { show: root.show, cleanup };
+  return {
+    show: root.show,
+    remove: root.remove,
+    cleanup,
+  };
 }
