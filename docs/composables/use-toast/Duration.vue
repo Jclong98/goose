@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import { GButton } from "@/components";
 import { useToast } from "@/composables/useToast";
-import { h, useId } from "vue";
+import { h } from "vue";
 
 const toast = useToast("--duration");
 
 function infiniteToast() {
-  const id = useId();
+  const id = crypto.randomUUID();
   toast.show(
     h("div", { class: "flex items-center gap-2" }, [
       "Infinite",
