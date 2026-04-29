@@ -1,5 +1,16 @@
+import type { Component } from "vue";
 import { createApp } from "vue";
 import GToastContainer from "../components/GToastContainer/GToastContainer.vue";
+
+interface ShowToastOptions {
+  duration?: number;
+  id?: string;
+}
+
+interface ShowToastReturn {
+  id: string;
+  close: () => void;
+}
 
 /**
  * map of container names to their dom elements.
@@ -18,7 +29,13 @@ function getOrCreateContainer(anchorName: string): Element {
   return container;
 }
 
-export function useToast(anchorName: string = "--g-toast-anchor") {
+export function useToast(
+  anchorName: string = "--g-toast-anchor",
+): {
+  show: (content: string | Component, options?: ShowToastOptions) => ShowToastReturn;
+  remove: (id: string) => void;
+  cleanup: () => void;
+} {
   const container = getOrCreateContainer(anchorName);
 
   const app = createApp(GToastContainer, { anchorName });

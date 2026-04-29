@@ -1,5 +1,6 @@
-import type { Awaitable } from "@vueuse/core";
 import { ref, toRaw, toValue, type MaybeRefOrGetter, type Ref } from "vue";
+
+type Awaitable<T> = T | Promise<T>;
 
 function deepCopy<T>(value: MaybeRefOrGetter<T>): T {
   return structuredClone(toRaw(toValue(value)));
@@ -9,9 +10,20 @@ export function useDialogForm<T>(options: {
   state: Ref<T>;
   onSubmit: (state: T) => Awaitable<void>;
   onCancel?: () => Awaitable<void>;
-}) {
+}): {
+  dialogState: Ref<T>;
+  bindings: {
+    form: {
+      onSubmit: (e: SubmitEvent) => Promise<void>;
+      method: string;
+    };
+    dialog: {
+      onCancel: () => Promise<void>;
+    };
+  };
+} {
   const { state, onSubmit, onCancel } = options;
-  const dialogState = ref(deepCopy(state));
+  const dialogState = ref(deepCopy(state)) as Ref<T>;
 
   async function _onCancel() {
     await onCancel?.();
