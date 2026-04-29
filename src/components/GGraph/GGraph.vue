@@ -92,7 +92,7 @@ function deleteNode(node: Node) {
   <svg>
     <GGraphEdge
       v-for="(edge, index) in modelValue.edges"
-      :key="`${edge.source}-${edge.target}`"
+      :key="`${edge.source.id}-${edge.target.id}`"
       :model-value="edge"
       @update:model-value="modelValue.edges[index] = $event"
       @delete="deleteEdge(edge)"
