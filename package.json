@@ -8,33 +8,26 @@
     "dist"
   ],
   "type": "module",
-  "main": "./dist/goose.umd.cjs",
-  "module": "./dist/goose.js",
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
-      "import": "./dist/goose.js",
-      "require": "./dist/goose.umd.cjs"
+      "import": "./dist/goose.js"
     },
     "./components": {
       "types": "./dist/types/components/index.d.ts",
-      "import": "./dist/components.js",
-      "require": "./dist/components.umd.cjs"
+      "import": "./dist/components.js"
     },
     "./composables": {
       "types": "./dist/types/composables/index.d.ts",
-      "import": "./dist/composables.js",
-      "require": "./dist/composables.umd.cjs"
+      "import": "./dist/composables.js"
     },
     "./directives": {
       "types": "./dist/types/directives/index.d.ts",
-      "import": "./dist/directives.js",
-      "require": "./dist/directives.umd.cjs"
+      "import": "./dist/directives.js"
     },
     "./integrations": {
       "types": "./dist/types/integrations/index.d.ts",
-      "import": "./dist/integrations.js",
-      "require": "./dist/integrations.umd.cjs"
+      "import": "./dist/integrations.js"
     },
     "./style.css": "./dist/core.css",
     "./tw-theme.css": "./dist/tw-theme.css"
