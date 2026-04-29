@@ -29,7 +29,7 @@
       "types": "./dist/types/integrations/index.d.ts",
       "import": "./dist/integrations.js"
     },
-    "./style.css": "./dist/core.css",
+    "./style.css": "./dist/goose.css",
     "./tw-theme.css": "./dist/tw-theme.css"
   },
   "publishConfig": {
@@ -52,8 +52,15 @@
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check"
   },
-  "dependencies": {
+  "peerDependencies": {
+    "@vueuse/core": "^14.2.1",
+    "unimport": "^6.0.2",
     "vue": "^3.5.31"
+  },
+  "peerDependenciesMeta": {
+    "@vueuse/core": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.2",
@@ -80,6 +87,7 @@
     "unplugin-vue-components": "^32.0.0",
     "vite": "^8.0.3",
     "vite-plugin-dts": "^4.5.4",
+    "vite-plugin-static-copy": "^4.1.0",
     "vite-plugin-vue-devtools": "^8.1.1",
     "vitepress": "2.0.0-alpha.17",
     "vitest": "^4.1.2",
