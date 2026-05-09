@@ -12,4 +12,34 @@ describe("GButton", () => {
 
     expect(wrapper.text()).toContain("Click me");
   });
+
+  it("should emit click event when clicked", async () => {
+    const wrapper = mount(GButton, {
+      slots: {
+        default: "Click me",
+      },
+    });
+
+    await wrapper.trigger("click");
+
+    expect(wrapper.emitted()).toHaveProperty("click");
+  });
+
+  it.for([true, "lite"] as const)(
+    "should emit click:disabled when disabled is %s",
+    async (disabled) => {
+      const wrapper = mount(GButton, {
+        slots: {
+          default: "Click me",
+        },
+        props: {
+          disabled,
+        },
+      });
+
+      await wrapper.trigger("click");
+
+      expect(wrapper.emitted()).toHaveProperty("click:disabled");
+    },
+  );
 });

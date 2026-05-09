@@ -1,25 +1,75 @@
 <script lang="ts" setup>
-import { GButton } from "@/components";
-import { useToast } from "./composables/useToast";
-
-const defaultToast = useToast();
-const leftToast = useToast("--left");
-const rightToast = useToast("--right");
+import { GTimeline, GTimelineItem } from "./components/GTimeline2";
 </script>
 
 <template>
-  <div
-    class="grid h-screen grid-cols-2 grid-rows-[auto_1fr] justify-center"
-    style="anchor-name: --g-toast-container"
-  >
-    <div class="col-span-full">
-      <GButton @click="defaultToast.show('Hello, world!')">Show Toast</GButton>
-    </div>
-    <div class="bg-red-200" style="anchor-name: --left">
-      <GButton @click="leftToast.show('Left toast')">left</GButton>
-    </div>
-    <div class="bg-green-200" style="anchor-name: --right">
-      <GButton @click="rightToast.show('Right toast')">right</GButton>
-    </div>
+  <div class="flex h-screen items-center justify-center gap-16 p-8">
+    <!-- Basic timeline -->
+    <section>
+      <h2 class="mb-4 text-lg font-semibold">Deployment Pipeline</h2>
+      <GTimeline>
+        <GTimelineItem state="completed">
+          <template #icon>✓</template>
+          <div>
+            <p class="font-medium">Build</p>
+            <p class="text-sm text-gray-500">Compiled successfully</p>
+          </div>
+        </GTimelineItem>
+
+        <GTimelineItem state="active">
+          <template #icon>⟳</template>
+          <div>
+            <p class="font-medium">Test</p>
+            <p class="text-sm text-gray-500">Running 24 specs...</p>
+          </div>
+        </GTimelineItem>
+
+        <GTimelineItem state="pending">
+          <template #icon></template>
+          <div>
+            <p class="font-medium">Deploy</p>
+            <p class="text-sm text-gray-500">Waiting...</p>
+          </div>
+        </GTimelineItem>
+      </GTimeline>
+    </section>
+
+    <!-- Timeline with custom icons -->
+    <section>
+      <h2 class="mb-4 text-lg font-semibold">Order Status</h2>
+      <GTimeline>
+        <GTimelineItem state="completed">
+          <template #icon>📦</template>
+          <div>
+            <p class="font-medium">Order Placed</p>
+            <p class="text-sm text-gray-500">Apr 28, 2:30 PM</p>
+          </div>
+        </GTimelineItem>
+
+        <GTimelineItem state="completed">
+          <template #icon>🚚</template>
+          <div>
+            <p class="font-medium">Shipped</p>
+            <p class="text-sm text-gray-500">Apr 29, 9:00 AM</p>
+          </div>
+        </GTimelineItem>
+
+        <GTimelineItem state="active">
+          <template #icon>📍</template>
+          <div>
+            <p class="font-medium">Out for Delivery</p>
+            <p class="text-sm text-gray-500">ETA: 3:00 PM</p>
+          </div>
+        </GTimelineItem>
+
+        <GTimelineItem state="pending">
+          <template #icon></template>
+          <div>
+            <p class="font-medium">Delivered</p>
+            <p class="text-sm text-gray-500">Pending</p>
+          </div>
+        </GTimelineItem>
+      </GTimeline>
+    </section>
   </div>
 </template>
