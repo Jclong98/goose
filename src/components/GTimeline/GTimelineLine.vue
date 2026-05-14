@@ -50,13 +50,31 @@ const props = defineProps<{
 
   &.--pending {
     --timeline-color: var(--color-gray-300);
-    --border-style: dashed;
+
+    & .g-timeline-line__line {
+      background-color: transparent;
+    }
+
+    /* moving dashes on the pending line */
+    & .g-timeline-line__line::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        var(--timeline-color, currentColor) 0 6px,
+        transparent 6px 8px
+      );
+      background-size: 100% 8px;
+      animation: g-timeline-moving-dashes 1.5s linear infinite;
+    }
   }
 
   & .g-timeline-line__line {
+    position: relative;
     width: 2px;
     height: 100%;
-    border-left: 2px var(--border-style, solid) var(--timeline-color, currentColor);
+    background-color: var(--timeline-color, currentColor);
   }
 
   & .g-timeline-line__circle {
@@ -70,6 +88,12 @@ const props = defineProps<{
     background-color: var(--timeline-color, currentColor);
     display: grid;
     place-content: center;
+  }
+}
+
+@keyframes g-timeline-moving-dashes {
+  to {
+    background-position: 0 8px;
   }
 }
 </style>
