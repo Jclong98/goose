@@ -73,10 +73,10 @@ const { highlighted } = useHighlight("text");
 
 ```ts
 import { createApp } from "vue";
-import { vFocus } from "@jclong98/goose/directives";
+import { Focus } from "@jclong98/goose/directives";
 
 const app = createApp();
-app.directive("focus", vFocus);
+app.directive("focus", Focus);
 ```
 
 ## Documentation

@@ -1,3 +1,4 @@
+import { tryOnScopeDispose } from "@vueuse/core";
 import type { Component } from "vue";
 import { createApp } from "vue";
 import GToastContainer from "../components/GToastContainer/GToastContainer.vue";
@@ -45,6 +46,10 @@ export function useToast(anchorName: string = "--g-toast-anchor"): {
     container?.remove();
     containers.delete(anchorName);
   }
+
+  tryOnScopeDispose(() => {
+    cleanup();
+  });
 
   return {
     show: root.show,

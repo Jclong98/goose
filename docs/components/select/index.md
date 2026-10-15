@@ -5,6 +5,8 @@ import ItemSlot from './ItemSlot.vue'
 
 # GSelect
 
+A native `<select>` styled with the [Customizable Select](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Customizable_select) API (`appearance: base-select`). Supports any value type via `v-model`.
+
 ## Basic Usage
 
 <!-- example -->
@@ -14,3 +16,7 @@ import ItemSlot from './ItemSlot.vue'
 
 <!-- example -->
 <ItemSlot />
+
+## API
+
+<!-- component-meta: GSelect -->

@@ -36,6 +36,7 @@ export default defineConfig({
     nav: [
       { text: "Components", link: "/components/button/index" },
       { text: "Composables", link: "/composables/use-highlight/index" },
+      { text: "Directives", link: "/directives/focus/index" },
     ],
 
     sidebar: [
@@ -56,11 +57,16 @@ export default defineConfig({
       {
         text: "Composables",
         items: [
-          { text: "useHighlight", link: "/composables/use-highlight/index" },
-          { text: "useUniqueId", link: "/composables/use-unique-id/index" },
           { text: "useDialogForm", link: "/composables/use-dialog-form/index" },
+          { text: "useHighlight", link: "/composables/use-highlight/index" },
+          { text: "useMultiplier", link: "/composables/use-multiplier/index" },
           { text: "useToast", link: "/composables/use-toast/index" },
+          { text: "useUniqueId", link: "/composables/use-unique-id/index" },
         ],
+      },
+      {
+        text: "Directives",
+        items: [{ text: "v-focus", link: "/directives/focus/index" }],
       },
     ],
 

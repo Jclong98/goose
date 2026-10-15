@@ -11,10 +11,12 @@ Returns a computed `product` of two reactive number values.
 
 ### Product from two refs
 
+<!-- example -->
 <BasicMultiplierExample />
 
 ### Tax total with multiplier
 
+<!-- example -->
 <TaxMultiplierExample />
 
 ## Usage
@@ -22,7 +24,7 @@ Returns a computed `product` of two reactive number values.
 ```vue
 <script setup lang="ts">
 import { ref } from "vue";
-import { useMultiplier } from "@goose-ui/core";
+import { useMultiplier } from "@jclong98/goose";
 
 const price = ref(10);
 const quantity = ref(3);
