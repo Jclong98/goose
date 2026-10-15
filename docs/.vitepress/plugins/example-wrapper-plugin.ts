@@ -9,12 +9,12 @@ import { githubBlobUrl } from "./github";
  */
 function findRepoRoot(start: string): string {
   let dir = start;
-  for (;;) {
-    if (existsSync(join(dir, ".git"))) return dir;
+  while (!existsSync(join(dir, ".git"))) {
     const parent = dirname(dir);
-    if (parent === dir) return start;
+    if (parent === dir) return start; // reached filesystem root
     dir = parent;
   }
+  return dir;
 }
 
 export function exampleWrapperPlugin(): Plugin {
