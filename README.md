@@ -86,9 +86,13 @@ See the [docs](https://goose.jacoblong.dev) for usage examples and API details f
 ## Development
 
 ```sh
-pnpm dev      # Start playground/dev server
-pnpm test     # Run tests
-pnpm build    # Build library
+vp check      # Format, lint, and type-check (also run automatically on staged files)
+pnpm dev      # Start the playground dev server (playground/)
+pnpm test     # Run tests (unit: *.spec.ts in jsdom, browser: *.b.spec.ts)
+pnpm build    # Type-check and build the library to dist/
+pnpm fmt      # Format code
+pnpm lint     # Lint with type-aware rules
+pnpm docs:dev # Start the VitePress docs dev server
 ```
 
 ## License

@@ -7,3 +7,4 @@ export * from "./GSegmentedControl";
 export * from "./GSelect";
 export * from "./GTable";
 export * from "./GTimeline";
+export * from "./GToastContainer";

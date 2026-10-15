@@ -48,7 +48,7 @@ export default defineConfig({
     dts({
       outDir: "./dist/types",
       tsconfigPath: "./tsconfig.app.json",
-      exclude: ["src/App.vue", "src/main.ts", "**/*.spec.ts"],
+      exclude: ["**/*.spec.ts"],
     }),
     tailwindcss(),
     viteStaticCopy({
@@ -64,7 +64,6 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": resolvePath("./src"),
-      public: resolvePath("./public"),
     },
   },
   build: {

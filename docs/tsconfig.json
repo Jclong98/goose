@@ -2,8 +2,7 @@
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "compilerOptions": {
     "paths": {
-      "@/*": ["../src/*"],
-      "public/*": ["../public/*"]
+      "@/*": ["../src/*"]
     },
     "types": ["vitepress/client"]
   },

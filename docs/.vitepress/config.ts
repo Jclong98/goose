@@ -7,7 +7,6 @@ import { exampleWrapperPlugin } from "./plugins/example-wrapper-plugin";
 
 const srcDir = fileURLToPath(new URL("../../src", import.meta.url));
 const docsDir = fileURLToPath(new URL("..", import.meta.url));
-const publicDir = fileURLToPath(new URL("../../public", import.meta.url));
 const componentsDir = fileURLToPath(new URL("../../src/components", import.meta.url));
 const tsConfigPath = fileURLToPath(new URL("../../tsconfig.json", import.meta.url));
 
@@ -20,7 +19,6 @@ export default defineConfig({
       alias: {
         "@": srcDir,
         "@docs": docsDir,
-        public: publicDir,
       },
     },
     plugins: [

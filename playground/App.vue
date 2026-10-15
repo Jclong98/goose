@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { GTimeline, GTimelineItem } from "./components/GTimeline";
+import { GTimeline, GTimelineItem } from "@/components/GTimeline";
 </script>
 
 <template>

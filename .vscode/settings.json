@@ -6,7 +6,6 @@
     "tsconfig.json": "tsconfig.*.json",
     "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock"
   },
-  "oxc.fmt.configPath": ".oxfmtrc.json",
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
