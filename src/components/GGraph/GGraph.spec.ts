@@ -137,4 +137,92 @@ describe("GGraph", () => {
     expect(model.value.edges).toHaveLength(0);
     expect(model.value.nodes).toHaveLength(2);
   });
+
+  describe("panning", () => {
+    // jsdom does not implement pointer capture or SVG CTMs.
+    beforeEach(() => {
+      Element.prototype.setPointerCapture = vi.fn();
+      Element.prototype.releasePointerCapture = vi.fn();
+      // jsdom does not implement getScreenCTM, and its <circle> elements do
+      // not inherit from SVGGraphicsElement, so stub it on SVGElement.
+      Object.defineProperty(SVGElement.prototype, "getScreenCTM", {
+        value: vi.fn(() => null),
+        configurable: true,
+      });
+    });
+
+    // VTU's `trigger` cannot set clientX/clientY on jsdom's getter-only
+    // MouseEvent properties, so pointer events are constructed by hand.
+    function dispatchPointer(
+      element: Element,
+      type: string,
+      {
+        pointerId = 1,
+        clientX = 0,
+        clientY = 0,
+      }: { pointerId?: number; clientX?: number; clientY?: number } = {},
+    ) {
+      const event = new window.PointerEvent(type, { bubbles: true, cancelable: true, pointerId });
+      Object.defineProperty(event, "clientX", { value: clientX, configurable: true });
+      Object.defineProperty(event, "clientY", { value: clientY, configurable: true });
+      element.dispatchEvent(event);
+    }
+
+    it("translates the whole graph when dragging empty canvas space", async () => {
+      const { wrapper } = mountGraph(makeFullGraph());
+      const svgEl = wrapper.find("svg").element;
+      const world = wrapper.find("svg > g");
+
+      expect(world.attributes("transform")).toBe("translate(0 0)");
+
+      dispatchPointer(svgEl, "pointerdown", { clientX: 100, clientY: 100 });
+      dispatchPointer(svgEl, "pointermove", { clientX: 140, clientY: 120 });
+      dispatchPointer(svgEl, "pointermove", { clientX: 130, clientY: 130 });
+      await nextTick();
+
+      expect(world.attributes("transform")).toBe("translate(30 30)");
+
+      dispatchPointer(svgEl, "pointerup", { clientX: 130, clientY: 130 });
+      await nextTick();
+
+      // The offset persists after release and accumulates across drags.
+      dispatchPointer(svgEl, "pointerdown", { clientX: 130, clientY: 130 });
+      dispatchPointer(svgEl, "pointermove", { clientX: 150, clientY: 130 });
+      await nextTick();
+
+      expect(world.attributes("transform")).toBe("translate(50 30)");
+
+      dispatchPointer(svgEl, "pointerup", { clientX: 150, clientY: 130 });
+    });
+
+    it("does not pan when the press starts on a node", async () => {
+      const { wrapper } = mountGraph(makeFullGraph());
+      const svgEl = wrapper.find("svg").element;
+      const world = wrapper.find("svg > g");
+      const nodeCircle = wrapper.find(".node-circle").element;
+
+      dispatchPointer(nodeCircle, "pointerdown", { clientX: 100, clientY: 100 });
+      dispatchPointer(svgEl, "pointermove", { clientX: 200, clientY: 200 });
+      await nextTick();
+
+      expect(world.attributes("transform")).toBe("translate(0 0)");
+
+      dispatchPointer(nodeCircle, "pointerup", { clientX: 200, clientY: 200 });
+    });
+
+    it("does not pan when the press starts on an edge", async () => {
+      const { wrapper } = mountGraph(makeFullGraph());
+      const svgEl = wrapper.find("svg").element;
+      const world = wrapper.find("svg > g");
+      const edgeLine = wrapper.find("line").element;
+
+      dispatchPointer(edgeLine, "pointerdown", { clientX: 100, clientY: 100 });
+      dispatchPointer(svgEl, "pointermove", { clientX: 200, clientY: 200 });
+      await nextTick();
+
+      expect(world.attributes("transform")).toBe("translate(0 0)");
+
+      dispatchPointer(edgeLine, "pointerup", { clientX: 200, clientY: 200 });
+    });
+  });
 });

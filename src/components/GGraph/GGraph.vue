@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useRafFn } from "@vueuse/core";
-import { computed, useTemplateRef, watch } from "vue";
+import { computed, reactive, useTemplateRef, watch } from "vue";
 
 import GGraphEdge from "./GGraphEdge.vue";
 import GGraphNode from "./GGraphNode.vue";
@@ -26,6 +26,35 @@ const svgElement = useTemplateRef<SVGSVGElement>("svgElement");
 
 const draggingIds = new Set<string>();
 const isDragging = (id: string) => draggingIds.has(id);
+
+// Panning the canvas: dragging on empty space (not on a node or edge)
+// translates the whole graph via a viewport offset instead of moving each node.
+const pan = reactive({ x: 0, y: 0 });
+let isPanning = false;
+let panStart = { x: 0, y: 0 };
+
+function onCanvasPointerDown(event: PointerEvent) {
+  if (event.button !== 0 || event.target !== svgElement.value) return;
+  isPanning = true;
+  panStart = { x: event.clientX, y: event.clientY };
+
+  if (!svgElement.value) return;
+
+  svgElement.value.setPointerCapture(event.pointerId);
+}
+
+function onCanvasPointerMove(event: PointerEvent) {
+  if (!isPanning) return;
+  pan.x += event.clientX - panStart.x;
+  pan.y += event.clientY - panStart.y;
+  panStart = { x: event.clientX, y: event.clientY };
+}
+
+function onCanvasPointerUp(event: PointerEvent) {
+  if (!isPanning) return;
+  isPanning = false;
+  svgElement.value?.releasePointerCapture(event.pointerId);
+}
 
 const nodeById = computed(() => new Map(modelValue.value.nodes.map((node) => [node.id, node])));
 
@@ -106,21 +135,30 @@ function deleteNode(node: Node) {
 </script>
 
 <template>
-  <svg ref="svgElement">
-    <GGraphEdge
-      v-for="edge in resolvedEdges"
-      :key="`${edge.source}-${edge.target}-${edge.index}`"
-      :model-value="edge"
-      @delete="deleteEdge(edge)"
-    />
+  <svg
+    ref="svgElement"
+    class="cursor-grab touch-none select-none active:cursor-grabbing"
+    @pointerdown="onCanvasPointerDown"
+    @pointermove="onCanvasPointerMove"
+    @pointerup="onCanvasPointerUp"
+    @pointercancel="onCanvasPointerUp"
+  >
+    <g :transform="`translate(${pan.x} ${pan.y})`">
+      <GGraphEdge
+        v-for="edge in resolvedEdges"
+        :key="`${edge.source}-${edge.target}-${edge.index}`"
+        :model-value="edge"
+        @delete="deleteEdge(edge)"
+      />
 
-    <GGraphNode
-      v-for="node in modelValue.nodes"
-      :key="node.id"
-      :model-value="node"
-      @delete="deleteNode(node)"
-      @drag-start="draggingIds.add(node.id)"
-      @drag-end="draggingIds.delete(node.id)"
-    />
+      <GGraphNode
+        v-for="node in modelValue.nodes"
+        :key="node.id"
+        :model-value="node"
+        @delete="deleteNode(node)"
+        @drag-start="draggingIds.add(node.id)"
+        @drag-end="draggingIds.delete(node.id)"
+      />
+    </g>
   </svg>
 </template>

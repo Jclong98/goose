@@ -19,7 +19,9 @@ const { pressed } = useMousePressed({ target: circleElement });
 const clickOffsetPosition = reactive({ x: 0, y: 0 });
 
 function toSvgPoint(clientX: number, clientY: number) {
-  const ctm = circleElement.value?.ownerSVGElement?.getScreenCTM();
+  // Use the circle's own CTM (which includes ancestor transforms like canvas
+  // panning) so the point is in the same space the node's x/y live in.
+  const ctm = circleElement.value?.getScreenCTM();
   if (!ctm) return { x: clientX, y: clientY };
   const point = new DOMPoint(clientX, clientY).matrixTransform(ctm.inverse());
   return { x: point.x, y: point.y };
