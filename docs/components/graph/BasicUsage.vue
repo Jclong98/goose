@@ -12,10 +12,10 @@ const nodes: Node[] = [
 ];
 
 const edges: Edge[] = [
-  createEdge({ source: nodes[0], target: nodes[1] }),
-  createEdge({ source: nodes[1], target: nodes[2], length: 250, label: "long edge" }),
-  createEdge({ source: nodes[2], target: nodes[0], length: 300, label: "longer edge" }),
-  createEdge({ source: nodes[2], target: nodes[3] }),
+  createEdge({ source: "1", target: "2" }),
+  createEdge({ source: "2", target: "3", length: 250, label: "long edge" }),
+  createEdge({ source: "3", target: "1", length: 300, label: "longer edge" }),
+  createEdge({ source: "3", target: "4" }),
 ];
 
 const graph = ref<Graph>({ nodes, edges });

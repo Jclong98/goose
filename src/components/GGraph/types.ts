@@ -4,17 +4,21 @@ export type Node = {
   x: number;
   y: number;
   radius: number;
-  isBeingDragged: boolean;
   color: string;
 };
 
 export type Edge = {
   label?: string;
-  source: Node;
-  target: Node;
+  source: string;
+  target: string;
   length: number;
   color: string;
   width: number;
+};
+
+export type ResolvedEdge = Edge & {
+  sourceNode: Node;
+  targetNode: Node;
 };
 
 export type Graph = {

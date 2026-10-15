@@ -1,30 +1,35 @@
 <script lang="ts" setup>
 import { computed } from "vue";
 
-import type { Edge } from "./types";
+import type { ResolvedEdge } from "./types";
 
 const emit = defineEmits<{
   delete: [];
 }>();
 
-const modelValue = defineModel<Edge>({ required: true });
+const modelValue = defineModel<ResolvedEdge>({ required: true });
 
 const midPoint = computed(() => ({
-  x: (modelValue.value.source.x + modelValue.value.target.x) / 2,
-  y: (modelValue.value.source.y + modelValue.value.target.y) / 2,
+  x: (modelValue.value.sourceNode.x + modelValue.value.targetNode.x) / 2,
+  y: (modelValue.value.sourceNode.y + modelValue.value.targetNode.y) / 2,
 }));
+
+function onDeleteKeydown(event: KeyboardEvent) {
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    emit("delete");
+  }
+}
 </script>
 
 <template>
   <g>
     <line
-      :x1="modelValue.source.x"
-      :y1="modelValue.source.y"
-      :x2="modelValue.target.x"
-      :y2="modelValue.target.y"
-      :style="{
-        stroke: modelValue.color,
-      }"
+      :x1="modelValue.sourceNode.x"
+      :y1="modelValue.sourceNode.y"
+      :x2="modelValue.targetNode.x"
+      :y2="modelValue.targetNode.y"
+      :stroke="modelValue.color"
       :stroke-width="modelValue.width"
     />
 
@@ -32,7 +37,7 @@ const midPoint = computed(() => ({
       v-if="modelValue.label"
       class="select-none"
       :x="midPoint.x"
-      :y="midPoint.y"
+      :y="midPoint.y - 8"
       text-anchor="middle"
       fill="currentColor"
     >
@@ -40,12 +45,16 @@ const midPoint = computed(() => ({
     </text>
 
     <circle
+      role="button"
+      :aria-label="`Delete edge between ${modelValue.source} and ${modelValue.target}`"
+      tabindex="0"
       :cx="midPoint.x"
       :cy="midPoint.y"
       r="10"
       fill="transparent"
-      class="cursor-pointer hover:fill-red-400 active:fill-red-600"
+      class="cursor-pointer outline-0 hover:fill-red-400 focus-visible:stroke-red-400 focus-visible:stroke-2 active:fill-red-600"
       @click="emit('delete')"
+      @keydown="onDeleteKeydown"
     />
   </g>
 </template>

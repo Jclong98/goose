@@ -1,109 +1,126 @@
 <script lang="ts" setup>
 import { useRafFn } from "@vueuse/core";
+import { computed, useTemplateRef, watch } from "vue";
 
 import GGraphEdge from "./GGraphEdge.vue";
 import GGraphNode from "./GGraphNode.vue";
-import type { Edge, Graph, Node } from "./types";
+import { applyEdgeSprings, applyNodeRepulsion } from "./physics";
+import type { Graph, Node, ResolvedEdge } from "./types";
 
-const { minDistance = 100, repulsionFactor = 0.1 } = defineProps<{
-  minDistance?: number;
-  repulsionFactor?: number;
-}>();
+const props = withDefaults(
+  defineProps<{
+    minDistance?: number;
+    repulsionFactor?: number;
+    speed?: number;
+  }>(),
+  {
+    minDistance: 100,
+    repulsionFactor: 0.1,
+    speed: 0.1,
+  },
+);
 
 const modelValue = defineModel<Graph>({ required: true });
 
-const speed = 0.1;
+const svgElement = useTemplateRef<SVGSVGElement>("svgElement");
 
-function moveTowardsLength(edge: Edge) {
-  const { source, target } = edge;
+const draggingIds = new Set<string>();
+const isDragging = (id: string) => draggingIds.has(id);
 
-  const dx = target.x - source.x;
-  const dy = target.y - source.y;
-  const currentLength = Math.sqrt(dx * dx + dy * dy);
+const nodeById = computed(() => new Map(modelValue.value.nodes.map((node) => [node.id, node])));
 
-  if (currentLength === 0) return;
+type EdgeView = ResolvedEdge & { index: number };
 
-  const scale = (currentLength - edge.length) * speed;
-  const offsetX = (dx / currentLength) * scale;
-  const offsetY = (dy / currentLength) * scale;
+const resolvedEdges = computed<EdgeView[]>(() =>
+  modelValue.value.edges.flatMap((edge, index) => {
+    const sourceNode = nodeById.value.get(edge.source);
+    const targetNode = nodeById.value.get(edge.target);
+    if (!sourceNode || !targetNode) return [];
+    return [{ ...edge, sourceNode, targetNode, index }];
+  }),
+);
 
-  // move the nodes
-  target.x -= offsetX;
-  target.y -= offsetY;
+// While settled, the simulation only verifies that nothing changed (O(n) per
+// frame). Any movement, structural change, or drag re-activates it.
+let settledNodes: { x: number; y: number }[] | null = null;
+let settledEdgeLengths: number[] | null = null;
 
-  source.x += offsetX;
-  source.y += offsetY;
-}
-
-function applyNodeRepulsion(nodes: Node[]) {
-  for (const [i, nodeA] of nodes.entries()) {
-    for (const nodeB of nodes.slice(i + 1)) {
-      const dx = nodeB.x - nodeA.x;
-      const dy = nodeB.y - nodeA.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      if (distance < minDistance) {
-        const angle = Math.atan2(dy, dx);
-        const offset = (minDistance - distance) * repulsionFactor;
-        const offsetX = Math.cos(angle) * offset;
-        const offsetY = Math.sin(angle) * offset;
-
-        nodeA.x -= offsetX;
-        nodeA.y -= offsetY;
-        nodeB.x += offsetX;
-        nodeB.y += offsetY;
-      }
-    }
-  }
+function getCenter(): { x: number; y: number } | null {
+  const svg = svgElement.value;
+  const width = svg?.clientWidth ?? 0;
+  const height = svg?.clientHeight ?? 0;
+  if (!width || !height) return null;
+  return { x: width / 2, y: height / 2 };
 }
 
 useRafFn(() => {
-  applyNodeRepulsion(modelValue.value.nodes);
+  const { nodes, edges } = modelValue.value;
 
-  for (const edge of modelValue.value.edges) {
-    moveTowardsLength(edge);
+  if (settledNodes && settledEdgeLengths) {
+    const stillSettled =
+      draggingIds.size === 0 &&
+      nodes.length === settledNodes.length &&
+      settledNodes.every((position, i) => position.x === nodes[i].x && position.y === nodes[i].y) &&
+      edges.length === settledEdgeLengths.length &&
+      settledEdgeLengths.every((length, i) => length === edges[i].length);
+    if (stillSettled) return;
+    settledNodes = null;
+    settledEdgeLengths = null;
+  }
+
+  const displacement =
+    applyNodeRepulsion(nodes, props.minDistance, props.repulsionFactor, isDragging) +
+    applyEdgeSprings(resolvedEdges.value, props.speed, isDragging);
+
+  if (displacement < 0.01 && draggingIds.size === 0) {
+    settledNodes = nodes.map((node) => ({ x: node.x, y: node.y }));
+    settledEdgeLengths = edges.map((edge) => edge.length);
+    return;
   }
 });
 
-function deleteEdge(edge: Edge) {
-  const index = modelValue.value.edges.findIndex(
-    (e) => e.source.id === edge.source.id && e.target.id === edge.target.id,
-  );
-  if (index === -1) throw new Error("Edge not found");
+// Physics changes require re-running the simulation.
+watch(
+  () => [props.minDistance, props.repulsionFactor, props.speed],
+  () => {
+    settledNodes = null;
+    settledEdgeLengths = null;
+  },
+);
 
-  modelValue.value.edges.splice(index, 1);
+function deleteEdge(edge: EdgeView) {
+  if (edge.index < 0 || edge.index >= modelValue.value.edges.length) return;
+  modelValue.value.edges.splice(edge.index, 1);
 }
 
 function deleteNode(node: Node) {
-  // Find the index of the node to be deleted
   const index = modelValue.value.nodes.findIndex((_node) => _node.id === node.id);
-  if (index === -1) throw new Error("Node not found");
+  if (index === -1) return;
 
-  // remove the node and its edges
-  const nodeId = modelValue.value.nodes[index].id;
+  draggingIds.delete(node.id);
   modelValue.value.nodes.splice(index, 1);
   modelValue.value.edges = modelValue.value.edges.filter(
-    (edge) => edge.source.id !== nodeId && edge.target.id !== nodeId,
+    (edge) => edge.source !== node.id && edge.target !== node.id,
   );
 }
 </script>
 
 <template>
-  <svg>
+  <svg ref="svgElement">
     <GGraphEdge
-      v-for="(edge, index) in modelValue.edges"
-      :key="`${edge.source.id}-${edge.target.id}`"
+      v-for="edge in resolvedEdges"
+      :key="`${edge.source}-${edge.target}-${edge.index}`"
       :model-value="edge"
-      @update:model-value="modelValue.edges[index] = $event"
       @delete="deleteEdge(edge)"
     />
 
     <GGraphNode
-      v-for="(node, index) in modelValue.nodes"
+      v-for="node in modelValue.nodes"
       :key="node.id"
       :model-value="node"
-      @update:model-value="modelValue.nodes[index] = $event"
       @delete="deleteNode(node)"
+      @drag-start="draggingIds.add(node.id)"
+      @drag-end="draggingIds.delete(node.id)"
     />
   </svg>
 </template>
