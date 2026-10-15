@@ -5,6 +5,10 @@ import ManualHighlightExample from './ManualHighlightExample.vue'
 
 # useHighlight
 
+<div class="flex gap-2">
+  <SourceChip path="src/composables/useHighlight.ts" />
+</div>
+
 Highlights all occurrences of a search string within a target element using the [CSS Custom Highlight API](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Custom_Highlight_API).
 
 ::: warning Browser support

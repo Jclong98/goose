@@ -5,6 +5,10 @@ import SingleSelectExample from './SingleSelectExample.vue'
 
 # GSegmentedControl
 
+<div class="flex gap-2">
+  <SourceChip path="src/components/GSegmentedControl/GSegmentedControl.vue" />
+</div>
+
 A segmented control (button group) for selecting one or multiple values from a set. Renders as a `<fieldset>` with radio or checkbox inputs.
 
 ## Demo

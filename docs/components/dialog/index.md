@@ -5,6 +5,10 @@ import Closedby from './Closedby.vue'
 
 # GDialog
 
+<div class="flex gap-2">
+  <SourceChip path="src/components/GDialog/GDialog.vue" />
+</div>
+
 A dialog component that uses `<dialog>` under the hood.
 
 ## Demo

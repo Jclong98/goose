@@ -6,6 +6,10 @@ import StickyScrolling from './StickyScrolling.vue'
 
 # GTable
 
+<div class="flex gap-2">
+  <SourceChip path="src/components/GTable/GTable.vue" />
+</div>
+
 A generic, strongly-typed data table component using CSS subgrid layout. Supports pinned columns and custom header/cell slot renderers.
 
 ## Demo

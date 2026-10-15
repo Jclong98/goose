@@ -7,6 +7,11 @@ import CircleSize from './CircleSize.vue'
 
 # GTimeline
 
+<div class="flex gap-2">
+  <SourceChip path="src/components/GTimeline/GTimeline.vue" />
+  <SourceChip path="src/components/GTimeline/GTimelineItem.vue" />
+</div>
+
 ## Demo
 
 ### Basic Usage

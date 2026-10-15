@@ -4,6 +4,10 @@ import BasicUsage from './BasicUsage.vue'
 
 # useDialogForm
 
+<div class="flex gap-2">
+  <SourceChip path="src/composables/useDialogForm.ts" />
+</div>
+
 ## Basic usage
 
 <!-- example -->

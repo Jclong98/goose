@@ -1,6 +1,21 @@
-import { readFileSync } from "node:fs";
-import { dirname, resolve } from "node:path";
+import { existsSync, readFileSync } from "node:fs";
+import { dirname, join, relative, resolve } from "node:path";
 import type { Plugin } from "vite";
+import { githubBlobUrl } from "./github";
+
+/**
+ * Walks up from `start` to find the git repo root (the directory containing
+ * `.git`), falling back to `start` if none is found.
+ */
+function findRepoRoot(start: string): string {
+  let dir = start;
+  for (;;) {
+    if (existsSync(join(dir, ".git"))) return dir;
+    const parent = dirname(dir);
+    if (parent === dir) return start;
+    dir = parent;
+  }
+}
 
 export function exampleWrapperPlugin(): Plugin {
   return {
@@ -20,14 +35,16 @@ export function exampleWrapperPlugin(): Plugin {
       }
       if (!components.size) return null;
 
-      // Read sources
+      // Read sources and build GitHub source URLs
       const mdDir = dirname(id);
-      const sources = Object.fromEntries(
-        Array.from(components.entries()).map(([name, rel]) => [
-          name,
-          readFileSync(resolve(mdDir, rel), "utf-8").trim(),
-        ]),
-      );
+      const repoRoot = findRepoRoot(mdDir);
+      const sources: Record<string, string> = {};
+      const sourceUrls: Record<string, string> = {};
+      for (const [name, rel] of components.entries()) {
+        const filePath = resolve(mdDir, rel);
+        sources[name] = readFileSync(filePath, "utf-8").trim();
+        sourceUrls[name] = githubBlobUrl(relative(repoRoot, filePath));
+      }
 
       // Only wrap tags preceded by <!-- example -->
       const parts = code.split(/(```[\s\S]*?```)/g);
@@ -39,7 +56,7 @@ export function exampleWrapperPlugin(): Plugin {
             (_, attrs) =>
               [
                 `<ClientOnly>`,
-                `<ExampleWrapper>`,
+                `<ExampleWrapper source-url="${sourceUrls[name]}">`,
                 `<${name}${attrs ? " " + attrs.trim() : ""} />`,
                 `<template #code>`,
                 "",

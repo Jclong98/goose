@@ -5,6 +5,10 @@ import TaxMultiplierExample from './TaxMultiplierExample.vue'
 
 # useMultiplier
 
+<div class="flex gap-2">
+  <SourceChip path="src/composables/useMultiplier.ts" />
+</div>
+
 Returns a computed `product` of two reactive number values.
 
 ## Live examples

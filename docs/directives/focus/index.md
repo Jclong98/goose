@@ -4,6 +4,10 @@ import FocusExample from './FocusExample.vue'
 
 # v-focus
 
+<div class="flex gap-2">
+  <SourceChip path="src/directives/focus.ts" />
+</div>
+
 Focuses an element when the component is mounted.
 
 ## Live example

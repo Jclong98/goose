@@ -8,6 +8,10 @@ import Icons from './Icons.vue'
 
 # GButton
 
+<div class="flex gap-2">
+  <SourceChip path="src/components/GButton/GButton.vue" />
+</div>
+
 A simple styled button component.
 
 ## Demo

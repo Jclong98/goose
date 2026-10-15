@@ -7,6 +7,10 @@ import Duration from './Duration.vue'
 
 # useToast
 
+<div class="flex gap-2">
+  <SourceChip path="src/composables/useToast.ts" />
+</div>
+
 ::: info How toasts are rendered
 `useToast` creates and mounts a `GToastContainer` at your anchor position automatically, so there is nothing to add to your template.
 :::

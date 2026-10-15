@@ -71,5 +71,8 @@ export default defineConfig({
     ],
 
     socialLinks: [{ icon: "github", link: "https://github.com/jclong98/goose" }],
+    editLink: {
+      pattern: "https://github.com/jclong98/goose/edit/main/docs/:path",
+    },
   },
 });

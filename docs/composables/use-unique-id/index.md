@@ -5,6 +5,10 @@ import ProvidedIdExample from './ProvidedIdExample.vue'
 
 # useUniqueId
 
+<div class="flex gap-2">
+  <SourceChip path="src/composables/useUniqueId.ts" />
+</div>
+
 Returns a stable, unique ID for a component. Prefers an `id` passed via `$attrs` so the consumer can override it, otherwise falls back to Vue's `useId()`.
 
 ## Live examples

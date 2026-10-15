@@ -11,6 +11,10 @@ import Nesting from './Nesting.vue'
 
 # GPopover
 
+<div class="flex gap-2">
+  <SourceChip path="src/components/GPopover/GPopover.vue" />
+</div>
+
 A flexible popover component built on the native [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) with CSS anchor positioning. Exposes an `activator` slot to bind the trigger element.
 
 ## Demo
