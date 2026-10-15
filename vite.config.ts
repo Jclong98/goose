@@ -2,16 +2,54 @@ import { fileURLToPath, URL } from "node:url";
 
 import tailwindcss from "@tailwindcss/vite";
 import vue from "@vitejs/plugin-vue";
-import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 import vueDevTools from "vite-plugin-vue-devtools";
+import { defineConfig, lazyPlugins } from "vite-plus";
 
 const resolvePath = (path: string) => fileURLToPath(new URL(path, import.meta.url));
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
+  staged: {
+    "*": "vp check --fix",
+  },
+  fmt: {
+    ignorePatterns: [],
+    sortTailwindcss: {},
+    semi: true,
+  },
+  lint: {
+    plugins: ["eslint", "typescript", "vue", "import", "oxc", "unicorn"],
+    categories: {},
+    rules: {
+      "vite-plus/prefer-vite-plus-imports": "error",
+    },
+    settings: {},
+    env: {
+      builtin: true,
+    },
+    globals: {},
+    ignorePatterns: [],
+    options: {
+      typeAware: true,
+      typeCheck: true,
+    },
+    jsPlugins: [
+      {
+        name: "vite-plus",
+        specifier: "vite-plus/oxlint-plugin",
+      },
+    ],
+  },
+  test: {
+    // Vitest v4 compatibility: preserve mock call history.
+    // Remove after tests no longer rely on calls from setup or earlier tests.
+    // https://viteplus.dev/guide/vitest-v5#remove-unneeded-compatibility-settings
+    // https://vitest.dev/guide/migration/#clearmocks-is-enabled-by-default
+    clearMocks: false,
+  },
+  plugins: lazyPlugins(() => [
     vue(),
     vueDevTools(),
     dts({
@@ -29,7 +67,7 @@ export default defineConfig({
         },
       ],
     }),
-  ],
+  ]),
   resolve: {
     alias: {
       "@": resolvePath("./src"),
@@ -48,7 +86,7 @@ export default defineConfig({
       name: "Goose",
       formats: ["es"],
     },
-    rollupOptions: {
+    rolldownOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
       external: (id) => {

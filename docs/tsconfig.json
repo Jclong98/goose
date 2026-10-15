@@ -7,7 +7,7 @@
     },
     "types": ["vitepress/client"]
   },
-  "include": ["./**/*.ts", "./**/*.vue", "./.vitepress/**/*.ts"],
+  "include": ["../env.d.ts", "./**/*.ts", "./**/*.vue", "./.vitepress/**/*.ts"],
   "vueCompilerOptions": {
     "vitePressExtensions": [".md"]
   }

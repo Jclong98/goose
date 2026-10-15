@@ -4,5 +4,6 @@
     "bradlc.vscode-tailwindcss",
     "Vue.volar",
     "vitest.explorer",
-  ],
+    "VoidZero.vite-plus-extension-pack"
+  ]
 }

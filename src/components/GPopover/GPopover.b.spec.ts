@@ -5,9 +5,10 @@ import GPopover from "./GPopover.vue";
 
 describe("GPopover", () => {
   it("opens when activator is clicked", async () => {
-    const { getByText } = render(GPopover, {
+    const { getByText } = await render(GPopover, {
       slots: {
-        activator: ({ binding }) => h("button", binding, "Click me"),
+        activator: ({ binding }: { binding: Record<string, unknown> }) =>
+          h("button", binding, "Click me"),
         default: "Popover content",
       },
     });

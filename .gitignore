@@ -31,3 +31,4 @@ coverage
 
 **/.vitepress/cache
 **/components.d.ts
+.vitest/

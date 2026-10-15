@@ -29,9 +29,7 @@ function getOrCreateContainer(anchorName: string): Element {
   return container;
 }
 
-export function useToast(
-  anchorName: string = "--g-toast-anchor",
-): {
+export function useToast(anchorName: string = "--g-toast-anchor"): {
   show: (content: string | Component, options?: ShowToastOptions) => ShowToastReturn;
   remove: (id: string) => void;
   cleanup: () => void;
