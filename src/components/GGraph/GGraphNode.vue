@@ -61,6 +61,7 @@ useRafFn(() => {
       :x="modelValue.x"
       :y="modelValue.y - modelValue.radius - 10"
       text-anchor="middle"
+      fill="currentColor"
     >
       {{ modelValue.label }}
     </text>

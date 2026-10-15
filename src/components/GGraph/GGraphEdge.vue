@@ -34,6 +34,7 @@ const midPoint = computed(() => ({
       :x="midPoint.x"
       :y="midPoint.y"
       text-anchor="middle"
+      fill="currentColor"
     >
       {{ modelValue.label }}
     </text>
