@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-@import "./fonts.css";
 @import "./tw-theme.css";
 
+/* Fonts are opt-in: import "@jclong98/goose/fonts.css" in your app. */
 body {
   font-family: "Rubik", sans-serif;
 }

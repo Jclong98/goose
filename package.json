@@ -30,7 +30,8 @@
       "import": "./dist/integrations.js"
     },
     "./style.css": "./dist/goose.css",
-    "./tw-theme.css": "./dist/tw-theme.css"
+    "./tw-theme.css": "./dist/tw-theme.css",
+    "./fonts.css": "./dist/fonts.css"
   },
   "publishConfig": {
     "access": "public"
@@ -91,10 +92,5 @@
     "@vueuse/core": "^14.2.1",
     "unimport": "^6.0.2",
     "vue": "^3.5.31"
-  },
-  "peerDependenciesMeta": {
-    "@vueuse/core": {
-      "optional": true
-    }
   }
 }

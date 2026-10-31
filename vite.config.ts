@@ -9,28 +9,19 @@ import { defineConfig, lazyPlugins } from "vite-plus";
 
 const resolvePath = (path: string) => fileURLToPath(new URL(path, import.meta.url));
 
-// https://vite.dev/config/
 export default defineConfig({
   staged: {
     "*": "vp check --fix",
   },
   fmt: {
-    ignorePatterns: [],
     sortTailwindcss: {},
     semi: true,
   },
   lint: {
     plugins: ["eslint", "typescript", "vue", "import", "oxc", "unicorn"],
-    categories: {},
     rules: {
       "vite-plus/prefer-vite-plus-imports": "error",
     },
-    settings: {},
-    env: {
-      builtin: true,
-    },
-    globals: {},
-    ignorePatterns: [],
     options: {
       typeAware: true,
       typeCheck: true,
@@ -47,8 +38,9 @@ export default defineConfig({
     vueDevTools(),
     dts({
       outDir: "./dist/types",
+      entryRoot: "./src",
       tsconfigPath: "./tsconfig.app.json",
-      exclude: ["**/*.spec.ts"],
+      exclude: ["**/*.spec.ts", "playground/**"],
     }),
     tailwindcss(),
     viteStaticCopy({
@@ -57,6 +49,18 @@ export default defineConfig({
           src: "src/assets/tw-theme.css",
           dest: ".",
           rename: { stripBase: true },
+        },
+        {
+          // Opt-in font CSS: copied verbatim (not processed by Vite) so the
+          // @font-face urls stay relative instead of being inlined as base64.
+          src: "src/assets/fonts.css",
+          dest: ".",
+          rename: { stripBase: true },
+        },
+        {
+          src: "src/assets/fonts/**/*",
+          dest: ".",
+          rename: { stripBase: 2 },
         },
       ],
     }),
@@ -75,23 +79,21 @@ export default defineConfig({
         directives: resolvePath("./src/directives/index.ts"),
         integrations: resolvePath("./src/integrations/index.ts"),
       },
-      name: "Goose",
       formats: ["es"],
     },
     rolldownOptions: {
-      // make sure to externalize deps that shouldn't be bundled
-      // into your library
+      // Externalize peer deps (and their subpath imports) so consumers get a
+      // single shared instance of each.
       external: (id) => {
         if (id.startsWith("node:")) return true;
-        return ["vue", "vue-router"].includes(id);
-      },
-      output: {
-        // Provide global variables to use in the UMD build
-        // for externalized deps
-        globals: {
-          vue: "Vue",
-          "vue-router": "VueRouter",
-        },
+        return (
+          id === "vue" ||
+          id.startsWith("vue/") ||
+          id === "@vueuse/core" ||
+          id.startsWith("@vueuse/core/") ||
+          id === "unimport" ||
+          id.startsWith("unimport/")
+        );
       },
     },
   },
