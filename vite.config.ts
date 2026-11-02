@@ -84,17 +84,7 @@ export default defineConfig({
     rolldownOptions: {
       // Externalize peer deps (and their subpath imports) so consumers get a
       // single shared instance of each.
-      external: (id) => {
-        if (id.startsWith("node:")) return true;
-        return (
-          id === "vue" ||
-          id.startsWith("vue/") ||
-          id === "@vueuse/core" ||
-          id.startsWith("@vueuse/core/") ||
-          id === "unimport" ||
-          id.startsWith("unimport/")
-        );
-      },
+      external: ["vue", "@vueuse/core", "unimport", /^node:/],
     },
   },
 });
