@@ -3,6 +3,7 @@ import "./GButton.css";
 
 import type { RouterLinkProps } from "vue-router";
 import { RouterLink } from "vue-router";
+import LoadingThrobber from "./LoadingThrobber.vue";
 
 const props = withDefaults(
   defineProps<
@@ -19,11 +20,7 @@ const props = withDefaults(
 </script>
 
 <template>
-  <RouterLink
-    class="g-button"
-    :class="[`--${props.variant}`, { '--disabled': $attrs.disabled }]"
-    v-bind="props"
-  >
+  <RouterLink class="g-button" :class="[`--${props.variant}`]" v-bind="props">
     <slot v-if="props.loading" name="loading">
       <LoadingThrobber />
     </slot>
