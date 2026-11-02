@@ -6,6 +6,7 @@ catalog:
   vite-plus: 1.2.0
 allowBuilds:
   edgedriver: true
+  esbuild: true
   geckodriver: true
 overrides:
   vite@*: "catalog:"
