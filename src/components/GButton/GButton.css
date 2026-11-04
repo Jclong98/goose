@@ -1,3 +1,6 @@
+@import "tailwindcss";
+@source "../../assets/tw-theme.css";
+
 .g-button {
   --g-button-padding: 0.25em 1em;
 
