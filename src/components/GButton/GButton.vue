@@ -37,11 +37,15 @@ function onClick(event: MouseEvent) {
     :aria-disabled="!!props.disabled"
     @click="onClick"
   >
-    <slot v-if="props.loading" name="loading">
-      <LoadingThrobber />
-    </slot>
-    <slot v-else name="icon"></slot>
+    <span v-if="props.loading || $slots.icon" class="g-button__icon">
+      <slot v-if="props.loading" name="loading">
+        <LoadingThrobber />
+      </slot>
+      <slot v-else name="icon"></slot>
+    </span>
 
-    <slot />
+    <span v-if="$slots.default" class="g-button__text">
+      <slot />
+    </span>
   </button>
 </template>
