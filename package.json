@@ -92,5 +92,6 @@
     "@vueuse/core": "^14.2.1",
     "unimport": "^6.0.2",
     "vue": "^3.5.31"
-  }
+  },
+  "packageManager": "pnpm@12.21.0"
 }
