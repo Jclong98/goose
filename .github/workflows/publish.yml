@@ -7,9 +7,11 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+
     permissions:
       contents: read
       id-token: write
+
     steps:
       - uses: actions/checkout@v7
       - uses: voidzero-dev/setup-vp@v1.22.0
@@ -17,6 +19,7 @@ jobs:
           node-version: "24"
           cache: true
           run-install: true
+
       - name: Verify tag matches package version
         run: |
           tag="${GITHUB_REF#refs/tags/v}"
@@ -25,14 +28,15 @@ jobs:
             echo "::error::Tag v${tag} does not match package.json version ${version}"
             exit 1
           fi
+
       - name: Format, lint, and type check
         run: vp check
+
       - name: Run tests (unit + browser)
         run: vp test run
+
       - name: Build library
         run: pnpm run build
-      # No token needed: the npm CLI exchanges the GitHub OIDC token
-      # (via id-token: write) and npm verifies it against the trusted
-      # publisher configured for this repo on npmjs.com.
+
       - name: Publish to npm
         run: npm publish --provenance --access public
