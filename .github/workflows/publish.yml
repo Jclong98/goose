@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v7
       - uses: voidzero-dev/setup-vp@v1.22.0
@@ -30,7 +31,8 @@ jobs:
         run: vp test run
       - name: Build library
         run: pnpm run build
+      # No token needed: the npm CLI exchanges the GitHub OIDC token
+      # (via id-token: write) and npm verifies it against the trusted
+      # publisher configured for this repo on npmjs.com.
       - name: Publish to npm
-        run: pnpm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --provenance --access public
