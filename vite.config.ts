@@ -84,7 +84,7 @@ export default defineConfig({
     rolldownOptions: {
       // Externalize peer deps (and their subpath imports) so consumers get a
       // single shared instance of each.
-      external: ["vue", "@vueuse/core", "unimport", /^node:/],
+      external: ["vue", "vue-router", "@vueuse/core", "unimport", /^node:/],
     },
   },
 });

@@ -2,7 +2,7 @@
   "name": "@jclong98/goose",
   "version": "0.0.9",
   "private": false,
-  "description": "Core Vue components, composables, directives, and styles for Goose",
+  "description": "Lightweight components built on modern web APIs.",
   "license": "ISC",
   "repository": {
     "type": "git",
@@ -88,14 +88,14 @@
     "vitest": "catalog:",
     "vitest-browser-vue": "^2.1.0",
     "vue-component-meta": "^3.2.6",
-    "vue-router": "^5.0.4",
     "vue-tsc": "^3.2.6",
     "webdriverio": "*"
   },
   "peerDependencies": {
-    "@vueuse/core": "^14.2.1",
+    "@vueuse/core": "^15.0.0",
     "unimport": "^6.0.2",
-    "vue": "^3.5.31"
+    "vue": "^3.5.31",
+    "vue-router": "^5.0.4"
   },
   "packageManager": "pnpm@12.21.0"
 }
