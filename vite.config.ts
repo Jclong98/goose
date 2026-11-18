@@ -40,6 +40,7 @@ export default defineConfig({
       outDir: "./dist/types",
       entryRoot: "./src",
       tsconfigPath: "./tsconfig.app.json",
+      compilerOptions: { rootDir: "./src" },
       exclude: ["**/*.spec.ts", "playground/**"],
     }),
     tailwindcss(),
