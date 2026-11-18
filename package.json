@@ -4,6 +4,10 @@
   "private": false,
   "description": "Core Vue components, composables, directives, and styles for Goose",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jclong98/goose.git"
+  },
   "files": [
     "dist"
   ],

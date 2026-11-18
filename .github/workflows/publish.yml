@@ -36,7 +36,7 @@ jobs:
         run: vp test run
 
       - name: Build library
-        run: pnpm run build
+        run: vp build
 
       - name: Publish to npm
         run: npm publish --provenance --access public
