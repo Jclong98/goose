@@ -97,14 +97,14 @@ pnpm docs:dev # Start the VitePress docs dev server
 
 ## Releasing
 
-Releases are published automatically to npm by GitHub Actions when a `vX.Y.Z` tag is pushed from `main` (via [npm trusted publishing](https://docs.npmjs.com/trusted-publishers) — no token needed). The tag must match the `version` in `package.json`; the workflow verifies this, then runs checks, tests, and the build before publishing with provenance.
+Releases are published automatically to npm by GitHub Actions when a `vX.Y.Z` tag is pushed from `main`. The tag must match the `version` in `package.json`; the workflow verifies this, then checks linting and formatting, then publishes.
 
 ```sh
 pnpm version patch          # Bump version, commit, and tag vX.Y.Z
 git push origin main v0.0.7 # Push the tag to trigger the publish
 ```
 
-Use `pnpm version minor` or `major` as needed, and watch the run under the repo's **Actions** tab.
+Use `pnpm version minor` or `major` as needed, and watch the run under the repo's [Actions](https://github.com/Jclong98/goose/actions) tab.
 
 ## License
 
