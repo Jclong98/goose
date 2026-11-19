@@ -34,7 +34,7 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: "Guide", link: "/guide/getting-started" },
+      { text: "Guide", link: "/guide/index" },
       { text: "Components", link: "/components/button/index" },
       { text: "Composables", link: "/composables/use-highlight/index" },
       { text: "Directives", link: "/directives/focus/index" },
@@ -45,7 +45,7 @@ export default defineConfig({
         {
           text: "Guide",
           items: [
-            { text: "Getting Started", link: "/guide/getting-started" },
+            { text: "Getting Started", link: "/guide/index" },
             { text: "Auto Imports", link: "/guide/auto-imports" },
           ],
         },
