@@ -34,41 +34,53 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
+      { text: "Guide", link: "/guide/getting-started" },
       { text: "Components", link: "/components/button/index" },
       { text: "Composables", link: "/composables/use-highlight/index" },
       { text: "Directives", link: "/directives/focus/index" },
     ],
 
-    sidebar: [
-      {
-        text: "Components",
-        items: [
-          { text: "GButton", link: "/components/button/index" },
-          { text: "GPopover", link: "/components/popover/index" },
-          { text: "GDialog", link: "/components/dialog/index" },
-          { text: "GDrawer", link: "/components/drawer/index" },
-          { text: "GSegmentedControl", link: "/components/segmented-control/index" },
-          { text: "GTable", link: "/components/table/index" },
-          { text: "GTimeline", link: "/components/timeline/index" },
-          { text: "GSelect", link: "/components/select/index" },
-          { text: "GGraph", link: "/components/graph/index" },
-        ],
-      },
-      {
-        text: "Composables",
-        items: [
-          { text: "useDialogForm", link: "/composables/use-dialog-form/index" },
-          { text: "useHighlight", link: "/composables/use-highlight/index" },
-          { text: "useMultiplier", link: "/composables/use-multiplier/index" },
-          { text: "useToast", link: "/composables/use-toast/index" },
-          { text: "useUniqueId", link: "/composables/use-unique-id/index" },
-        ],
-      },
-      {
-        text: "Directives",
-        items: [{ text: "v-focus", link: "/directives/focus/index" }],
-      },
-    ],
+    sidebar: {
+      "/guide/": [
+        {
+          text: "Guide",
+          items: [
+            { text: "Getting Started", link: "/guide/getting-started" },
+            { text: "Auto Imports", link: "/guide/auto-imports" },
+          ],
+        },
+      ],
+      "/": [
+        {
+          text: "Components",
+          items: [
+            { text: "GButton", link: "/components/button/index" },
+            { text: "GPopover", link: "/components/popover/index" },
+            { text: "GDialog", link: "/components/dialog/index" },
+            { text: "GDrawer", link: "/components/drawer/index" },
+            { text: "GSegmentedControl", link: "/components/segmented-control/index" },
+            { text: "GTable", link: "/components/table/index" },
+            { text: "GTimeline", link: "/components/timeline/index" },
+            { text: "GSelect", link: "/components/select/index" },
+            { text: "GGraph", link: "/components/graph/index" },
+          ],
+        },
+        {
+          text: "Composables",
+          items: [
+            { text: "useDialogForm", link: "/composables/use-dialog-form/index" },
+            { text: "useHighlight", link: "/composables/use-highlight/index" },
+            { text: "useMultiplier", link: "/composables/use-multiplier/index" },
+            { text: "useToast", link: "/composables/use-toast/index" },
+            { text: "useUniqueId", link: "/composables/use-unique-id/index" },
+          ],
+        },
+        {
+          text: "Directives",
+          items: [{ text: "v-focus", link: "/directives/focus/index" }],
+        },
+      ],
+    },
 
     socialLinks: [{ icon: "github", link: "https://github.com/jclong98/goose" }],
     editLink: {

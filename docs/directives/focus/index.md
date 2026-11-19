@@ -1,5 +1,5 @@
 <script setup>
-import FocusExample from './FocusExample.vue'
+import BasicUsage from './BasicUsage.vue'
 </script>
 
 # v-focus
@@ -10,18 +10,18 @@ import FocusExample from './FocusExample.vue'
 
 Focuses an element when the component is mounted.
 
-## Live example
+## Basic Usage
 
 <!-- example -->
-<FocusExample />
+<BasicUsage />
 
-## Usage
+## Registering
 
 Import the `Focus` directive and use it as `v-focus`:
 
 ```vue
 <script setup>
-import { Focus } from "@jclong98/goose/directives";
+import { Focus as vFocus } from "@jclong98/goose/directives";
 </script>
 
 <template>

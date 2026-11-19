@@ -1,4 +1,4 @@
-# Goose UI Library (@jclong98/goose)
+# Goose UI ![NPM Version](https://img.shields.io/npm/v/%40jclong98%2Fgoose) [![build status](https://github.com/Jclong98/goose/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Jclong98/goose/actions/workflows/ci.yml)
 
 **Goose** is a library of Vue 3 components, composables, and directives that leans heavily into modern html and css.
 
@@ -17,7 +17,38 @@
 pnpm add @jclong98/goose
 ```
 
+### Example project scaffolding
+
+[This project](https://github.com/Jclong98/goose-starter) shows how to import `@jclong98/goose` components and styles
+
+```sh
+vp create github:@jclong98/goose-starter
+```
+
 ## Usage
+
+### Import Individual Components
+
+```ts
+import { GButton, GDialog } from "@jclong98/goose";
+```
+
+### Use Composables
+
+```ts
+import { useHighlight } from "@jclong98/goose/composables";
+const { highlighted } = useHighlight("text");
+```
+
+### Use Directives
+
+```ts
+import { createApp } from "vue";
+import { Focus } from "@jclong98/goose/directives";
+
+const app = createApp();
+app.directive("focus", Focus);
+```
 
 ### Auto Import Components
 
@@ -55,33 +86,6 @@ export default defineConfig({
   ],
 });
 ```
-
-### Import Individual Components
-
-```ts
-import { GButton, GDialog } from "@jclong98/goose";
-```
-
-### Use Composables
-
-```ts
-import { useHighlight } from "@jclong98/goose/composables";
-const { highlighted } = useHighlight("text");
-```
-
-### Use Directives
-
-```ts
-import { createApp } from "vue";
-import { Focus } from "@jclong98/goose/directives";
-
-const app = createApp();
-app.directive("focus", Focus);
-```
-
-## Documentation
-
-See the [docs](https://goose.jacoblong.dev) for usage examples and API details for each component, composable, and directive.
 
 ## Development
 
