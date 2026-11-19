@@ -1,3 +1,12 @@
+---
+prev:
+  text: "GTimeline"
+  link: "/components/timeline"
+next:
+  text: "GGraph"
+  link: "/components/graph"
+---
+
 <script setup>
 import BasicUsage from './BasicUsage.vue'
 import ItemSlot from './ItemSlot.vue'

@@ -1,3 +1,12 @@
+---
+prev:
+  text: "useDialogForm"
+  link: "/composables/use-dialog-form"
+next:
+  text: "useMultiplier"
+  link: "/composables/use-multiplier"
+---
+
 <script setup>
 import BasicHighlightExample from './BasicHighlightExample.vue'
 import ManualHighlightExample from './ManualHighlightExample.vue'
@@ -10,10 +19,6 @@ import ManualHighlightExample from './ManualHighlightExample.vue'
 </div>
 
 Highlights all occurrences of a search string within a target element using the [CSS Custom Highlight API](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Custom_Highlight_API).
-
-::: warning Browser support
-This composable requires the CSS Custom Highlight API. It throws `UnsupportedHighlightApiError` in environments where `CSS.highlights` is unavailable.
-:::
 
 ## Live examples
 

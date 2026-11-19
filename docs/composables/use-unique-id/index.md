@@ -1,3 +1,12 @@
+---
+prev:
+  text: "useToast"
+  link: "/composables/use-toast"
+next:
+  text: "v-focus"
+  link: "/directives/focus"
+---
+
 <script setup>
 import GeneratedIdExample from './GeneratedIdExample.vue'
 import ProvidedIdExample from './ProvidedIdExample.vue'

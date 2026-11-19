@@ -1,3 +1,12 @@
+---
+prev:
+  text: "GGraph"
+  link: "/components/graph"
+next:
+  text: "useHighlight"
+  link: "/composables/use-highlight"
+---
+
 <script setup>
 import BasicUsage from './BasicUsage.vue'
 </script>

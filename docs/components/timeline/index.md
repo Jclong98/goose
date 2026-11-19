@@ -1,3 +1,12 @@
+---
+prev:
+  text: "GTable"
+  link: "/components/table"
+next:
+  text: "GSelect"
+  link: "/components/select"
+---
+
 <script setup>
 import BasicUsage from './BasicUsage.vue'
 import DynamicItems from './DynamicItems.vue'

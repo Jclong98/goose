@@ -1,3 +1,12 @@
+---
+prev:
+  text: "GDialog"
+  link: "/components/dialog"
+next:
+  text: "GSegmentedControl"
+  link: "/components/segmented-control"
+---
+
 <script setup>
 import BasicUsage from './BasicUsage.vue'
 import Side from './Side.vue'

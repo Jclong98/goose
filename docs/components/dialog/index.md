@@ -1,3 +1,12 @@
+---
+prev:
+  text: "GPopover"
+  link: "/components/popover"
+next:
+  text: "GDrawer"
+  link: "/components/drawer"
+---
+
 <script setup>
 import BasicUsage from './BasicUsage.vue'
 import Closedby from './Closedby.vue'

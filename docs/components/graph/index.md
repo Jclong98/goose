@@ -1,3 +1,12 @@
+---
+prev:
+  text: "GSelect"
+  link: "/components/select"
+next:
+  text: "useDialogForm"
+  link: "/composables/use-dialog-form"
+---
+
 <script setup>
 import BasicUsage from './BasicUsage.vue'
 </script>

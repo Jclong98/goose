@@ -1,3 +1,12 @@
+---
+prev:
+  text: "useHighlight"
+  link: "/composables/use-highlight"
+next:
+  text: "useToast"
+  link: "/composables/use-toast"
+---
+
 <script setup>
 import BasicMultiplierExample from './BasicMultiplierExample.vue'
 import TaxMultiplierExample from './TaxMultiplierExample.vue'

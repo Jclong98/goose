@@ -1,3 +1,12 @@
+---
+prev:
+  text: "Getting Started"
+  link: "/guide/index"
+next:
+  text: "Components"
+  link: "/components/button"
+---
+
 # Auto Imports
 
 Goose ships two integrations for Vite projects:

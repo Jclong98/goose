@@ -1,3 +1,12 @@
+---
+prev:
+  text: "GButton"
+  link: "/components/button"
+next:
+  text: "GDialog"
+  link: "/components/dialog"
+---
+
 <script setup>
 import BasicUsage from './BasicUsage.vue'
 import PositionedPopover from './PositionedPopover.vue'

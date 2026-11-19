@@ -1,3 +1,9 @@
+---
+next:
+  text: "Auto Imports"
+  link: "/guide/auto-imports"
+---
+
 # Getting Started
 
 ## Installation

@@ -1,3 +1,9 @@
+---
+prev:
+  text: "useUniqueId"
+  link: "/composables/use-unique-id"
+---
+
 <script setup>
 import BasicUsage from './BasicUsage.vue'
 </script>

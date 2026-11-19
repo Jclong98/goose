@@ -1,3 +1,12 @@
+---
+prev:
+  text: "useMultiplier"
+  link: "/composables/use-multiplier"
+next:
+  text: "useUniqueId"
+  link: "/composables/use-unique-id"
+---
+
 <script setup>
 import BasicUsage from './BasicUsage.vue'
 import DifferentAnchors from './DifferentAnchors.vue'

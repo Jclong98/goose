@@ -1,3 +1,12 @@
+---
+prev:
+  text: "GSegmentedControl"
+  link: "/components/segmented-control"
+next:
+  text: "GTimeline"
+  link: "/components/timeline"
+---
+
 <script setup>
 import BasicTableExample from './BasicTableExample.vue'
 import Slots from './Slots.vue'

@@ -1,3 +1,12 @@
+---
+prev:
+  text: "Auto Imports"
+  link: "/guide/auto-imports"
+next:
+  text: "GPopover"
+  link: "/components/popover"
+---
+
 <script setup>
 import BasicUsage from './BasicUsage.vue'
 import Variants from './Variants.vue'

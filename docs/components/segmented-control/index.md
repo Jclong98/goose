@@ -1,3 +1,12 @@
+---
+prev:
+  text: "GDrawer"
+  link: "/components/drawer"
+next:
+  text: "GTable"
+  link: "/components/table"
+---
+
 <script setup>
 import MultiSelectExample from './MultiSelectExample.vue'
 import SingleSelectExample from './SingleSelectExample.vue'
