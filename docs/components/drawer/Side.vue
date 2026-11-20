@@ -10,16 +10,20 @@
   </div>
 
   <!-- left -->
-  <GDrawer id="left-example" anchor="--side-drawer-anchor" side="left" class="p-4">
-    <p>This drawer is on the left</p>
+  <GDrawer id="left-example" anchor="--side-drawer-anchor" side="left">
+    <GCard class="flex-1 p-4">
+      <p>This drawer is on the left</p>
 
-    <GButton popovertarget="left-example" class="mt-auto"> Close </GButton>
+      <GButton popovertarget="left-example" class="mt-auto"> Close </GButton>
+    </GCard>
   </GDrawer>
 
   <!-- right -->
-  <GDrawer id="right-example" anchor="--side-drawer-anchor" side="right" class="p-4">
-    <p>This drawer is on the right</p>
+  <GDrawer id="right-example" anchor="--side-drawer-anchor" side="right">
+    <GCard class="flex-1 p-4">
+      <p>This drawer is on the right</p>
 
-    <GButton popovertarget="right-example" class="mt-auto"> Close </GButton>
+      <GButton popovertarget="right-example" class="mt-auto"> Close </GButton>
+    </GCard>
   </GDrawer>
 </template>

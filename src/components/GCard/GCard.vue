@@ -7,7 +7,7 @@ const props = withDefaults(
     is?: string | Component;
     variant?: GCardVariant;
   }>(),
-  { is: "div", border: false },
+  { is: "div", variant: "surface-1" },
 );
 </script>
 

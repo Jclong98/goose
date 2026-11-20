@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { useUniqueId } from "@/composables";
 import { computed } from "vue";
+import { GCard } from "../GCard";
 
 defineOptions({ inheritAttrs: false });
 
@@ -50,10 +51,11 @@ const closeBinding = computed(() => ({
 @layer components {
   /* GDrawer Layout & Structure */
   .g-drawer {
-    /* Layout & Reset */
-    border: none;
-    margin: 0;
     inset: auto;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
 
     /* Anchor Positioning */
     position-anchor: v-bind("props.anchor");
