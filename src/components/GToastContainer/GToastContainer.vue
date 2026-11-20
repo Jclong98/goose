@@ -51,32 +51,34 @@ defineExpose({ show, remove });
 </template>
 
 <style scoped>
-.g-toast-container {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+@layer components {
+  .g-toast-container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 
-  position-anchor: v-bind("props.anchorName");
-  bottom: calc(anchor(bottom) + 1em);
-  left: anchor(center);
-  translate: -50% 0;
-}
+    position-anchor: v-bind("props.anchorName");
+    bottom: calc(anchor(bottom) + 1em);
+    left: anchor(center);
+    translate: -50% 0;
+  }
 
-.g-toast {
-  display: flex;
-  align-items: center;
-  border-radius: 4px;
-  gap: 0.5em;
-  background-color: var(--color-zinc-100);
-  color: black;
-  border: 1px solid var(--color-zinc-300);
-  padding: 0.5em 1em;
-}
+  .g-toast {
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    gap: 0.5em;
+    background-color: var(--color-zinc-100);
+    color: black;
+    border: 1px solid var(--color-zinc-300);
+    padding: 0.5em 1em;
+  }
 
-.dark .g-toast {
-  background-color: var(--color-zinc-800);
-  color: white;
-  border: 1px solid var(--color-zinc-600);
+  .dark .g-toast {
+    background-color: var(--color-zinc-800);
+    color: white;
+    border: 1px solid var(--color-zinc-600);
+  }
 }
 </style>

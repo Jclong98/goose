@@ -13,14 +13,16 @@ provide(TimelineInjectionKey, items);
 </template>
 
 <style scoped>
-.g-timeline {
-  --g-timeline-circle-radius: 8px;
-  --g-timeline-circle-diameter: calc(var(--g-timeline-circle-radius) * 2);
-  --g-timeline-gutter-width: calc(var(--g-timeline-circle-radius) * 3);
+@layer components {
+  .g-timeline {
+    --g-timeline-circle-radius: 8px;
+    --g-timeline-circle-diameter: calc(var(--g-timeline-circle-radius) * 2);
+    --g-timeline-gutter-width: calc(var(--g-timeline-circle-radius) * 3);
 
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  padding-left: var(--g-timeline-gutter-width);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-left: var(--g-timeline-gutter-width);
+  }
 }
 </style>

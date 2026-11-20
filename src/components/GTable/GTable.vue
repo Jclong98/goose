@@ -62,81 +62,83 @@ defineSlots<HeaderSlots & CellSlots>();
 </template>
 
 <style scoped>
-table {
-  --table-bg: white;
-
-  display: grid;
-  grid-template-columns: v-bind(gridTemplateColumns);
-  overflow: auto;
-  isolation: isolate;
-  container: table-container / scroll-state;
-}
-
-.dark {
+@layer components {
   table {
-    --table-bg: var(--color-neutral-800);
+    --table-bg: white;
+
+    display: grid;
+    grid-template-columns: v-bind(gridTemplateColumns);
+    overflow: auto;
+    isolation: isolate;
+    container: table-container / scroll-state;
   }
-}
 
-thead,
-tbody,
-tr {
-  display: grid;
-  grid-template-columns: subgrid;
-  grid-column: 1 / -1;
-}
-
-thead {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-}
-
-th,
-td {
-  background-color: var(--table-bg);
-  display: flex;
-  padding: 8px;
-  white-space: nowrap;
-
-  &.--pin {
-    position: sticky;
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      width: 8px;
-      height: 100%;
+  .dark {
+    table {
+      --table-bg: var(--color-neutral-800);
     }
   }
 
-  &.--pin-right {
-    right: 0;
+  thead,
+  tbody,
+  tr {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
   }
 
-  &.--pin-left {
-    left: 0;
-  }
-}
-
-@container table-container scroll-state(scrollable: top) {
   thead {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 2;
   }
-}
 
-@container table-container scroll-state(scrollable: right) {
-  .--pin-right::after {
-    left: -8px;
-    background: linear-gradient(to left, rgba(0, 0, 0, 0.1), transparent);
+  th,
+  td {
+    background-color: var(--table-bg);
+    display: flex;
+    padding: 8px;
+    white-space: nowrap;
+
+    &.--pin {
+      position: sticky;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 8px;
+        height: 100%;
+      }
+    }
+
+    &.--pin-right {
+      right: 0;
+    }
+
+    &.--pin-left {
+      left: 0;
+    }
   }
-}
 
-@container table-container scroll-state(scrollable: left) {
-  .--pin-left::after {
-    right: -8px;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.1), transparent);
+  @container table-container scroll-state(scrollable: top) {
+    thead {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  @container table-container scroll-state(scrollable: right) {
+    .--pin-right::after {
+      left: -8px;
+      background: linear-gradient(to left, rgba(0, 0, 0, 0.1), transparent);
+    }
+  }
+
+  @container table-container scroll-state(scrollable: left) {
+    .--pin-left::after {
+      right: -8px;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.1), transparent);
+    }
   }
 }
 </style>

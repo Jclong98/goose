@@ -47,66 +47,68 @@ const closeBinding = computed(() => ({
 </template>
 
 <style scoped>
-/* GDrawer Layout & Structure */
-.g-drawer {
-  /* Layout & Reset */
-  border: none;
-  margin: 0;
-  inset: auto;
-
-  /* Anchor Positioning */
-  position-anchor: v-bind("props.anchor");
-
-  /* Side-specific Anchor Styles */
-  &.--left {
-    left: anchor(left);
-    top: anchor(top);
-    height: anchor-size();
-  }
-
-  &.--right {
-    right: anchor(right);
-    top: anchor(top);
-    height: anchor-size();
-  }
-
-  /* Backdrop Styling */
-  &::backdrop {
-    background: rgba(0, 0, 0, 0.5);
-    position: fixed;
-
-    position-anchor: v-bind("props.anchor");
-    top: anchor(top);
-    left: anchor(left);
-    right: anchor(right);
-    bottom: anchor(bottom);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
+@layer components {
+  /* GDrawer Layout & Structure */
   .g-drawer {
-    transition:
-      opacity 0.2s,
-      translate 0.2s,
-      display 0.2s allow-discrete;
-    opacity: 0;
-    translate: var(--g-drawer-animation-translate);
+    /* Layout & Reset */
+    border: none;
+    margin: 0;
+    inset: auto;
 
-    &:popover-open {
-      opacity: 1;
-      translate: none;
+    /* Anchor Positioning */
+    position-anchor: v-bind("props.anchor");
 
-      @starting-style {
-        opacity: 0;
-        translate: var(--g-drawer-animation-translate);
-      }
-    }
-
+    /* Side-specific Anchor Styles */
     &.--left {
-      --g-drawer-animation-translate: -100%;
+      left: anchor(left);
+      top: anchor(top);
+      height: anchor-size();
     }
+
     &.--right {
-      --g-drawer-animation-translate: 100%;
+      right: anchor(right);
+      top: anchor(top);
+      height: anchor-size();
+    }
+
+    /* Backdrop Styling */
+    &::backdrop {
+      background: rgba(0, 0, 0, 0.5);
+      position: fixed;
+
+      position-anchor: v-bind("props.anchor");
+      top: anchor(top);
+      left: anchor(left);
+      right: anchor(right);
+      bottom: anchor(bottom);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .g-drawer {
+      transition:
+        opacity 0.2s,
+        translate 0.2s,
+        display 0.2s allow-discrete;
+      opacity: 0;
+      translate: var(--g-drawer-animation-translate);
+
+      &:popover-open {
+        opacity: 1;
+        translate: none;
+
+        @starting-style {
+          opacity: 0;
+          translate: var(--g-drawer-animation-translate);
+        }
+      }
+
+      &.--left {
+        --g-drawer-animation-translate: -100%;
+      }
+      &.--right {
+        --g-drawer-animation-translate: 100%;
+      }
     }
   }
 }

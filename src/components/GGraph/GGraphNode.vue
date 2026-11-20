@@ -130,24 +130,26 @@ function onDeleteKeydown(event: KeyboardEvent) {
 </template>
 
 <style scoped>
-.node-circle {
-  --color: v-bind("modelValue.color");
-  fill: var(--color);
-
-  &:hover {
+@layer components {
+  .node-circle {
+    --color: v-bind("modelValue.color");
     fill: var(--color);
-    fill: oklch(from var(--color) calc(l * 0.9) c h);
-  }
 
-  &:active {
-    fill: var(--color);
-    fill: oklch(from var(--color) calc(l * 0.8) c h);
-  }
+    &:hover {
+      fill: var(--color);
+      fill: oklch(from var(--color) calc(l * 0.9) c h);
+    }
 
-  &:focus-visible {
-    stroke: var(--color);
-    stroke: oklch(from var(--color) calc(l * 0.7) c h);
-    stroke-width: 3px;
+    &:active {
+      fill: var(--color);
+      fill: oklch(from var(--color) calc(l * 0.8) c h);
+    }
+
+    &:focus-visible {
+      stroke: var(--color);
+      stroke: oklch(from var(--color) calc(l * 0.7) c h);
+      stroke-width: 3px;
+    }
   }
 }
 </style>

@@ -77,12 +77,14 @@ defineExpose({
 </template>
 
 <style scoped>
-.g-dialog {
-  background: transparent;
-  max-width: unset;
-  width: min(95vw, 600px);
-  max-height: 95dvh;
-  margin: auto;
+@layer components {
+  .g-dialog {
+    background: transparent;
+    max-width: unset;
+    width: min(95vw, 600px);
+    max-height: 95dvh;
+    margin: auto;
+  }
 }
 </style>
 

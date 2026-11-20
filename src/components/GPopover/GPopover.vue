@@ -131,44 +131,46 @@ defineExpose({
 </template>
 
 <style scoped>
-.g-popover {
-  --gap: 0.5rem;
-
-  /* position styling */
-  position: fixed;
-  position-anchor: v-bind("props.anchor ?? anchorName");
-  anchor-name: v-bind("selfAnchorName");
-  position-area: v-bind("positionArea");
-  position-try-fallbacks:
-    flip-block,
-    flip-inline,
-    flip-block flip-inline;
-
-  /* size styling */
-  &.--min-w-anchor {
-    min-width: anchor-size(width);
-  }
-
-  &.--min-h-anchor {
-    min-height: anchor-size(height);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
+@layer components {
   .g-popover {
-    transition-duration: 0.2s;
-    transition-property: opacity, scale, display, overlay;
-    transition-behavior: allow-discrete;
-    opacity: 0;
-    scale: 0.95;
+    --gap: 0.5rem;
 
-    &:popover-open {
-      opacity: 1;
-      scale: 1;
+    /* position styling */
+    position: fixed;
+    position-anchor: v-bind("props.anchor ?? anchorName");
+    anchor-name: v-bind("selfAnchorName");
+    position-area: v-bind("positionArea");
+    position-try-fallbacks:
+      flip-block,
+      flip-inline,
+      flip-block flip-inline;
 
-      @starting-style {
-        opacity: 0;
-        scale: 0.95;
+    /* size styling */
+    &.--min-w-anchor {
+      min-width: anchor-size(width);
+    }
+
+    &.--min-h-anchor {
+      min-height: anchor-size(height);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .g-popover {
+      transition-duration: 0.2s;
+      transition-property: opacity, scale, display, overlay;
+      transition-behavior: allow-discrete;
+      opacity: 0;
+      scale: 0.95;
+
+      &:popover-open {
+        opacity: 1;
+        scale: 1;
+
+        @starting-style {
+          opacity: 0;
+          scale: 0.95;
+        }
       }
     }
   }
