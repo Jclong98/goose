@@ -3,8 +3,8 @@ prev:
   text: "Auto Imports"
   link: "/guide/auto-imports"
 next:
-  text: "GPopover"
-  link: "/components/popover"
+  text: "GCard"
+  link: "/components/card"
 ---
 
 <script setup>

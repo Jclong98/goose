@@ -1,7 +1,7 @@
 ---
 prev:
-  text: "GButton"
-  link: "/components/button"
+  text: "GCard"
+  link: "/components/card"
 next:
   text: "GDialog"
   link: "/components/dialog"

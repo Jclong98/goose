@@ -55,6 +55,7 @@ export default defineConfig({
           text: "Components",
           items: [
             { text: "GButton", link: "/components/button/index" },
+            { text: "GCard", link: "/components/card/index" },
             { text: "GPopover", link: "/components/popover/index" },
             { text: "GDialog", link: "/components/dialog/index" },
             { text: "GDrawer", link: "/components/drawer/index" },
