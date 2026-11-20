@@ -1,5 +1,6 @@
-@import "tailwindcss";
+@layer base, components, utilities;
 
+@import "tailwindcss";
 @import "./tw-theme.css";
 
 /* Fonts are opt-in: import "@jclong98/goose/fonts.css" in your app. */

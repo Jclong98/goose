@@ -1,4 +1,5 @@
 export * from "./GButton";
+export * from "./GCard";
 export * from "./GDialog";
 export * from "./GDrawer";
 export * from "./GGraph";
