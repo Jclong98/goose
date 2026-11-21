@@ -2,17 +2,43 @@
 @source "../../assets/tw-theme.css";
 
 .g-button {
+  /* layout */
   --g-button-padding-inline: 1em;
+
+  /* appearance */
+  --g-button-bg: transparent;
+  --g-button-bg-hover: transparent;
+  --g-button-bg-active: transparent;
+  --g-button-color: var(--color-on-surface-1);
+  --g-button-color-hover: var(--g-button-color);
+  --g-button-color-active: var(--g-button-color);
+  --g-button-border: transparent;
 
   white-space: nowrap;
   cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.1s ease;
   display: flex;
-  gap: 0.5em;
   align-items: center;
   justify-content: center;
+  gap: 0.5em;
   height: 32px;
+  border-radius: 4px;
+  border: 1px solid var(--g-button-border);
+  padding-inline: var(--g-button-padding-inline);
+  background-color: var(--g-button-bg);
+  color: var(--g-button-color);
+  transition:
+    background-color 0.1s ease,
+    color 0.1s ease;
+
+  &:hover {
+    background-color: var(--g-button-bg-hover);
+    color: var(--g-button-color-hover);
+  }
+
+  &:active {
+    background-color: var(--g-button-bg-active);
+    color: var(--g-button-color-active);
+  }
 
   & .g-button__icon {
     display: inline-flex;
@@ -32,73 +58,37 @@
   }
 
   &.--primary {
-    background-color: var(--color-goose);
-    color: black;
-    padding-inline: var(--g-button-padding-inline);
-
-    &:hover {
-      background-color: oklch(from var(--color-goose) 0.85 c h);
-    }
-
-    &:active {
-      background-color: oklch(from var(--color-goose) 0.8 c h);
-    }
+    --g-button-bg: var(--color-goose);
+    --g-button-bg-hover: oklch(from var(--color-goose) 0.85 c h);
+    --g-button-bg-active: oklch(from var(--color-goose) 0.8 c h);
+    --g-button-color: black;
   }
 
   &.--neutral {
-    background-color: var(--color-surface-2);
-    color: var(--color-on-surface-2);
-    border: 1px solid var(--color-border-surface-2);
-    padding-inline: var(--g-button-padding-inline);
-
-    &:hover {
-      background-color: var(--color-surface-2-hover);
-    }
-
-    &:active {
-      background-color: var(--color-surface-2-active);
-    }
+    --g-button-bg: var(--color-surface-2);
+    --g-button-bg-hover: var(--color-surface-2-hover);
+    --g-button-bg-active: var(--color-surface-2-active);
+    --g-button-color: var(--color-on-surface-2);
+    --g-button-border: var(--color-border-surface-2);
   }
 
   &.--danger {
-    background-color: var(--color-surface-danger);
-    color: var(--color-on-danger);
-    padding-inline: var(--g-button-padding-inline);
-
-    &:hover {
-      background-color: var(--color-surface-danger-hover);
-    }
-
-    &:active {
-      background-color: var(--color-surface-danger-active);
-    }
+    --g-button-bg: var(--color-surface-danger);
+    --g-button-bg-hover: var(--color-surface-danger-hover);
+    --g-button-bg-active: var(--color-surface-danger-active);
+    --g-button-color: var(--color-on-danger);
   }
 
   &.--ghost {
-    background-color: transparent;
-    color: var(--color-on-surface-1);
-    padding-inline: var(--g-button-padding-inline);
-
-    &:hover {
-      background-color: var(--color-surface-1-hover);
-    }
-
-    &:active {
-      background-color: var(--color-surface-1-active);
-    }
+    --g-button-bg-hover: var(--color-surface-2-hover);
+    --g-button-bg-active: var(--color-surface-2-active);
   }
 
   &.--link {
-    background-color: transparent;
-    color: var(--color-info);
+    --g-button-padding-inline: 0;
+    --g-button-color: var(--color-info);
+    --g-button-color-hover: oklch(from var(--color-info) calc(1.1 * l) c h);
+    --g-button-color-active: oklch(from var(--color-info) calc(0.98 * l) c h);
     text-decoration: underline;
-
-    &:hover {
-      color: oklch(from var(--color-info) calc(1.1 * l) c h);
-    }
-
-    &:active {
-      color: oklch(from var(--color-info) calc(0.98 * l) c h);
-    }
   }
 }
