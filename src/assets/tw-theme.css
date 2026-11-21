@@ -34,3 +34,33 @@
   --color-on-info: oklch(from var(--color-surface-info) calc(0.5 * l) c h);
   --color-border-info: oklch(from var(--color-surface-info) calc(0.9 * l) c h);
 }
+
+html.dark {
+  --color-surface-1: oklch(0.25 0 0);
+  --color-on-surface-1: oklch(from var(--color-surface-1) 0.9 c h);
+  --color-border-surface-1: oklch(from var(--color-surface-1) calc(1.5 * l) c h);
+
+  --color-surface-2: oklch(0.23 0 0);
+  --color-on-surface-2: oklch(from var(--color-surface-2) 0.85 c h);
+  --color-border-surface-2: oklch(from var(--color-surface-2) calc(1.5 * l) c h);
+
+  --color-surface-3: oklch(0.2 0 0);
+  --color-on-surface-3: oklch(from var(--color-surface-3) 0.8 c h);
+  --color-border-surface-3: oklch(from var(--color-surface-3) calc(1.5 * l) c h);
+
+  --color-surface-success: oklch(from var(--color-success) 0.4 0.1 h);
+  --color-on-success: oklch(from var(--color-surface-success) calc(3.5 * l) c h);
+  --color-border-success: oklch(from var(--color-surface-success) calc(1.5 * l) c h);
+
+  --color-surface-error: oklch(from var(--color-error) 0.4 0.12 h);
+  --color-on-error: oklch(from var(--color-surface-error) calc(3.5 * l) c h);
+  --color-border-error: oklch(from var(--color-surface-error) calc(1.5 * l) c h);
+
+  --color-surface-warning: oklch(from var(--color-warning) 0.4 0.15 h);
+  --color-on-warning: oklch(from var(--color-surface-warning) calc(3.5 * l) c h);
+  --color-border-warning: oklch(from var(--color-surface-warning) calc(1.5 * l) c h);
+
+  --color-surface-info: oklch(from var(--color-info) 0.4 0.12 h);
+  --color-on-info: oklch(from var(--color-surface-info) calc(3.5 * l) c h);
+  --color-border-info: oklch(from var(--color-surface-info) calc(1.5 * l) c h);
+}
