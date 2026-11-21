@@ -5,7 +5,7 @@
         v-for="i in 5"
         :key="i"
         is="li"
-        variant="surface-3"
+        variant="surface-2"
         class="rounded-full border px-3 py-1 text-sm"
       >
         tag {{ i }}

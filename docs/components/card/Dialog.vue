@@ -13,8 +13,8 @@
     </GCard>
 
     <GCard variant="surface-2" class="flex-row justify-end gap-2 border-t p-2" is="footer">
-      <GButton>Click</GButton>
-      <GButton variant="primary">Click</GButton>
+      <GButton>Cancel</GButton>
+      <GButton variant="primary">OK</GButton>
     </GCard>
   </GCard>
 </template>

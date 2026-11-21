@@ -10,11 +10,16 @@ next:
 <script setup>
 import BasicUsage from './BasicUsage.vue'
 import Variants from './Variants.vue'
+import Interactive from './Interactive.vue'
 import Dialog from './Dialog.vue'
 import Tags from './Tags.vue'
 </script>
 
 # GCard
+
+<div class="flex gap-2">
+  <SourceChip path="src/components/GCard/GCard.vue" />
+</div>
 
 GCard is a very bare-bones customizable component. It is designed to be as flexible as possible, leveraging Tailwindcss classes to turn it into what designs require.
 
@@ -38,6 +43,13 @@ You can override the underlying element of GCard using the `is` prop. In this ex
 
 <!-- example -->
 <Dialog />
+
+## Interactive
+
+By applying the `interactive` prop, additional `:hover` and `:active` styles are applied. This could be useful for buttons or other interactive elements like labels for checkboxes.
+
+<!-- example -->
+<Interactive />
 
 ## Tags
 
