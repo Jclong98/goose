@@ -14,13 +14,13 @@ const rows = [
 function statusColor(status: string) {
   switch (status) {
     case "Active":
-      return "bg-green-100 text-green-500";
+      return "success";
     case "Pending":
-      return "bg-amber-100 text-amber-500";
+      return "warning";
     case "Inactive":
-      return "bg-red-100 text-red-500";
+      return "danger";
     default:
-      return "";
+      return "info";
   }
 }
 </script>
@@ -30,9 +30,9 @@ function statusColor(status: string) {
     <template #status-header> Status (but custom!) </template>
 
     <template #status-cell="{ item }">
-      <span class="rounded-full px-4 py-1 font-semibold" :class="statusColor(item.status)">
+      <GCard :variant="statusColor(item.status)" class="rounded-full px-4 py-1">
         {{ item.status }}
-      </span>
+      </GCard>
     </template>
   </GTable>
 </template>
