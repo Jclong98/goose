@@ -3,7 +3,7 @@ export const CARD_VARIANTS = [
   "surface-2",
   "surface-3",
   "success",
-  "error",
+  "danger",
   "warning",
   "info",
 ] as const;

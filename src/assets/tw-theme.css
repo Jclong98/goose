@@ -19,10 +19,10 @@
   --color-on-success: oklch(from var(--color-surface-success) calc(0.5 * l) c h);
   --color-border-success: oklch(from var(--color-surface-success) calc(0.9 * l) c h);
 
-  --color-error: oklch(0.9 0.2 30);
-  --color-surface-error: oklch(from var(--color-error) l 0.1 h);
-  --color-on-error: oklch(from var(--color-surface-error) calc(0.5 * l) c h);
-  --color-border-error: oklch(from var(--color-surface-error) calc(0.9 * l) c h);
+  --color-danger: oklch(0.9 0.2 30);
+  --color-surface-danger: oklch(from var(--color-danger) l 0.1 h);
+  --color-on-danger: oklch(from var(--color-surface-danger) calc(0.5 * l) c h);
+  --color-border-danger: oklch(from var(--color-surface-danger) calc(0.9 * l) c h);
 
   --color-warning: oklch(0.9 0.25 85);
   --color-surface-warning: oklch(from var(--color-warning) l 0.1 h);
@@ -49,18 +49,18 @@ html.dark {
   --color-border-surface-3: oklch(from var(--color-surface-3) calc(1.5 * l) c h);
 
   --color-surface-success: oklch(from var(--color-success) 0.4 0.1 h);
-  --color-on-success: oklch(from var(--color-surface-success) calc(3.5 * l) c h);
+  --color-on-success: oklch(from var(--color-surface-success) 1 c h);
   --color-border-success: oklch(from var(--color-surface-success) calc(1.5 * l) c h);
 
-  --color-surface-error: oklch(from var(--color-error) 0.4 0.12 h);
-  --color-on-error: oklch(from var(--color-surface-error) calc(3.5 * l) c h);
-  --color-border-error: oklch(from var(--color-surface-error) calc(1.5 * l) c h);
+  --color-surface-danger: oklch(from var(--color-danger) 0.4 0.12 h);
+  --color-on-danger: oklch(from var(--color-surface-danger) 1 c h);
+  --color-border-danger: oklch(from var(--color-surface-danger) calc(1.5 * l) c h);
 
   --color-surface-warning: oklch(from var(--color-warning) 0.4 0.15 h);
-  --color-on-warning: oklch(from var(--color-surface-warning) calc(3.5 * l) c h);
+  --color-on-warning: oklch(from var(--color-surface-warning) 1 0.05 h);
   --color-border-warning: oklch(from var(--color-surface-warning) calc(1.5 * l) c h);
 
   --color-surface-info: oklch(from var(--color-info) 0.4 0.12 h);
-  --color-on-info: oklch(from var(--color-surface-info) calc(3.5 * l) c h);
+  --color-on-info: oklch(from var(--color-surface-info) 1 c h);
   --color-border-info: oklch(from var(--color-surface-info) calc(1.5 * l) c h);
 }

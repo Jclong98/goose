@@ -50,10 +50,10 @@ const props = withDefaults(
       --color: var(--color-on-success);
     }
 
-    &.--error {
-      --background: var(--color-surface-error);
-      --border: var(--color-border-error);
-      --color: var(--color-on-error);
+    &.--danger {
+      --background: var(--color-surface-danger);
+      --border: var(--color-border-danger);
+      --color: var(--color-on-danger);
     }
 
     &.--warning {

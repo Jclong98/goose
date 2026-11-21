@@ -20,9 +20,9 @@
       <p>Success</p>
     </GCard>
 
-    <!-- error -->
-    <GCard variant="error" class="border px-4 py-3">
-      <p>Error</p>
+    <!-- danger -->
+    <GCard variant="danger" class="border px-4 py-3">
+      <p>Danger</p>
     </GCard>
 
     <!-- warning -->
