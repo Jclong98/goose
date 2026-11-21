@@ -10,6 +10,7 @@ next:
 <script setup>
 import BasicUsage from './BasicUsage.vue'
 import Side from './Side.vue'
+import Hovering from './Hovering.vue'
 </script>
 
 # GDrawer
@@ -31,6 +32,13 @@ A side panel drawer using the native [Popover API](https://developer.mozilla.org
 
 <!-- example -->
 <Side />
+
+## Hovering
+
+By playing around with the sytyles a bit, you can make it look as though the drawer is hovering over the content, rather than peeking from the side
+
+<!-- example -->
+<Hovering />
 
 ## API
 

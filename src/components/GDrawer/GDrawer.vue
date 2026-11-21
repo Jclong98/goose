@@ -59,6 +59,7 @@ const closeBinding = computed(() => ({
 
     /* Anchor Positioning */
     position-anchor: v-bind("props.anchor");
+    max-width: anchor-size(width);
 
     /* Side-specific Anchor Styles */
     &.--left {

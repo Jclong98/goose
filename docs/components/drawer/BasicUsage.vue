@@ -3,7 +3,7 @@
     class="grid h-96 place-content-center rounded-lg border border-(--vp-c-divider)"
     style="anchor-name: --drawer-anchor"
   >
-    <GDrawer anchor="--drawer-anchor" class="max-w-64">
+    <GDrawer anchor="--drawer-anchor">
       <template #activator="{ binding }">
         <GButton v-bind="binding"> Open drawer </GButton>
       </template>
