@@ -2,6 +2,7 @@
   --color-goose: #fcd34d;
   --font-rubik: "Rubik", sans-serif;
 
+  /* surfaces */
   --color-surface-1: white;
   --color-on-surface-1: oklch(from var(--color-surface-1) calc(0.5 * l) c h);
   --color-border-surface-1: oklch(from var(--color-surface-1) calc(0.9 * l) c h);
@@ -20,36 +21,41 @@
   --color-surface-3-hover: oklch(from var(--color-surface-3) calc(0.98 * l) c h);
   --color-surface-3-active: oklch(from var(--color-surface-3) calc(0.95 * l) c h);
 
+  /* success */
   --color-success: oklch(from var(--color-goose) l c 140);
-  --color-surface-success: oklch(from var(--color-success) 0.88 0.125 h);
-  --color-on-success: oklch(from var(--color-surface-success) calc(0.5 * l) c h);
-  --color-border-success: oklch(from var(--color-surface-success) calc(0.9 * l) c h);
+  --color-surface-success: oklch(from var(--color-success) l 0.125 h);
+  --color-on-success: oklch(from var(--color-success) calc(0.5 * l) c h);
+  --color-border-success: oklch(from var(--color-success) calc(0.9 * l) c h);
   --color-surface-success-hover: oklch(from var(--color-surface-success) calc(0.95 * l) c h);
-  --color-surface-success-active: oklch(from var(--color-surface-success) calc(0.92 * l) c h);
+  --color-surface-success-active: oklch(from var(--color-surface-success) calc(0.9 * l) c h);
 
+  /* danger */
   --color-danger: oklch(from var(--color-goose) l c 30);
-  --color-surface-danger: oklch(from var(--color-danger) 0.88 0.125 h);
-  --color-on-danger: oklch(from var(--color-surface-danger) calc(0.5 * l) c h);
-  --color-border-danger: oklch(from var(--color-surface-danger) calc(0.9 * l) c h);
-  --color-surface-danger-hover: oklch(from var(--color-surface-danger) calc(0.98 * l) c h);
-  --color-surface-danger-active: oklch(from var(--color-surface-danger) calc(0.95 * l) c h);
+  --color-surface-danger: oklch(from var(--color-danger) l 0.125 h);
+  --color-on-danger: oklch(from var(--color-danger) calc(0.5 * l) c h);
+  --color-border-danger: oklch(from var(--color-danger) calc(0.9 * l) c h);
+  --color-surface-danger-hover: oklch(from var(--color-surface-danger) calc(0.95 * l) c h);
+  --color-surface-danger-active: oklch(from var(--color-surface-danger) calc(0.9 * l) c h);
 
+  /* warning */
   --color-warning: oklch(from var(--color-goose) l c 80);
-  --color-surface-warning: oklch(from var(--color-warning) 0.88 0.125 h);
-  --color-on-warning: oklch(from var(--color-surface-warning) calc(0.5 * l) c h);
-  --color-border-warning: oklch(from var(--color-surface-warning) calc(0.9 * l) c h);
-  --color-surface-warning-hover: oklch(from var(--color-surface-warning) calc(0.98 * l) c h);
-  --color-surface-warning-active: oklch(from var(--color-surface-warning) calc(0.95 * l) c h);
+  --color-surface-warning: oklch(from var(--color-warning) l 0.125 h);
+  --color-on-warning: oklch(from var(--color-warning) calc(0.5 * l) c h);
+  --color-border-warning: oklch(from var(--color-warning) calc(0.9 * l) c h);
+  --color-surface-warning-hover: oklch(from var(--color-surface-warning) calc(0.95 * l) c h);
+  --color-surface-warning-active: oklch(from var(--color-surface-warning) calc(0.9 * l) c h);
 
+  /* info */
   --color-info: oklch(from var(--color-goose) l c 270);
-  --color-surface-info: oklch(from var(--color-info) 0.88 0.125 h);
-  --color-on-info: oklch(from var(--color-surface-info) calc(0.5 * l) c h);
-  --color-border-info: oklch(from var(--color-surface-info) calc(0.9 * l) c h);
+  --color-surface-info: oklch(from var(--color-info) l 0.125 h);
+  --color-on-info: oklch(from var(--color-info) calc(0.5 * l) c h);
+  --color-border-info: oklch(from var(--color-info) calc(0.9 * l) c h);
   --color-surface-info-hover: oklch(from var(--color-surface-info) calc(0.95 * l) c h);
   --color-surface-info-active: oklch(from var(--color-surface-info) calc(0.9 * l) c h);
 }
 
-html.dark {
+.dark {
+  /* surfaces */
   --color-surface-1: oklch(0.25 0 0);
   --color-on-surface-1: oklch(from var(--color-surface-1) 0.9 c h);
   --color-border-surface-1: oklch(from var(--color-surface-1) calc(1.5 * l) c h);
@@ -68,24 +74,28 @@ html.dark {
   --color-surface-3-hover: oklch(from var(--color-surface-3) calc(1.2 * l) c h);
   --color-surface-3-active: oklch(from var(--color-surface-3) calc(1.1 * l) c h);
 
+  /* success */
   --color-surface-success: oklch(from var(--color-success) 0.4 0.1 h);
   --color-on-success: oklch(from var(--color-surface-success) 1 c h);
   --color-border-success: oklch(from var(--color-surface-success) calc(1.5 * l) c h);
   --color-surface-success-hover: oklch(from var(--color-surface-success) calc(1.2 * l) c h);
   --color-surface-success-active: oklch(from var(--color-surface-success) calc(1.1 * l) c h);
 
+  /* danger */
   --color-surface-danger: oklch(from var(--color-danger) 0.4 0.12 h);
   --color-on-danger: oklch(from var(--color-surface-danger) 1 c h);
   --color-border-danger: oklch(from var(--color-surface-danger) calc(1.5 * l) c h);
   --color-surface-danger-hover: oklch(from var(--color-surface-danger) calc(1.2 * l) c h);
   --color-surface-danger-active: oklch(from var(--color-surface-danger) calc(1.1 * l) c h);
 
+  /* warning */
   --color-surface-warning: oklch(from var(--color-warning) 0.4 0.15 h);
   --color-on-warning: oklch(from var(--color-surface-warning) 1 0.05 h);
   --color-border-warning: oklch(from var(--color-surface-warning) calc(1.5 * l) c h);
   --color-surface-warning-hover: oklch(from var(--color-surface-warning) calc(1.2 * l) c h);
   --color-surface-warning-active: oklch(from var(--color-surface-warning) calc(1.1 * l) c h);
 
+  /* info */
   --color-surface-info: oklch(from var(--color-info) 0.4 0.12 h);
   --color-on-info: oklch(from var(--color-surface-info) 0.92 c h);
   --color-border-info: oklch(from var(--color-surface-info) calc(1.5 * l) c h);
