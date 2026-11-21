@@ -62,7 +62,7 @@
 
   &.--danger {
     background-color: var(--color-surface-danger);
-    color: var(--color-on-surface-danger);
+    color: var(--color-on-danger);
     padding-inline: var(--g-button-padding-inline);
 
     &:hover {
@@ -94,11 +94,11 @@
     text-decoration: underline;
 
     &:hover {
-      color: var(--color-info-hover);
+      color: oklch(from var(--color-info) calc(1.1 * l) c h);
     }
 
     &:active {
-      color: var(--color-info-active);
+      color: oklch(from var(--color-info) calc(0.98 * l) c h);
     }
   }
 }
