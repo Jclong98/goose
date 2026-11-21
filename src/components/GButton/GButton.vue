@@ -4,7 +4,7 @@ import LoadingThrobber from "./LoadingThrobber.vue";
 
 const props = withDefaults(
   defineProps<{
-    variant?: "primary" | "neutral" | "ghost" | "link";
+    variant?: "primary" | "neutral" | "ghost" | "link" | "danger";
     disabled?: boolean | "lite";
     loading?: boolean;
   }>(),

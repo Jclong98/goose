@@ -21,6 +21,8 @@ const toggleDark = useToggle(isDark);
             :key="variant"
             :variant="variant"
             class="rounded border px-4 py-3"
+            is="button"
+            interactive
           >
             <p>{{ variant }}</p>
           </GCard>
