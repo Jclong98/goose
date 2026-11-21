@@ -134,6 +134,7 @@ defineExpose({
 @layer components {
   .g-popover {
     --gap: 0.5rem;
+    background: transparent;
 
     /* position styling */
     position: fixed;
